@@ -19,8 +19,11 @@
 		E5841D4122BD9F7B00F99BC3 /* DevelopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D4022BD9F7B00F99BC3 /* DevelopTableViewController.swift */; };
 		E5841D4322BD9F9200F99BC3 /* ArchiveCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D4222BD9F9200F99BC3 /* ArchiveCollectionViewController.swift */; };
 		E5841D4522BD9FAB00F99BC3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D4422BD9FAB00F99BC3 /* SettingsTableViewController.swift */; };
-		E5841D4922BDA81800F99BC3 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D4822BDA81800F99BC3 /* BaseCell.swift */; };
+		E5841D4922BDA81800F99BC3 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D4822BDA81800F99BC3 /* BaseCollectionViewCell.swift */; };
 		E58B60FA22C2DE5300DC9294 /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B60F922C2DE5300DC9294 /* CircularProgressBar.swift */; };
+		E58B60FC22C2FFCA00DC9294 /* NewRollTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B60FB22C2FFCA00DC9294 /* NewRollTableViewController.swift */; };
+		E58B610122C31D1C00DC9294 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B610022C31D1C00DC9294 /* BaseTableViewCell.swift */; };
+		E58B610322C31DCD00DC9294 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B610222C31DCD00DC9294 /* TextFieldTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +41,11 @@
 		E5841D4022BD9F7B00F99BC3 /* DevelopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopTableViewController.swift; sourceTree = "<group>"; };
 		E5841D4222BD9F9200F99BC3 /* ArchiveCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCollectionViewController.swift; sourceTree = "<group>"; };
 		E5841D4422BD9FAB00F99BC3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		E5841D4822BDA81800F99BC3 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		E5841D4822BDA81800F99BC3 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E58B60F922C2DE5300DC9294 /* CircularProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
+		E58B60FB22C2FFCA00DC9294 /* NewRollTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollTableViewController.swift; sourceTree = "<group>"; };
+		E58B610022C31D1C00DC9294 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		E58B610222C31DCD00DC9294 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +82,10 @@
 			isa = PBXGroup;
 			children = (
 				E50A454322BACD390047ABFE /* AppDelegate.swift */,
-				E5841D3722BD754900F99BC3 /* Helpers */,
+				E58B60FD22C30CE100DC9294 /* Model */,
 				E50A455522BAE43C0047ABFE /* View */,
-				E50A455722BAE47B0047ABFE /* Controllers */,
+				E50A455722BAE47B0047ABFE /* Controller */,
+				E5841D3722BD754900F99BC3 /* Helpers */,
 				E50A455622BAE4590047ABFE /* Supporting Files */,
 			);
 			path = OneStopFilm;
@@ -88,8 +95,10 @@
 			isa = PBXGroup;
 			children = (
 				E5841D3C22BD7AD800F99BC3 /* FilmRollCell.swift */,
-				E5841D4822BDA81800F99BC3 /* BaseCell.swift */,
+				E5841D4822BDA81800F99BC3 /* BaseCollectionViewCell.swift */,
 				E58B60F922C2DE5300DC9294 /* CircularProgressBar.swift */,
+				E58B610022C31D1C00DC9294 /* BaseTableViewCell.swift */,
+				E58B610222C31DCD00DC9294 /* TextFieldTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -102,7 +111,7 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E50A455722BAE47B0047ABFE /* Controllers */ = {
+		E50A455722BAE47B0047ABFE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				E50A454522BACD390047ABFE /* CurrentRoleViewController.swift */,
@@ -110,8 +119,9 @@
 				E5841D4022BD9F7B00F99BC3 /* DevelopTableViewController.swift */,
 				E5841D4222BD9F9200F99BC3 /* ArchiveCollectionViewController.swift */,
 				E5841D4422BD9FAB00F99BC3 /* SettingsTableViewController.swift */,
+				E58B60FB22C2FFCA00DC9294 /* NewRollTableViewController.swift */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E5841D3722BD754900F99BC3 /* Helpers */ = {
@@ -121,6 +131,13 @@
 				E5841D3A22BD758300F99BC3 /* Theme.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E58B60FD22C30CE100DC9294 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,15 +212,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5841D4122BD9F7B00F99BC3 /* DevelopTableViewController.swift in Sources */,
+				E58B60FC22C2FFCA00DC9294 /* NewRollTableViewController.swift in Sources */,
 				E50A454622BACD390047ABFE /* CurrentRoleViewController.swift in Sources */,
 				E5841D3D22BD7AD800F99BC3 /* FilmRollCell.swift in Sources */,
 				E5841D3B22BD758300F99BC3 /* Theme.swift in Sources */,
 				E5841D3F22BD99BC00F99BC3 /* TabBarController.swift in Sources */,
 				E58B60FA22C2DE5300DC9294 /* CircularProgressBar.swift in Sources */,
 				E5841D4322BD9F9200F99BC3 /* ArchiveCollectionViewController.swift in Sources */,
-				E5841D4922BDA81800F99BC3 /* BaseCell.swift in Sources */,
+				E5841D4922BDA81800F99BC3 /* BaseCollectionViewCell.swift in Sources */,
+				E58B610322C31DCD00DC9294 /* TextFieldTableViewCell.swift in Sources */,
 				E50A454422BACD390047ABFE /* AppDelegate.swift in Sources */,
 				E5841D3922BD756700F99BC3 /* Extensions.swift in Sources */,
+				E58B610122C31D1C00DC9294 /* BaseTableViewCell.swift in Sources */,
 				E5841D4522BD9FAB00F99BC3 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

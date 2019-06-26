@@ -26,5 +26,6 @@ struct Theme {
         static let titleFont = UIFont(name: "Avenir-Light", size: 17)
         static let titleLabelFont = UIFont(name: "Avenir-Light", size: 20)
         static let bodyLabelFont = UIFont(name: "Avenir-Light", size: 14)
+        static let newRollTitleLabelFont = UIFont(name: "Avenir-Light", size: 10)
     }
 }

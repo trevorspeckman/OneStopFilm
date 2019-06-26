@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class FilmRollCell: BaseCell {
+class FilmRollCell: BaseCollectionViewCell {
     
     //MARK: Subview definitions
     let bottomCap: UIView = {

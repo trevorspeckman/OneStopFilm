@@ -19,7 +19,8 @@ class CurrentRollsViewController: UICollectionViewController, UICollectionViewDe
         
         navigationItem.title = "CURRENT ROLLS"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Theme.Font.titleFont!]
-
+ 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
 
         //setup Collection View
         collectionView.backgroundColor = Theme.Color.background
@@ -29,6 +30,12 @@ class CurrentRollsViewController: UICollectionViewController, UICollectionViewDe
  
     }
     
+    @objc func addTapped() {
+        let addNewRollTableViewController = NewRollTableViewController()
+        let addNewRollNavController = UINavigationController(rootViewController: addNewRollTableViewController)
+        self.present(addNewRollNavController, animated: true, completion: nil)
+        
+    }
     
     //MARK: DataSource Methods
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

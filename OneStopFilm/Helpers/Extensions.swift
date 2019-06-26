@@ -83,3 +83,18 @@ extension UIView {
             gradientLayer, at: 0)
     }
 }
+
+//Mark: Fade in and out animation
+extension UIView {
+    func fadeIn(duration: TimeInterval = 0.25, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: .curveEaseIn, animations: {
+            self.alpha = 1.0
+        }, completion: completion)
+    }
+    
+    func fadeOut(duration: TimeInterval = 0.25, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: .curveEaseIn, animations: {
+            self.alpha = 0.0
+        }, completion: completion)
+    }
+}
