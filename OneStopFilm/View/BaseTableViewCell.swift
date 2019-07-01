@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol ConfigurableCell {
+    associatedtype DataType
+    func configure(data: DataType)
+}
+
 class BaseTableViewCell: UITableViewCell {
+
+    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

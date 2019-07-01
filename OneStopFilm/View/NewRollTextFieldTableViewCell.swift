@@ -12,10 +12,13 @@ import UIKit
 //    <#requirements#>
 //}
 
-class TextFieldTableViewCell: BaseTableViewCell, UITextFieldDelegate {
+
+
+class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UITextFieldDelegate {
 
 //    var delegate: TextFieldTableViewCellDelegate?
     
+//MARK: Subview Initialization
     let titleLabel: UILabel = {
         let label = UILabel()
         //label.backgroundColor = UIColor.red
@@ -36,31 +39,47 @@ class TextFieldTableViewCell: BaseTableViewCell, UITextFieldDelegate {
         return textField
     }()
     
+    var textLengthLimit = 0
     
     override func setupViews() {
-    //cellTextField.delegate = self
         
-    cellTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        cellTextField.delegate = self
         
-    addSubview(titleLabel)
-    addSubview(cellTextField)
+        cellTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
-    titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-    titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-    titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-    titleLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
-      
+        addSubview(titleLabel)
+        addSubview(cellTextField)
         
-    cellTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
-    cellTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-    cellTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-    cellTextField.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
         
-    selectionStyle = .none
-    cellTextField.delegate = self
+        
+        cellTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
+        cellTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        cellTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        cellTextField.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        selectionStyle = .none
+
 
     }
     
+//MARK: ConfigurableCell Protocol Methods
+    func configure(data newRoll: NewRollTextField) {
+        titleLabel.text = newRoll.text
+        cellTextField.placeholder = newRoll.text
+        if newRoll.keyboard == 0 {
+            cellTextField.keyboardType = .default
+        } else if newRoll.keyboard == 1 {
+            cellTextField.keyboardType = .numberPad
+        }
+        textLengthLimit = newRoll.textLengthLimit
+        
+    }
+    
+//MARK: TextField Delegate Methods
     @objc func textFieldDidChange(_ textField: UITextField) {
         if cellTextField.text?.isEmpty == false {
 
@@ -71,8 +90,9 @@ class TextFieldTableViewCell: BaseTableViewCell, UITextFieldDelegate {
             titleLabel.fadeOut()
         }
         
-        //cellTextField.text =  cellTextField.text?.uppercased()
+        cellTextField.text =  cellTextField.text?.uppercased()
     }
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if cellTextField.text?.isEmpty == false {
@@ -80,15 +100,23 @@ class TextFieldTableViewCell: BaseTableViewCell, UITextFieldDelegate {
         }
     }
     
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         //titleLabel.fadeOut()
         titleLabel.textColor = UIColor.gray
     }
 
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = cellTextField.text else { return true }
         let newLength = text.count + string.count - range.length
-        return newLength <= 40
+        return newLength <= textLengthLimit
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     
