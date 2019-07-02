@@ -16,10 +16,18 @@ class FilmStockTableViewController: UITableViewController {
         navigationItem.title = "FILM STOCK"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Theme.Font.titleFont!]
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        
+        
     }
     
+    let popupLauncher = PopupLauncher()
+    
     @objc func addTapped() {
+        let filmPopup = AddFilmPopUp()
+        popupLauncher.popup = filmPopup
+        popupLauncher.showPopup()
     }
+
 
     // MARK: - Table view data source
 

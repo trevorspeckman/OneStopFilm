@@ -22,7 +22,7 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
     let titleLabel: UILabel = {
         let label = UILabel()
         //label.backgroundColor = UIColor.red
-        label.text = "ROLL NAME"
+        //label.text = "ROLL NAME"
         label.alpha = 0
         label.font = Theme.Font.newRollTitleLabelFont!
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +33,7 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
         let textField = UITextField()
         //textField.backgroundColor = UIColor.green
         
-        textField.placeholder = "ROLL NAME"
+        //textField.placeholder = "ROLL NAME"
         textField.adjustsFontSizeToFitWidth = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField

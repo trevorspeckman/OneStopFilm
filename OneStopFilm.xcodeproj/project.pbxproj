@@ -14,6 +14,10 @@
 		E509977222C58CCC0069DFCB /* ColorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977122C58CCC0069DFCB /* ColorCollectionViewController.swift */; };
 		E509977422CA79D90069DFCB /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977322CA79D90069DFCB /* CellConfigurator.swift */; };
 		E509977622CA7A7F0069DFCB /* NewRollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977522CA7A7F0069DFCB /* NewRollModel.swift */; };
+		E509977A22CAB6330069DFCB /* AddFilmPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977922CAB6330069DFCB /* AddFilmPopUp.swift */; };
+		E509977C22CAC0830069DFCB /* PopupLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977B22CAC0830069DFCB /* PopupLauncher.swift */; };
+		E509977E22CAC5050069DFCB /* BasePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977D22CAC5050069DFCB /* BasePopUp.swift */; };
+		E509978022CACFE10069DFCB /* AddFilmPopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977F22CACFE10069DFCB /* AddFilmPopUpModel.swift */; };
 		E50A454422BACD390047ABFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A454322BACD390047ABFE /* AppDelegate.swift */; };
 		E50A454622BACD390047ABFE /* CurrentRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A454522BACD390047ABFE /* CurrentRoleViewController.swift */; };
 		E50A454922BACD390047ABFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50A454722BACD390047ABFE /* Main.storyboard */; };
@@ -41,6 +45,10 @@
 		E509977122C58CCC0069DFCB /* ColorCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewController.swift; sourceTree = "<group>"; };
 		E509977322CA79D90069DFCB /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
 		E509977522CA7A7F0069DFCB /* NewRollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollModel.swift; sourceTree = "<group>"; };
+		E509977922CAB6330069DFCB /* AddFilmPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFilmPopUp.swift; sourceTree = "<group>"; };
+		E509977B22CAC0830069DFCB /* PopupLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupLauncher.swift; sourceTree = "<group>"; };
+		E509977D22CAC5050069DFCB /* BasePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopUp.swift; sourceTree = "<group>"; };
+		E509977F22CACFE10069DFCB /* AddFilmPopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFilmPopUpModel.swift; sourceTree = "<group>"; };
 		E50A454022BACD390047ABFE /* OneStopFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneStopFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50A454322BACD390047ABFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E50A454522BACD390047ABFE /* CurrentRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRoleViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +123,8 @@
 				E58B610222C31DCD00DC9294 /* NewRollTextFieldTableViewCell.swift */,
 				E509976922C57CBA0069DFCB /* NewRollLabelTableViewCell.swift */,
 				E509977322CA79D90069DFCB /* CellConfigurator.swift */,
+				E509977922CAB6330069DFCB /* AddFilmPopUp.swift */,
+				E509977D22CAC5050069DFCB /* BasePopUp.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,6 +149,7 @@
 				E509976B22C5818C0069DFCB /* FilmStockTableViewController.swift */,
 				E509976F22C58C190069DFCB /* CameraTableViewController.swift */,
 				E509977122C58CCC0069DFCB /* ColorCollectionViewController.swift */,
+				E509977B22CAC0830069DFCB /* PopupLauncher.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -157,6 +168,7 @@
 			children = (
 				E509976D22C589300069DFCB /* NewRollTextField.swift */,
 				E509977522CA7A7F0069DFCB /* NewRollModel.swift */,
+				E509977F22CACFE10069DFCB /* AddFilmPopUpModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,10 +245,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E509976C22C5818C0069DFCB /* FilmStockTableViewController.swift in Sources */,
+				E509977E22CAC5050069DFCB /* BasePopUp.swift in Sources */,
 				E5841D4122BD9F7B00F99BC3 /* DevelopTableViewController.swift in Sources */,
+				E509977A22CAB6330069DFCB /* AddFilmPopUp.swift in Sources */,
 				E58B60FC22C2FFCA00DC9294 /* NewRollTableViewController.swift in Sources */,
 				E50A454622BACD390047ABFE /* CurrentRoleViewController.swift in Sources */,
 				E509976E22C589300069DFCB /* NewRollTextField.swift in Sources */,
+				E509977C22CAC0830069DFCB /* PopupLauncher.swift in Sources */,
 				E5841D3D22BD7AD800F99BC3 /* FilmRollCell.swift in Sources */,
 				E509977222C58CCC0069DFCB /* ColorCollectionViewController.swift in Sources */,
 				E5841D3B22BD758300F99BC3 /* Theme.swift in Sources */,
@@ -247,6 +262,7 @@
 				E5841D4922BDA81800F99BC3 /* BaseCollectionViewCell.swift in Sources */,
 				E58B610322C31DCD00DC9294 /* NewRollTextFieldTableViewCell.swift in Sources */,
 				E50A454422BACD390047ABFE /* AppDelegate.swift in Sources */,
+				E509978022CACFE10069DFCB /* AddFilmPopUpModel.swift in Sources */,
 				E509976A22C57CBA0069DFCB /* NewRollLabelTableViewCell.swift in Sources */,
 				E509977022C58C190069DFCB /* CameraTableViewController.swift in Sources */,
 				E5841D3922BD756700F99BC3 /* Extensions.swift in Sources */,
