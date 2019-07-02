@@ -15,13 +15,13 @@ class CurrentRollsViewController: UICollectionViewController, UICollectionViewDe
         super.viewDidLoad()
         
         //setup navigation bar
-        navigationController?.navigationBar.isTranslucent = false
-        
         navigationItem.title = "CURRENT ROLLS"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Theme.Font.titleFont!]
- 
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
 
+
+        
         //setup Collection View
         collectionView.backgroundColor = Theme.Color.background
         collectionView.register(FilmRollCell.self, forCellWithReuseIdentifier: "cellId")
@@ -29,6 +29,7 @@ class CurrentRollsViewController: UICollectionViewController, UICollectionViewDe
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0,right: 0)
  
     }
+
     
     @objc func addTapped() {
         let addNewRollTableViewController = NewRollTableViewController()
@@ -44,13 +45,19 @@ class CurrentRollsViewController: UICollectionViewController, UICollectionViewDe
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
-        
+        cell.layer.shouldRasterize = true;
+        cell.layer.rasterizationScale = UIScreen.main.scale
         return cell
     }
     
     //MARK: DelegateFlowLayout Methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width - 40, height: 180)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let framesTableViewController = FramesTableViewController()
+        navigationController?.pushViewController(framesTableViewController, animated: true)
     }
 
 }
