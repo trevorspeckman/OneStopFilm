@@ -74,17 +74,19 @@ class NewRollTableViewController: UITableViewController {
 //MARK: Tapped Functions
     @objc func cancelTapped() {
         self.dismiss(animated: true, completion: nil)
+        self.view.endEditing(true)
     }
     
     @objc func saveTapped() {
         self.dismiss(animated: true, completion: nil)
+        self.view.endEditing(true)
     }
     
 //MARK: Setup Methods
     fileprivate func setupNavBar() {
         navigationItem.title = "NEW ROLL"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Theme.Font.titleFont!]
-        
+        self.navigationController?.navigationBar.tintColor = .black
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))

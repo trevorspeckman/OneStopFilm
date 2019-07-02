@@ -23,6 +23,9 @@ class FramesTableViewController: UITableViewController {
     
     override func willMove(toParent parent: UIViewController?) {
         navigationController?.navigationBar.barTintColor = .white
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: Theme.Font.titleFont!]
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.barStyle = .default
     }
     
     // MARK: - Table view data source
@@ -42,7 +45,6 @@ class FramesTableViewController: UITableViewController {
         item.register(in: tableView)
         let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId)!
         item.configure(cell: cell)
-        
         return cell
         
     }
@@ -65,10 +67,14 @@ class FramesTableViewController: UITableViewController {
     //MARK: Setup Methods
     fileprivate func setupNavBar() {
         navigationItem.title = "TRIP TO YOSEMITE"
-        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Theme.Font.titleFont!]
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: Theme.Font.titleFont!]
         self.navigationController?.navigationBar.barTintColor = Theme.Color.yellow
+        self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barStyle = .black
     }
+    
+    
     
     fileprivate func setupTableView() {
         tableView.tableFooterView = UIView()

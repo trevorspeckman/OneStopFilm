@@ -16,7 +16,8 @@ class CurrentRollsViewController: UICollectionViewController, UICollectionViewDe
         
         //setup navigation bar
         navigationItem.title = "CURRENT ROLLS"
-        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Theme.Font.titleFont!]
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: Theme.Font.titleFont!]
+        self.navigationController?.navigationBar.tintColor = .black
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
 
@@ -29,6 +30,8 @@ class CurrentRollsViewController: UICollectionViewController, UICollectionViewDe
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0,right: 0)
  
     }
+    
+    
 
     
     @objc func addTapped() {

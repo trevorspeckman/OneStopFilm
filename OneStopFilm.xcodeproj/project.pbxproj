@@ -95,9 +95,6 @@
 			isa = PBXGroup;
 			children = (
 				E50A454222BACD390047ABFE /* OneStopFilm */,
-				E50A454F22BACD3D0047ABFE /* Info.plist */,
-				E50A454722BACD390047ABFE /* Main.storyboard */,
-				E50A454C22BACD3D0047ABFE /* LaunchScreen.storyboard */,
 				E50A454122BACD390047ABFE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,6 +116,9 @@
 				E50A455722BAE47B0047ABFE /* Controller */,
 				E5841D3722BD754900F99BC3 /* Helpers */,
 				E50A455622BAE4590047ABFE /* Supporting Files */,
+				E50A454F22BACD3D0047ABFE /* Info.plist */,
+				E50A454722BACD390047ABFE /* Main.storyboard */,
+				E50A454C22BACD3D0047ABFE /* LaunchScreen.storyboard */,
 			);
 			path = OneStopFilm;
 			sourceTree = "<group>";

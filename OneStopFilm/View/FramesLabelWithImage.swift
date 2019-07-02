@@ -11,7 +11,7 @@ import UIKit
 class FramesLabelWithImage {
     let atributeLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.green
+        //label.backgroundColor = UIColor.green
         
         label.text = "f/1.4"
         label.translatesAutoresizingMaskIntoConstraints = false
