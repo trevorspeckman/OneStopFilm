@@ -14,6 +14,7 @@ struct Theme {
         static let labelBackground = UIColor(hexFromString: "343434")
         static let green = UIColor(hexFromString: "01A13A")
         static let yellow = UIColor(hexFromString: "FDBA20")
+        static let orange = UIColor(hexFromString: "D29542")
         static let capGrey = UIColor(hexFromString: "363636")
         static let lightyellow = UIColor(hexFromString: "EAD73D")
         static let translucentWhite = UIColor(hexFromString: "FFFFFF").withAlphaComponent(0.9)

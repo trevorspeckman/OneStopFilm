@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		612C0288938EA120FDF51C84 /* Pods_OneStopFilm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFF6515186A270670D1BC10 /* Pods_OneStopFilm.framework */; };
 		E509976A22C57CBA0069DFCB /* NewRollLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976922C57CBA0069DFCB /* NewRollLabelTableViewCell.swift */; };
 		E509976C22C5818C0069DFCB /* FilmStockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976B22C5818C0069DFCB /* FilmStockTableViewController.swift */; };
 		E509976E22C589300069DFCB /* NewRollTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976D22C589300069DFCB /* NewRollTextField.swift */; };
@@ -23,6 +24,7 @@
 		E509978622CB0A480069DFCB /* Frames.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509978522CB0A480069DFCB /* Frames.swift */; };
 		E509978822CB0B200069DFCB /* FramesTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509978722CB0B200069DFCB /* FramesTableModel.swift */; };
 		E509978A22CB0F940069DFCB /* FramesLabelWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509978922CB0F940069DFCB /* FramesLabelWithImage.swift */; };
+		E509978C22CBD7080069DFCB /* DetailFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509978B22CBD7080069DFCB /* DetailFrameViewController.swift */; };
 		E50A454422BACD390047ABFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A454322BACD390047ABFE /* AppDelegate.swift */; };
 		E50A454622BACD390047ABFE /* CurrentRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A454522BACD390047ABFE /* CurrentRoleViewController.swift */; };
 		E50A454922BACD390047ABFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50A454722BACD390047ABFE /* Main.storyboard */; };
@@ -43,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EFF6515186A270670D1BC10 /* Pods_OneStopFilm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneStopFilm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52A082039121657CF1AA7C0E /* Pods-OneStopFilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneStopFilm.debug.xcconfig"; path = "Target Support Files/Pods-OneStopFilm/Pods-OneStopFilm.debug.xcconfig"; sourceTree = "<group>"; };
+		E33696AFD4590C16C7B6027C /* Pods-OneStopFilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneStopFilm.release.xcconfig"; path = "Target Support Files/Pods-OneStopFilm/Pods-OneStopFilm.release.xcconfig"; sourceTree = "<group>"; };
 		E509976922C57CBA0069DFCB /* NewRollLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollLabelTableViewCell.swift; sourceTree = "<group>"; };
 		E509976B22C5818C0069DFCB /* FilmStockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStockTableViewController.swift; sourceTree = "<group>"; };
 		E509976D22C589300069DFCB /* NewRollTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollTextField.swift; sourceTree = "<group>"; };
@@ -59,6 +64,7 @@
 		E509978522CB0A480069DFCB /* Frames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frames.swift; sourceTree = "<group>"; };
 		E509978722CB0B200069DFCB /* FramesTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramesTableModel.swift; sourceTree = "<group>"; };
 		E509978922CB0F940069DFCB /* FramesLabelWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramesLabelWithImage.swift; sourceTree = "<group>"; };
+		E509978B22CBD7080069DFCB /* DetailFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFrameViewController.swift; sourceTree = "<group>"; };
 		E50A454022BACD390047ABFE /* OneStopFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneStopFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50A454322BACD390047ABFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E50A454522BACD390047ABFE /* CurrentRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRoleViewController.swift; sourceTree = "<group>"; };
@@ -85,17 +91,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				612C0288938EA120FDF51C84 /* Pods_OneStopFilm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C8374473BAA2335A8A73189 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0EFF6515186A270670D1BC10 /* Pods_OneStopFilm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3DE3AFBEBA6C2EBEACB20AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				52A082039121657CF1AA7C0E /* Pods-OneStopFilm.debug.xcconfig */,
+				E33696AFD4590C16C7B6027C /* Pods-OneStopFilm.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E50A453722BACD390047ABFE = {
 			isa = PBXGroup;
 			children = (
 				E50A454222BACD390047ABFE /* OneStopFilm */,
 				E50A454122BACD390047ABFE /* Products */,
+				E3DE3AFBEBA6C2EBEACB20AE /* Pods */,
+				0C8374473BAA2335A8A73189 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,9 +142,9 @@
 				E50A455722BAE47B0047ABFE /* Controller */,
 				E5841D3722BD754900F99BC3 /* Helpers */,
 				E50A455622BAE4590047ABFE /* Supporting Files */,
-				E50A454F22BACD3D0047ABFE /* Info.plist */,
 				E50A454722BACD390047ABFE /* Main.storyboard */,
 				E50A454C22BACD3D0047ABFE /* LaunchScreen.storyboard */,
+				E50A454F22BACD3D0047ABFE /* Info.plist */,
 			);
 			path = OneStopFilm;
 			sourceTree = "<group>";
@@ -163,6 +189,7 @@
 				E509977122C58CCC0069DFCB /* ColorCollectionViewController.swift */,
 				E509977B22CAC0830069DFCB /* PopupLauncher.swift */,
 				E509978122CAFF5E0069DFCB /* FramesTableViewController.swift */,
+				E509978B22CBD7080069DFCB /* DetailFrameViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -195,9 +222,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E50A455222BACD3D0047ABFE /* Build configuration list for PBXNativeTarget "OneStopFilm" */;
 			buildPhases = (
+				C438F1A240DBCD5E8196AF34 /* [CP] Check Pods Manifest.lock */,
 				E50A453C22BACD390047ABFE /* Sources */,
 				E50A453D22BACD390047ABFE /* Frameworks */,
 				E50A453E22BACD390047ABFE /* Resources */,
+				B1457379AE7082B200FDB0AD /* [CP] Embed Pods Frameworks */,
+				E55BDBD622CBFAAA005AE251 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -254,6 +284,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B1457379AE7082B200FDB0AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OneStopFilm/Pods-OneStopFilm-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OneStopFilm/Pods-OneStopFilm-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OneStopFilm/Pods-OneStopFilm-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C438F1A240DBCD5E8196AF34 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneStopFilm-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E55BDBD622CBFAAA005AE251 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
+				"~/.mapbox",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Look for a global file named 'mapbox' or '.mapbox' within the home directory\ntoken_file=~/.mapbox\ntoken_file2=~/mapbox\ntoken=\"$(cat $token_file 2>/dev/null || cat $token_file2 2>/dev/null)\"\nif [ \"$token\" ]; then\nplutil -replace MGLMapboxAccessToken -string $token \"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\nelse\necho 'warning: Missing Mapbox access token'\nopen 'https://www.mapbox.com/account/access-tokens/'\necho \"warning: Get an access token from <https://www.mapbox.com/account/access-tokens/>, then create a new file at $token_file or $token_file2 that contains the access token.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E50A453C22BACD390047ABFE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -267,6 +358,7 @@
 				E58B60FC22C2FFCA00DC9294 /* NewRollTableViewController.swift in Sources */,
 				E50A454622BACD390047ABFE /* CurrentRoleViewController.swift in Sources */,
 				E509976E22C589300069DFCB /* NewRollTextField.swift in Sources */,
+				E509978C22CBD7080069DFCB /* DetailFrameViewController.swift in Sources */,
 				E509977C22CAC0830069DFCB /* PopupLauncher.swift in Sources */,
 				E5841D3D22BD7AD800F99BC3 /* FilmRollCell.swift in Sources */,
 				E509977222C58CCC0069DFCB /* ColorCollectionViewController.swift in Sources */,
@@ -432,6 +524,7 @@
 		};
 		E50A455322BACD3D0047ABFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52A082039121657CF1AA7C0E /* Pods-OneStopFilm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -450,6 +543,7 @@
 		};
 		E50A455422BACD3D0047ABFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E33696AFD4590C16C7B6027C /* Pods-OneStopFilm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
