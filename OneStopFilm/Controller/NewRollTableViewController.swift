@@ -94,6 +94,7 @@ class NewRollTableViewController: UITableViewController {
     
     fileprivate func setupTableView() {
         tableView.tableFooterView = UIView()
+        tableView.alwaysBounceVertical = false;
     }
     
 

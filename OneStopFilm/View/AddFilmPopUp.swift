@@ -17,7 +17,9 @@ class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource {
     fileprivate let table: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        //tableView.backgroundColor = .red
+        tableView.backgroundColor = .clear
+        tableView.tableFooterView = UIView()
+        tableView.alwaysBounceVertical = false;
         return tableView
     }()
     
@@ -88,7 +90,7 @@ class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource {
 //MARK: Delegate Methods
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return BaseTableViewCell.cellHeight
     }
     
    

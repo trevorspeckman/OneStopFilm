@@ -9,24 +9,21 @@
 import UIKit
 import Mapbox
 
-class DetailFrameViewController: UIViewController, MGLMapViewDelegate {
+class DetailFrameViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        // Do any additional setup after loading the view.
-        self.navigationItem.setTitle("TRIP TO YOSEMITE", subtitle: "Frame 1 of 24")
-        
-        let mapView = MGLMapView(frame: view.bounds)
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    
+//MARK: Subview definitions
+    fileprivate let mapView: MGLMapView = {
+        let map = MGLMapView()
+        map.translatesAutoresizingMaskIntoConstraints = false
+        map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         // Set the map’s center coordinate and zoom level.
-        mapView.setCenter(CLLocationCoordinate2D(latitude: 40.7326808, longitude: -73.9843407), zoomLevel: 12, animated: false)
-        view.addSubview(mapView)
-        mapView.styleURL = MGLStyle.lightStyleURL
+        map.setCenter(CLLocationCoordinate2D(latitude: 40.7326808, longitude: -73.9843407), zoomLevel: 12, animated: false)
+        
+        map.styleURL = MGLStyle.lightStyleURL
         // Set the delegate property of our map view to `self` after instantiating it.
-        mapView.delegate = self
+        
         
         // Declare the marker `hello` and set its coordinates, title, and subtitle.
         let hello = MGLPointAnnotation()
@@ -35,18 +32,126 @@ class DetailFrameViewController: UIViewController, MGLMapViewDelegate {
         hello.subtitle = "Welcome to my marker"
         
         // Add marker `hello` to the map.
-        mapView.addAnnotation(hello)
+        map.addAnnotation(hello)
+        return map
+    }()
+    
+    fileprivate let table: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear
+        tableView.tableFooterView = UIView()
+        tableView.alwaysBounceVertical = false;
+        return tableView
+    }()
+    
+    fileprivate let addShotButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = Theme.Color.yellow
+        button.setTitle("Add Shot", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.masksToBounds = true
+        return button
+    }()
+    
+
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        mapView.delegate = self
+//        table.delegate = self
+//        table.dataSource = self
+        
+        view.backgroundColor = Theme.Color.background
+        
+        setupNavBar()
+        setupLayouts()
+
     }
     
+    
+
+    
+
+    
+    
+//MARK: Setup Methods
+    fileprivate func setupNavBar() {
+        // Do any additional setup after loading the view.
+        self.navigationItem.setTitle("TRIP TO YOSEMITE", subtitle: "Frame 1 of 24")
+    }
+    
+    private func setupLayouts() {
+        view.addSubview(mapView)
+        view.addSubview(table)
+        view.addSubview(addShotButton)
+        
+        mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        //mapView.bottomAnchor.constraint(equalTo: table.topAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+//        table.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        table.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        table.heightAnchor.constraint(equalToConstant: 287).isActive = true
+//
+//        addShotButton.topAnchor.constraint(equalTo: table.bottomAnchor, constant: 20).isActive = true
+//        addShotButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+//        addShotButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+//        addShotButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+
+    }
+
+}
+
+//MARK: Mapbox Delegate Methods
+extension DetailFrameViewController: MGLMapViewDelegate {
     // Use the default marker. See also: our view annotation or custom marker examples.
     func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
         return nil
     }
-    
+
     // Allow callout view to appear when an annotation is tapped.
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         return true
     }
-    
-
 }
+
+//extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource {
+//
+//    // MARK: - Table view data source
+//
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return addFilmPopUpModel.items.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let item = addFilmPopUpModel.items[indexPath.row]
+//        item.register(in: tableView)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId)!
+//        item.configure(cell: cell)
+//
+//        return cell
+//
+//    }
+//
+//
+//
+//
+//    //MARK: Delegate Methods
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return BaseTableViewCell.cellHeight
+//    }
+//}

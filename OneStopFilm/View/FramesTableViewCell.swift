@@ -20,13 +20,21 @@ class FramesTableViewCell: BaseTableViewCell, ConfigurableCell {
         return label
     }()
     
-    let aperature = FramesLabelWithImage()
-    let shutterSpeed = FramesLabelWithImage()
-    let date = FramesLabelWithImage()
+    let aperature = LabelWithImage()
+    let shutterSpeed = LabelWithImage()
+    let date = LabelWithImage()
+    
+    let colorIndicator: SwiftDisclosureIndicator = {
+        let indicator = SwiftDisclosureIndicator()
+        indicator.color = Theme.Color.yellow
+        indicator.backgroundColor = .clear
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
 
     lazy var allAtributesStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [aperature.attributeStackView,shutterSpeed.attributeStackView,date.attributeStackView])
-        stack.distribution = .fillEqually
+        let stack = UIStackView(arrangedSubviews: [aperature,shutterSpeed,date])
+        stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -34,36 +42,44 @@ class FramesTableViewCell: BaseTableViewCell, ConfigurableCell {
     
     override func setupViews() {
         
-        self.accessoryType = .disclosureIndicator
+        //self.accessoryType = .disclosureIndicator
         
         addSubview(numberLabel)
         addSubview(allAtributesStackView)
-        
-        numberLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        numberLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        numberLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
-        numberLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        addSubview(colorIndicator)
         
         
-        
-        allAtributesStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        allAtributesStackView.leadingAnchor.constraint(equalTo: numberLabel.trailingAnchor, constant: 10).isActive = true
-        allAtributesStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
-        allAtributesStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
 
+        numberLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        numberLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        numberLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        numberLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+
+
+        allAtributesStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        allAtributesStackView.leadingAnchor.constraint(equalTo: numberLabel.trailingAnchor, constant: 10).isActive = true
+        allAtributesStackView.trailingAnchor.constraint(equalTo: colorIndicator.leadingAnchor, constant: -10).isActive = true
+        
+        
+        
+        colorIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        colorIndicator.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        colorIndicator.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        colorIndicator.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
     }
     
     //MARK: ConfigurableCell Protocol Methods
     func configure(data frames: Frames) {
-        aperature.attributeImage.image = frames.icon
-        aperature.atributeLabel.text = frames.labelText
+        aperature.titleIcon.image = frames.icon
+        aperature.titleLabel.text = frames.labelText
         
-        shutterSpeed.attributeImage.image = frames.icon
-        shutterSpeed.atributeLabel.text = frames.labelText
+        shutterSpeed.titleIcon.image = frames.icon
+        shutterSpeed.titleLabel.text = frames.labelText
         
-        date.attributeImage.image = frames.icon
-        date.atributeLabel.text = frames.labelText
+        date.titleIcon.image = frames.icon
+        date.titleLabel.text = frames.labelText
 
     }
     

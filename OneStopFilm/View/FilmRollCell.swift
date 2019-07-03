@@ -12,7 +12,7 @@ import UIKit
 
 class FilmRollCell: BaseCollectionViewCell {
     
-    //MARK: Subview definitions
+//MARK: Subview definitions
     let bottomCap: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.black
