@@ -14,7 +14,7 @@ typealias NewRollLabelCellConfigurator = TableCellConfigurator<NewRollLabelTable
 class NewRollModel {
     let items: [CellConfigurator] = [
         NewRollTextFieldCellConfigurator(item: NewRollTextField(text: "NEW ROLL", textLengthLimit: 40, keyboard: 0 )),
-        NewRollLabelCellConfigurator(item: "FILM STOCK"),
+        NewRollLabelCellConfigurator(item: "FILM"),
         NewRollTextFieldCellConfigurator(item: NewRollTextField(text: "ASA", textLengthLimit: 4, keyboard: 1)),
         NewRollTextFieldCellConfigurator(item: NewRollTextField(text: "FRAME COUNT", textLengthLimit: 2, keyboard: 1)),
         NewRollLabelCellConfigurator(item: "CAMERA"),

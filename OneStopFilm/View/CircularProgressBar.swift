@@ -13,14 +13,15 @@ class CircularProgressBar: UIView {
     let progressLabel: UILabel = {
         let label = UILabel()
         //label.backgroundColor = UIColor.green
-        label.text = "14/24"
+        //label.text = "14/24"
         label.font = Theme.Font.bodyLabelFont!
         label.textColor = UIColor.gray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-
+    var progressAngle: CGFloat = 0.0
+    let startAngle = -CGFloat.pi / 2
     let shapeLayer = CAShapeLayer()
     let trackLayer = CAShapeLayer()
     
@@ -46,8 +47,8 @@ class CircularProgressBar: UIView {
         let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         let radius = (self.bounds.width / 2 - linewidth/2)
         
-        let circularPath = UIBezierPath(arcCenter: center, radius: radius, startAngle:  -CGFloat.pi / 2, endAngle: 2*CGFloat.pi, clockwise: true)
-        let progressPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: -CGFloat.pi / 2, endAngle: CGFloat.pi, clockwise: true)
+        let circularPath = UIBezierPath(arcCenter: center, radius: radius, startAngle:  startAngle, endAngle: 2*CGFloat.pi, clockwise: true)
+        let progressPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: progressAngle + startAngle, clockwise: true)
         
         shapeLayer.path = progressPath.cgPath
         shapeLayer.strokeColor = Theme.Color.yellow.cgColor

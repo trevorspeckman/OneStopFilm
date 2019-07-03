@@ -9,8 +9,74 @@
 import UIKit
 
 
+class FilmStock {
+    var brand: String?
+    var name: String?
+}
 
-class FilmRollCell: BaseCollectionViewCell {
+class Camera {
+    var brand: String?
+    var name: String?
+}
+
+class Lens {
+    var brand: String?
+    var name: String?
+    var focalLength: String?
+    var minAperature: Float?
+    var maxAperature: Float?
+}
+
+class Icons {
+    var brand: String?
+    var name: String?
+}
+
+class ActiveFilmRoll {
+    var title: String?
+    var filmStock: FilmStock?
+    var filmSpeed: Int?
+    var frameCount: Int?
+    var completedFrames: Int?
+    var camera: Camera?
+    var color: String?
+    var date: Date?
+}
+
+class ActiveFilmRollCell: BaseCollectionViewCell {
+    
+//MARK: Fill Cell from Model
+    var activeFilmRoll: ActiveFilmRoll? {
+        didSet{
+            //titleLabel
+            titleLabel.text = activeFilmRoll?.title
+            
+            //dateLabel
+            if let date = activeFilmRoll?.date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .medium
+                dateFormatter.timeStyle = .none
+                dateFormatter.setLocalizedDateFormatFromTemplate("MM/dd/yyyy")
+                dateLabel.titleLabel.text = dateFormatter.string(from: date)
+            }
+            
+            //filmLabel
+            filmLabel.titleLabel.text = "\(activeFilmRoll?.filmStock?.brand ?? "?") \(activeFilmRoll?.filmStock?.name ?? "?")"
+            
+            //cameraLabel
+            cameraLabel.titleLabel.text = "\(activeFilmRoll?.camera?.brand ?? "") \(activeFilmRoll?.camera?.name ?? "")"
+            
+            //circularProggresBar
+            if let currentFrame = activeFilmRoll?.completedFrames {
+                if let frameCount = activeFilmRoll?.frameCount {
+                    circularProgressBar.progressLabel.text = "\(currentFrame)/\(frameCount)"
+                    circularProgressBar.progressAngle = CGFloat(currentFrame) / CGFloat(frameCount) * 2*CGFloat.pi
+                }
+            }
+
+        }
+    }
+    
     
 //MARK: Subview definitions
     let bottomCap: UIView = {
@@ -57,39 +123,54 @@ class FilmRollCell: BaseCollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         //label.backgroundColor = UIColor.green
-        label.text = "TRIP TO YOSEMITE"
+        //label.text = "TRIP TO YOSEMITE"
         label.font = Theme.Font.titleLabelFont!
         label.textColor = UIColor.white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let dateLabel: UILabel = {
-        let label = UILabel()
-        //label.backgroundColor = UIColor.red
+    let dateLabel: LabelWithImageView = {
+        let label = LabelWithImageView()
+//        label.backgroundColor = UIColor.green
         
-        label.font = Theme.Font.bodyLabelFont!
-        
+        label.titleLabel.font = Theme.Font.bodyLabelFont!
+        label.titleLabel.textColor = UIColor.white
+        label.viewColor = .white
+        label.titleIcon.image = UIImage(named: "icon_date")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let filmLabel: UILabel = {
-        let label = UILabel()
-        //label.backgroundColor = UIColor.white
-        label.set(image: UIImage(named: "icon_notebook")!, with: "Kodak Portra", color: .white)
-        label.font = Theme.Font.bodyLabelFont!
+    let filmLabel: LabelWithImageView = {
+        let label = LabelWithImageView()
+//        label.backgroundColor = UIColor.blue
+        label.titleLabel.font = Theme.Font.bodyLabelFont!
+        label.titleLabel.textColor = UIColor.white
+        label.viewColor = .white
+        label.titleIcon.image = UIImage(named: "icon_film")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let cameraLabel: UILabel = {
-        let label = UILabel()
-        //label.backgroundColor = UIColor.blue
-        label.set(image: UIImage(named: "icon_notebook")!, with: "Pentax K-1000", color: .white)
-        label.font = Theme.Font.bodyLabelFont!
+    let cameraLabel: LabelWithImageView = {
+        let label = LabelWithImageView()
+//        label.backgroundColor = UIColor.red
+        label.titleLabel.font = Theme.Font.bodyLabelFont!
+        label.titleLabel.textColor = UIColor.white
+        label.viewColor = .white
+        label.titleIcon.image = UIImage(named: "icon_camera")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    
+    fileprivate lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [dateLabel,filmLabel,cameraLabel])
+        stack.axis = NSLayoutConstraint.Axis.vertical
+        stack.distribution = .fillEqually
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
     
 
@@ -109,19 +190,15 @@ class FilmRollCell: BaseCollectionViewCell {
     
     //MARK: Setup constraints
     override func setupViews() {
-        //backgroundColor = UIColor.yellow
-        
-        
-        
+
         addSubview(bottomCap)
         addSubview(topCap)
         addSubview(topOfRoll)
         addSubview(filmColor)
         addSubview(labelBackground)
         addSubview(titleLabel)
-        addSubview(dateLabel)
-        addSubview(filmLabel)
-        addSubview(cameraLabel)
+        addSubview(stackView)
+        
         addSubview(circularProgressBar)
         
         //bottomCap constraints
@@ -161,26 +238,14 @@ class FilmRollCell: BaseCollectionViewCell {
         titleLabel.topAnchor.constraint(equalTo: labelBackground.topAnchor,constant: 10).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        //dateLabel constraints
-        dateLabel.leadingAnchor.constraint(equalTo: labelBackground.leadingAnchor,constant: 10).isActive = true
-        dateLabel.trailingAnchor.constraint(equalTo: circularProgressBar.leadingAnchor,constant: -10).isActive = true
-        dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 12).isActive = true
-        dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
-        
-        //filmLabel constraints
-        filmLabel.leadingAnchor.constraint(equalTo: labelBackground.leadingAnchor,constant: 10).isActive = true
-        filmLabel.trailingAnchor.constraint(equalTo: circularProgressBar.leadingAnchor,constant: -10).isActive = true
-        filmLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor).isActive = true
-        filmLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
-        
-        //cameraLabel constraints
-        cameraLabel.leadingAnchor.constraint(equalTo: labelBackground.leadingAnchor,constant: 10).isActive = true
-        cameraLabel.trailingAnchor.constraint(equalTo: circularProgressBar.leadingAnchor,constant: -10).isActive = true
-        cameraLabel.topAnchor.constraint(equalTo: filmLabel.bottomAnchor).isActive = true
-        cameraLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        //stackView constraints
+        stackView.leadingAnchor.constraint(equalTo: labelBackground.leadingAnchor,constant: 10).isActive = true
+            stackView.trailingAnchor.constraint(equalTo: circularProgressBar.leadingAnchor,constant: -10).isActive = true
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+            stackView.bottomAnchor.constraint(equalTo: labelBackground.bottomAnchor,constant: -10 ).isActive = true
         
         //progressRingContainer constraints
-        circularProgressBar.bottomAnchor.constraint(equalTo: cameraLabel.bottomAnchor).isActive = true
+        circularProgressBar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         circularProgressBar.trailingAnchor.constraint(equalTo: labelBackground.trailingAnchor,constant: -16).isActive = true
         circularProgressBar.heightAnchor.constraint(equalToConstant: 58).isActive = true
         circularProgressBar.widthAnchor.constraint(equalToConstant: 58).isActive = true
@@ -202,6 +267,6 @@ class FilmRollCell: BaseCollectionViewCell {
         
         labelBackground.setGradientBackground(colorOne: .black, colorTwo: Theme.Color.capGrey, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
 
-        dateLabel.set(image: UIImage(named: "icon_date")!, with: "6/6/2019", color: .white)
+        
     }
 }

@@ -14,7 +14,7 @@ class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         
         let layout = UICollectionViewFlowLayout()
-        let currentRolls = CurrentRollsViewController(collectionViewLayout: layout)
+        let currentRolls = ActiveFilmRollsViewController(collectionViewLayout: layout)
         let logNavController = UINavigationController(rootViewController: currentRolls)
         
         

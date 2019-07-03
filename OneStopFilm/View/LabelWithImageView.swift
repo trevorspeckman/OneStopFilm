@@ -10,9 +10,17 @@ import UIKit
 
 class LabelWithImageView: UIView {
     
+    var viewColor: UIColor {
+        didSet{
+            titleLabel.textColor = viewColor
+            titleIcon.tintColor = viewColor
+
+        }
+    }
+    
     let titleLabel: UILabel = {
         let label = UILabel()
-        //label.backgroundColor = UIColor.green
+//        label.backgroundColor = UIColor.purple
         
         label.text = "f/1.4"
         label.textAlignment = .left
@@ -22,18 +30,11 @@ class LabelWithImageView: UIView {
     
     let titleIcon: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "icon_log")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-//    lazy var attributeStackView: UIStackView = {
-//        let stack = UIStackView(arrangedSubviews: [attributeImage,atributeLabel])
-//        stack.distribution = .fillProportionally
-//        stack.translatesAutoresizingMaskIntoConstraints = false
-//        return stack
-//    }()
-    
+
     private func setupViews() {
         addSubview(titleLabel)
         addSubview(titleIcon)
@@ -44,8 +45,8 @@ class LabelWithImageView: UIView {
         titleIcon.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8).isActive = true
         titleIcon.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8).isActive = true
         
-        
-        titleLabel.bottomAnchor.constraint(equalTo: titleIcon.bottomAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: titleIcon.centerYAnchor).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: titleIcon.trailingAnchor, constant: 4).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
@@ -55,6 +56,7 @@ class LabelWithImageView: UIView {
     }
     
     override init(frame: CGRect) {
+        viewColor = .black
         super.init(frame: frame)
         
         setupViews()

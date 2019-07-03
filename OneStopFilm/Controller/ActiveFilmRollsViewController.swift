@@ -9,8 +9,35 @@
 import UIKit
 
 
-class CurrentRollsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ActiveFilmRollsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    
+    var activeFilmRolls = [ActiveFilmRoll]()
+    
+    func setupData() {
+        let camera = Camera()
+        camera.brand = "Pentax"
+        camera.name = "K1000"
+        
+        let film = FilmStock()
+        film.brand = "Kodak"
+        film.name = "Portra"
+        
+        let activeFilmRoll = ActiveFilmRoll()
+        activeFilmRoll.title = "TRIP TO YOSEMITE"
+        activeFilmRoll.filmStock = film
+        activeFilmRoll.filmSpeed = 400
+        activeFilmRoll.frameCount = 24
+        activeFilmRoll.completedFrames = 1
+        activeFilmRoll.camera = camera
+        activeFilmRoll.color = "yellow"
+        activeFilmRoll.date = Date()
+        
+        activeFilmRolls = [activeFilmRoll]
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,10 +52,11 @@ class CurrentRollsViewController: UICollectionViewController, UICollectionViewDe
         
         //setup Collection View
         collectionView.backgroundColor = Theme.Color.background
-        collectionView.register(FilmRollCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView.register(ActiveFilmRollCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0,right: 0)
- 
+        
+        setupData()
     }
     
     
@@ -43,13 +71,18 @@ class CurrentRollsViewController: UICollectionViewController, UICollectionViewDe
     
     //MARK: DataSource Methods
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return activeFilmRolls.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ActiveFilmRollCell
+        
         cell.layer.shouldRasterize = true;
         cell.layer.rasterizationScale = UIScreen.main.scale
+        
+        cell.activeFilmRoll = activeFilmRolls[indexPath.row]
+            
+        
         return cell
     }
     

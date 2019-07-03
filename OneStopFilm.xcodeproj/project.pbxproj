@@ -26,7 +26,7 @@
 		E509978A22CB0F940069DFCB /* LabelWithImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509978922CB0F940069DFCB /* LabelWithImageView.swift */; };
 		E509978C22CBD7080069DFCB /* DetailFrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509978B22CBD7080069DFCB /* DetailFrameViewController.swift */; };
 		E50A454422BACD390047ABFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A454322BACD390047ABFE /* AppDelegate.swift */; };
-		E50A454622BACD390047ABFE /* CurrentRollsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A454522BACD390047ABFE /* CurrentRollsViewController.swift */; };
+		E50A454622BACD390047ABFE /* ActiveFilmRollsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A454522BACD390047ABFE /* ActiveFilmRollsViewController.swift */; };
 		E50A454922BACD390047ABFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50A454722BACD390047ABFE /* Main.storyboard */; };
 		E50A454B22BACD3D0047ABFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E50A454A22BACD3D0047ABFE /* Assets.xcassets */; };
 		E50A454E22BACD3D0047ABFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50A454C22BACD3D0047ABFE /* LaunchScreen.storyboard */; };
@@ -35,9 +35,10 @@
 		E55BDBDC22CC425B005AE251 /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBDB22CC425B005AE251 /* SliderTableViewCell.swift */; };
 		E55BDBDE22CC4718005AE251 /* DetailFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBDD22CC4718005AE251 /* DetailFrameModel.swift */; };
 		E55BDBE022CC8DD6005AE251 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBDF22CC8DD6005AE251 /* SelfSizedTableView.swift */; };
+		E55BDBE322CD014C005AE251 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBE122CD014C005AE251 /* DataModel.xcdatamodeld */; };
 		E5841D3922BD756700F99BC3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D3822BD756700F99BC3 /* Extensions.swift */; };
 		E5841D3B22BD758300F99BC3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D3A22BD758300F99BC3 /* Theme.swift */; };
-		E5841D3D22BD7AD800F99BC3 /* FilmRollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D3C22BD7AD800F99BC3 /* FilmRollCell.swift */; };
+		E5841D3D22BD7AD800F99BC3 /* ActiveFilmRollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D3C22BD7AD800F99BC3 /* ActiveFilmRollCell.swift */; };
 		E5841D3F22BD99BC00F99BC3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D3E22BD99BC00F99BC3 /* CustomTabBarController.swift */; };
 		E5841D4122BD9F7B00F99BC3 /* DevelopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D4022BD9F7B00F99BC3 /* DevelopTableViewController.swift */; };
 		E5841D4322BD9F9200F99BC3 /* ArchiveCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D4222BD9F9200F99BC3 /* ArchiveCollectionViewController.swift */; };
@@ -72,7 +73,7 @@
 		E509978B22CBD7080069DFCB /* DetailFrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFrameViewController.swift; sourceTree = "<group>"; };
 		E50A454022BACD390047ABFE /* OneStopFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneStopFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50A454322BACD390047ABFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E50A454522BACD390047ABFE /* CurrentRollsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRollsViewController.swift; sourceTree = "<group>"; };
+		E50A454522BACD390047ABFE /* ActiveFilmRollsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveFilmRollsViewController.swift; sourceTree = "<group>"; };
 		E50A454822BACD390047ABFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E50A454A22BACD3D0047ABFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E50A454D22BACD3D0047ABFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,9 +83,10 @@
 		E55BDBDB22CC425B005AE251 /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
 		E55BDBDD22CC4718005AE251 /* DetailFrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFrameModel.swift; sourceTree = "<group>"; };
 		E55BDBDF22CC8DD6005AE251 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
+		E55BDBE222CD014C005AE251 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		E5841D3822BD756700F99BC3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E5841D3A22BD758300F99BC3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		E5841D3C22BD7AD800F99BC3 /* FilmRollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRollCell.swift; sourceTree = "<group>"; };
+		E5841D3C22BD7AD800F99BC3 /* ActiveFilmRollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveFilmRollCell.swift; sourceTree = "<group>"; };
 		E5841D3E22BD99BC00F99BC3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		E5841D4022BD9F7B00F99BC3 /* DevelopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopTableViewController.swift; sourceTree = "<group>"; };
 		E5841D4222BD9F9200F99BC3 /* ArchiveCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCollectionViewController.swift; sourceTree = "<group>"; };
@@ -165,7 +167,7 @@
 				E5841D4822BDA81800F99BC3 /* BaseCollectionViewCell.swift */,
 				E58B610022C31D1C00DC9294 /* BaseTableViewCell.swift */,
 				E509977322CA79D90069DFCB /* CellConfigurator.swift */,
-				E5841D3C22BD7AD800F99BC3 /* FilmRollCell.swift */,
+				E5841D3C22BD7AD800F99BC3 /* ActiveFilmRollCell.swift */,
 				E58B610222C31DCD00DC9294 /* NewRollTextFieldTableViewCell.swift */,
 				E509976922C57CBA0069DFCB /* NewRollLabelTableViewCell.swift */,
 				E509977D22CAC5050069DFCB /* BasePopUp.swift */,
@@ -192,7 +194,7 @@
 		E50A455722BAE47B0047ABFE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E50A454522BACD390047ABFE /* CurrentRollsViewController.swift */,
+				E50A454522BACD390047ABFE /* ActiveFilmRollsViewController.swift */,
 				E5841D3E22BD99BC00F99BC3 /* CustomTabBarController.swift */,
 				E5841D4022BD9F7B00F99BC3 /* DevelopTableViewController.swift */,
 				E5841D4222BD9F9200F99BC3 /* ArchiveCollectionViewController.swift */,
@@ -226,6 +228,7 @@
 				E509978522CB0A480069DFCB /* LabelWithImage.swift */,
 				E509978722CB0B200069DFCB /* FramesTableModel.swift */,
 				E55BDBDD22CC4718005AE251 /* DetailFrameModel.swift */,
+				E55BDBE122CD014C005AE251 /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,12 +375,12 @@
 				E509977A22CAB6330069DFCB /* AddFilmPopUp.swift in Sources */,
 				E58B60FC22C2FFCA00DC9294 /* NewRollTableViewController.swift in Sources */,
 				E55BDBDE22CC4718005AE251 /* DetailFrameModel.swift in Sources */,
-				E50A454622BACD390047ABFE /* CurrentRollsViewController.swift in Sources */,
+				E50A454622BACD390047ABFE /* ActiveFilmRollsViewController.swift in Sources */,
 				E509976E22C589300069DFCB /* NewRollTextField.swift in Sources */,
 				E509978C22CBD7080069DFCB /* DetailFrameViewController.swift in Sources */,
 				E509977C22CAC0830069DFCB /* PopupLauncher.swift in Sources */,
 				E55BDBE022CC8DD6005AE251 /* SelfSizedTableView.swift in Sources */,
-				E5841D3D22BD7AD800F99BC3 /* FilmRollCell.swift in Sources */,
+				E5841D3D22BD7AD800F99BC3 /* ActiveFilmRollCell.swift in Sources */,
 				E509977222C58CCC0069DFCB /* ColorCollectionViewController.swift in Sources */,
 				E5841D3B22BD758300F99BC3 /* Theme.swift in Sources */,
 				E509977422CA79D90069DFCB /* CellConfigurator.swift in Sources */,
@@ -393,6 +396,7 @@
 				E509976A22C57CBA0069DFCB /* NewRollLabelTableViewCell.swift in Sources */,
 				E509978622CB0A480069DFCB /* LabelWithImage.swift in Sources */,
 				E509977022C58C190069DFCB /* CameraTableViewController.swift in Sources */,
+				E55BDBE322CD014C005AE251 /* DataModel.xcdatamodeld in Sources */,
 				E55BDBD822CC24FE005AE251 /* LabelWithImageTableViewCell.swift in Sources */,
 				E5841D3922BD756700F99BC3 /* Extensions.swift in Sources */,
 				E55BDBDC22CC425B005AE251 /* SliderTableViewCell.swift in Sources */,
@@ -602,6 +606,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E55BDBE122CD014C005AE251 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E55BDBE222CD014C005AE251 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = E55BDBE222CD014C005AE251 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E50A453822BACD390047ABFE /* Project object */;
 }

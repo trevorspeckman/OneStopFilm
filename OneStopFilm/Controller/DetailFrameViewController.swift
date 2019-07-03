@@ -38,12 +38,10 @@ class DetailFrameViewController: UIViewController {
         return map
     }()
     
-    fileprivate let table: SelfSizedTableView = {
-        let tableView = SelfSizedTableView()
+    fileprivate let table: UITableView = {
+        let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         //tableView.backgroundColor = .red
-        tableView.rowHeight = UITableView.automaticDimension;
-        tableView.estimatedRowHeight = 44;
         tableView.tableFooterView = UIView()
         tableView.alwaysBounceVertical = false;
         return tableView
@@ -104,9 +102,9 @@ class DetailFrameViewController: UIViewController {
         table.topAnchor.constraint(equalTo: mapView.bottomAnchor).isActive = true
         table.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         table.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        table.bottomAnchor.constraint(equalTo: addShotButton.topAnchor, constant: -10).isActive = true
+        table.bottomAnchor.constraint(equalTo: addShotButton.topAnchor, constant: -10).isActive = true
 
-        
+
         addShotButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         addShotButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         addShotButton.heightAnchor.constraint(equalTo: view.heightAnchor , multiplier: 0.05).isActive = true
@@ -160,8 +158,8 @@ extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource 
 
     //MARK: Delegate Methods
 
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 44
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
     
 }
