@@ -35,7 +35,7 @@ class CustomTabBarController: UITabBarController {
         archiveNavController.tabBarItem.title = "Archive"
         settingsNavController.tabBarItem.title = "Settings"
         
-        logNavController.tabBarItem.image = UIImage(named: "icon_log")
+        logNavController.tabBarItem.image = UIImage(named: "icon_notebook")
         
         viewControllers = [logNavController, developNavController, archiveNavController, settingsNavController]
         

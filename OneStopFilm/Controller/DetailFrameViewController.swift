@@ -11,35 +11,39 @@ import Mapbox
 
 class DetailFrameViewController: UIViewController {
 
+    let detailFrameModel = DetailFrameModel()
+    
     
 //MARK: Subview definitions
     fileprivate let mapView: MGLMapView = {
         let map = MGLMapView()
         map.translatesAutoresizingMaskIntoConstraints = false
         map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+
         // Set the map’s center coordinate and zoom level.
         map.setCenter(CLLocationCoordinate2D(latitude: 40.7326808, longitude: -73.9843407), zoomLevel: 12, animated: false)
-        
+
         map.styleURL = MGLStyle.lightStyleURL
         // Set the delegate property of our map view to `self` after instantiating it.
-        
-        
+
+
         // Declare the marker `hello` and set its coordinates, title, and subtitle.
         let hello = MGLPointAnnotation()
         hello.coordinate = CLLocationCoordinate2D(latitude: 40.7326808, longitude: -73.9843407)
         hello.title = "Hello world!"
         hello.subtitle = "Welcome to my marker"
-        
+
         // Add marker `hello` to the map.
         map.addAnnotation(hello)
         return map
     }()
     
-    fileprivate let table: UITableView = {
-        let tableView = UITableView()
+    fileprivate let table: SelfSizedTableView = {
+        let tableView = SelfSizedTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
+        //tableView.backgroundColor = .red
+        tableView.rowHeight = UITableView.automaticDimension;
+        tableView.estimatedRowHeight = 44;
         tableView.tableFooterView = UIView()
         tableView.alwaysBounceVertical = false;
         return tableView
@@ -62,8 +66,9 @@ class DetailFrameViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.delegate = self
-//        table.delegate = self
-//        table.dataSource = self
+        
+        table.delegate = self
+        table.dataSource = self
         
         view.backgroundColor = Theme.Color.background
         
@@ -92,18 +97,20 @@ class DetailFrameViewController: UIViewController {
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        //mapView.bottomAnchor.constraint(equalTo: table.topAnchor).isActive = true
-        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        mapView.heightAnchor.constraint(equalTo: view.heightAnchor , multiplier: 0.25).isActive = true
         
-//        table.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//        table.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        table.heightAnchor.constraint(equalToConstant: 287).isActive = true
-//
-//        addShotButton.topAnchor.constraint(equalTo: table.bottomAnchor, constant: 20).isActive = true
-//        addShotButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-//        addShotButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-//        addShotButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        //mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
+        table.topAnchor.constraint(equalTo: mapView.bottomAnchor).isActive = true
+        table.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        table.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        table.bottomAnchor.constraint(equalTo: addShotButton.topAnchor, constant: -10).isActive = true
+
+        
+        addShotButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        addShotButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        addShotButton.heightAnchor.constraint(equalTo: view.heightAnchor , multiplier: 0.05).isActive = true
+         addShotButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
 
     }
 
@@ -122,36 +129,39 @@ extension DetailFrameViewController: MGLMapViewDelegate {
     }
 }
 
-//extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource {
-//
-//    // MARK: - Table view data source
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return addFilmPopUpModel.items.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let item = addFilmPopUpModel.items[indexPath.row]
-//        item.register(in: tableView)
-//        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId)!
-//        item.configure(cell: cell)
-//
-//        return cell
-//
-//    }
-//
-//
-//
-//
-//    //MARK: Delegate Methods
-//
+
+
+
+extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource {
+
+    // MARK: - Table view data source
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return detailFrameModel.items.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let item = detailFrameModel.items[indexPath.row]
+        item.register(in: tableView)
+        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId)!
+        item.configure(cell: cell)
+        return cell
+
+    }
+
+
+
+
+    //MARK: Delegate Methods
+
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return BaseTableViewCell.cellHeight
+//        return 44
 //    }
-//}
+    
+}

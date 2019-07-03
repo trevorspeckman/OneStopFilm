@@ -14,10 +14,10 @@ class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource {
     
     let addFilmPopUpModel = AddFilmPopUpModel()
 
-    fileprivate let table: UITableView = {
-        let tableView = UITableView()
+    fileprivate let table: SelfSizedTableView = {
+        let tableView = SelfSizedTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
+        //tableView.backgroundColor = .red
         tableView.tableFooterView = UIView()
         tableView.alwaysBounceVertical = false;
         return tableView
@@ -37,7 +37,8 @@ class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource {
     fileprivate lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [titleLabel,table,buttonStackView])
         stack.axis = NSLayoutConstraint.Axis.vertical
-        stack.spacing = 10
+        stack.spacing = 5
+        stack.distribution = .equalSpacing
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -48,7 +49,7 @@ class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource {
         table.delegate = self
         table.dataSource = self
         
-        
+        addSubview(container)
         container.addSubview(stackView)
         
         stackView.topAnchor.constraint(equalTo: container.topAnchor, constant: 10).isActive = true
@@ -56,7 +57,12 @@ class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource {
         stackView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10).isActive = true
         stackView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10).isActive = true
         
- 
+        
+        
+        container.topAnchor.constraint(equalTo: self.topAnchor, constant: 100).isActive = true
+        container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        container.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7).isActive = true
+//        container.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.45).isActive = true
         
         
         

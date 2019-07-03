@@ -20,9 +20,9 @@ class FramesTableViewCell: BaseTableViewCell, ConfigurableCell {
         return label
     }()
     
-    let aperature = LabelWithImage()
-    let shutterSpeed = LabelWithImage()
-    let date = LabelWithImage()
+    let aperature = LabelWithImageView()
+    let shutterSpeed = LabelWithImageView()
+    let date = LabelWithImageView()
     
     let colorIndicator: SwiftDisclosureIndicator = {
         let indicator = SwiftDisclosureIndicator()
@@ -71,7 +71,7 @@ class FramesTableViewCell: BaseTableViewCell, ConfigurableCell {
     }
     
     //MARK: ConfigurableCell Protocol Methods
-    func configure(data frames: Frames) {
+    func configure(data frames: LabelWithImage) {
         aperature.titleIcon.image = frames.icon
         aperature.titleLabel.text = frames.labelText
         

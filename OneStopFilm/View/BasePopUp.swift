@@ -51,12 +51,7 @@ class BasePopUp: UIView {
     }
     
     func setupViews() {
-        addSubview(container)
         
-        container.topAnchor.constraint(equalTo: self.topAnchor, constant: 100).isActive = true
-        container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        container.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7).isActive = true
-        container.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.35).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LabelWithImage: UIView {
+class LabelWithImageView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -41,8 +41,8 @@ class LabelWithImage: UIView {
         
         titleIcon.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         titleIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        titleIcon.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        titleIcon.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        titleIcon.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8).isActive = true
+        titleIcon.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8).isActive = true
         
         
         titleLabel.bottomAnchor.constraint(equalTo: titleIcon.bottomAnchor).isActive = true

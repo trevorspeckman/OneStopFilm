@@ -39,6 +39,7 @@ class NewRollTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId)!
         item.configure(cell: cell)
         
+        
         return cell
 
     }

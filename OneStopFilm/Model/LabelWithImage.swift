@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Frames {
+struct LabelWithImage {
     var icon: UIImage
     var labelText: String
 }
