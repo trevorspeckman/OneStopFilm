@@ -23,9 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = CustomTabBarController()
             
-            
-            
-
+        
         return true
     }
 

@@ -9,39 +9,35 @@
 import UIKit
 
 
-class FilmStock {
-    var brand: String?
-    var name: String?
-}
-
-class Camera {
-    var brand: String?
-    var name: String?
-}
-
-class Lens {
-    var brand: String?
-    var name: String?
-    var focalLength: String?
-    var minAperature: Float?
-    var maxAperature: Float?
-}
-
-class Icons {
-    var brand: String?
-    var name: String?
-}
-
-class ActiveFilmRoll {
-    var title: String?
-    var filmStock: FilmStock?
-    var filmSpeed: Int?
-    var frameCount: Int?
-    var completedFrames: Int?
-    var camera: Camera?
-    var color: String?
-    var date: Date?
-}
+//class Film {
+//    var brand: String?
+//    var name: String?
+//}
+//
+//class Camera {
+//    var brand: String?
+//    var name: String?
+//}
+//
+//class Lens {
+//    var brand: String?
+//    var name: String?
+//    var focalLength: Int?
+//    var minAperature: Float?
+//    var maxAperature: Float?
+//}
+//
+//
+//class ActiveFilmRoll {
+//    var title: String?
+//    var film: Film?
+//    var filmSpeed: Int?
+//    var frameCount: Int?
+//    var completedFrames: Int?
+//    var camera: Camera?
+//    var colorName: String?
+//    var date: Date?
+//}
 
 class ActiveFilmRollCell: BaseCollectionViewCell {
     
@@ -61,7 +57,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
             }
             
             //filmLabel
-            filmLabel.titleLabel.text = "\(activeFilmRoll?.filmStock?.brand ?? "?") \(activeFilmRoll?.filmStock?.name ?? "?")"
+            filmLabel.titleLabel.text = "\(activeFilmRoll?.film?.brand ?? "?") \(activeFilmRoll?.film?.name ?? "?")"
             
             //cameraLabel
             cameraLabel.titleLabel.text = "\(activeFilmRoll?.camera?.brand ?? "") \(activeFilmRoll?.camera?.name ?? "")"

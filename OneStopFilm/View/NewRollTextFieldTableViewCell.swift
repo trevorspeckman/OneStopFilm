@@ -9,9 +9,31 @@
 import UIKit
 
 
+protocol NewRollTextFieldTableViewCellDelegate {
+    func textFieldDidEndEditing(text: String, cell: NewRollTextFieldTableViewCell)
+}
+
 class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UITextFieldDelegate {
 
-
+    
+    
+    var newRoll: NewRollTextField! {
+        didSet{
+            titleLabel.text = newRoll.text
+            cellTextField.placeholder = newRoll.text
+            if newRoll.keyboard == 0 {
+                cellTextField.keyboardType = .default
+            } else if newRoll.keyboard == 1 {
+                cellTextField.keyboardType = .numberPad
+            }
+            textLengthLimit = newRoll.textLengthLimit
+            cellTextField.text = nil
+            titleLabel.alpha = 0
+        }
+    }
+    
+    
+    var delegate: NewRollTextFieldTableViewCellDelegate?
     
 //MARK: Subview Initialization
     let titleLabel: UILabel = {
@@ -50,11 +72,12 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
         titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25).isActive = true
         
         
-        cellTextField.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.topAnchor, multiplier: 1).isActive = true
+        cellTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
         cellTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         cellTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-        //cellTextField.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        cellTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
+        cellTextField.heightAnchor.constraint(equalToConstant: 25).isActive = true
+
+
         selectionStyle = .none
 
 
@@ -96,8 +119,10 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
     
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //titleLabel.fadeOut()
         titleLabel.textColor = UIColor.gray
+        if let text = cellTextField.text {
+            delegate?.textFieldDidEndEditing(text: text, cell: self)
+        }
     }
 
     

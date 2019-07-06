@@ -1,4 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="ActiveFilmRoll" representedClassName=".ActiveFilmRoll" syncable="YES" codeGenerationType="class">
+        <attribute name="colorName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="completedFrames" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="filmSpeed" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="frameCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="camera" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Camera" inverseName="activeFilmRoll" inverseEntity="Camera" syncable="YES"/>
+        <relationship name="film" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Film" inverseName="activeFilmRoll" inverseEntity="Film" syncable="YES"/>
+    </entity>
+    <entity name="Camera" representedClassName=".Camera" syncable="YES" codeGenerationType="class">
+        <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="activeFilmRoll" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActiveFilmRoll" inverseName="camera" inverseEntity="ActiveFilmRoll" syncable="YES"/>
+    </entity>
+    <entity name="Film" representedClassName=".Film" syncable="YES" codeGenerationType="class">
+        <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="activeFilmRoll" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActiveFilmRoll" inverseName="film" inverseEntity="ActiveFilmRoll" syncable="YES"/>
+    </entity>
+    <entity name="Lens" representedClassName=".Lens" syncable="YES" codeGenerationType="class">
+        <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="focalLength" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="maxAperature" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="minAperature" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Camera" positionX="384.32421875" positionY="-289.6640625" width="128" height="88"/>
+        <element name="Lens" positionX="357.4921875" positionY="141.0859375" width="128" height="118"/>
+        <element name="ActiveFilmRoll" positionX="74.60546875" positionY="-208.50390625" width="128" height="163"/>
+        <element name="Film" positionX="361.51953125" positionY="-18.31640625" width="128" height="88"/>
+    </elements>
 </model>

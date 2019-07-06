@@ -7,17 +7,19 @@
 //
 
 import UIKit
+import CoreData
 
 class NewRollTableViewController: UITableViewController {
 
     let newRollModel = NewRollModel()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavBar()
         setupTableView()
+
 
     }
 
@@ -56,7 +58,7 @@ class NewRollTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let filmStockTableViewController = FilmStockTableViewController()
+            let filmStockTableViewController = FilmTableViewController()
             navigationController?.pushViewController(filmStockTableViewController, animated: true)
         }
         else if indexPath.row == 4 {
@@ -97,6 +99,8 @@ class NewRollTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.alwaysBounceVertical = false;
     }
+    
+
     
 
 }

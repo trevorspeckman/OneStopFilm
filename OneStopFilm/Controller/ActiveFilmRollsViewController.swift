@@ -12,28 +12,29 @@ import UIKit
 class ActiveFilmRollsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     
+    
     var activeFilmRolls = [ActiveFilmRoll]()
     
     func setupData() {
-        let camera = Camera()
-        camera.brand = "Pentax"
-        camera.name = "K1000"
-        
-        let film = FilmStock()
-        film.brand = "Kodak"
-        film.name = "Portra"
-        
-        let activeFilmRoll = ActiveFilmRoll()
-        activeFilmRoll.title = "TRIP TO YOSEMITE"
-        activeFilmRoll.filmStock = film
-        activeFilmRoll.filmSpeed = 400
-        activeFilmRoll.frameCount = 24
-        activeFilmRoll.completedFrames = 1
-        activeFilmRoll.camera = camera
-        activeFilmRoll.color = "yellow"
-        activeFilmRoll.date = Date()
-        
-        activeFilmRolls = [activeFilmRoll]
+//        let camera = Camera()
+//        camera.brand = "Pentax"
+//        camera.name = "K1000"
+//        
+//        let film = Film()
+//        film.brand = "Kodak"
+//        film.name = "Portra"
+//        
+//        let activeFilmRoll = ActiveFilmRoll()
+//        activeFilmRoll.title = "TRIP TO YOSEMITE"
+//        activeFilmRoll.film = film
+//        activeFilmRoll.filmSpeed = 400
+//        activeFilmRoll.frameCount = 24
+//        activeFilmRoll.completedFrames = 1
+//        activeFilmRoll.camera = camera
+//        activeFilmRoll.colorName = "yellow"
+//        activeFilmRoll.date = Date()
+//        
+//        activeFilmRolls = [activeFilmRoll]
     }
     
     
@@ -95,6 +96,8 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
         let framesTableViewController = FramesTableViewController()
         navigationController?.pushViewController(framesTableViewController, animated: true)
     }
+    
+  
 
 }
 

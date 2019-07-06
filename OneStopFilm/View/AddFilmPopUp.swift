@@ -8,18 +8,22 @@
 
 import UIKit
 
-class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource {
+class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource, NewRollTextFieldTableViewCellDelegate {
+    
+    
 
 //MARK: Subview Initialization
     
-    let addFilmPopUpModel = AddFilmPopUpModel()
-
-    fileprivate let table: SelfSizedTableView = {
+    var addFilmPopUpModel = [NewRollTextField]()
+    var typedText = [String]()
+    
+    let table: SelfSizedTableView = {
         let tableView = SelfSizedTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         //tableView.backgroundColor = .red
         tableView.tableFooterView = UIView()
         tableView.alwaysBounceVertical = false;
+        
         return tableView
     }()
     
@@ -44,6 +48,13 @@ class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource {
     }()
     
     override func setupViews() {
+        
+        table.dataSource = self
+        table.delegate = self
+        table.register(NewRollTextFieldTableViewCell.self, forCellReuseIdentifier: "cellId")
+        
+        setupModel()
+        
         super.setupViews()
         table.tableFooterView?.isHidden = true
         table.delegate = self
@@ -76,21 +87,24 @@ class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return addFilmPopUpModel.items.count
+        return addFilmPopUpModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let item = addFilmPopUpModel.items[indexPath.row]
-        item.register(in: tableView)
-        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId)!
-        item.configure(cell: cell)
-        
+        let cell = table.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! NewRollTextFieldTableViewCell
+        cell.delegate = self
+        cell.newRoll = addFilmPopUpModel[indexPath.row]
         return cell
         
     }
     
-    
+//MARK: Setup addFilmPopUpModel
+    func setupModel() {
+        let cell1 = NewRollTextField(text: "BRAND", textLengthLimit: 20, keyboard: 0)
+        let cell2 = NewRollTextField(text: "FILM NAME", textLengthLimit: 20, keyboard: 0)
+        addFilmPopUpModel = [cell1,cell2]
+    }
     
     
 //MARK: Delegate Methods
@@ -99,7 +113,12 @@ class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource {
         return BaseTableViewCell.cellHeight
     }
     
-   
+    //MARK: NewRoll Delegate
+    func textFieldDidEndEditing(text: String, cell: NewRollTextFieldTableViewCell) {
+        if let indexPath = table.indexPath(for: cell) {
+            typedText.insert(text, at: indexPath.row)
+        }
+    }
     
    
     
