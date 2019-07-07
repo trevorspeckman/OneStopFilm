@@ -128,18 +128,29 @@ class FilmTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        
+  
+        
         return "Film"
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return BaseTableViewCell.cellHeight
-//    }
+let searchController = UISearchController(searchResultsController: nil)
 
     //MARK: Setup Methods
     fileprivate func setupNavBar() {
         navigationItem.title = "FILM"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Theme.Font.titleFont!]
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        
+
+        // Setup the Search Controller
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "SEARCH FILMS"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        searchController.searchResultsUpdater = self
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     //MARK: Model Manipulation Methods
@@ -153,8 +164,9 @@ class FilmTableViewController: UITableViewController {
         
     }
     
-    func loadItems() {
-        let request: NSFetchRequest<Film> = Film.fetchRequest()
+    func loadItems(with request: NSFetchRequest<Film> = Film.fetchRequest()) {
+
+        request.sortDescriptors = [NSSortDescriptor(key: "brand", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
         do {
             filmArray = try context.fetch(request)
         } catch {
@@ -162,4 +174,29 @@ class FilmTableViewController: UITableViewController {
         }
     }
     
+    
+    
+}
+
+extension FilmTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+  
+
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let request : NSFetchRequest<Film> = Film.fetchRequest()
+        
+        guard let searchText = searchController.searchBar.text else {return}
+        let search = searchText.trimmingCharacters(in: .whitespaces)
+        let words = search.components(separatedBy: NSCharacterSet.whitespaces)
+        if !search.isEmpty {
+            let predicates = words.map { NSPredicate(format: "brand CONTAINS[cd] %@ OR name CONTAINS[cd] %@", $0,$0) }
+            request.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: predicates)
+        }
+        
+        
+      
+        loadItems(with: request)
+        tableView.reloadData()
+    }
+
 }
