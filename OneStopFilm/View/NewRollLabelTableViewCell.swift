@@ -50,7 +50,7 @@ class NewRollLabelTableViewCell: BaseTableViewCell, ConfigurableCell {
         
         selectionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
         selectionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        selectionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        selectionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
         selectionLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
         //selectionStyle = .none

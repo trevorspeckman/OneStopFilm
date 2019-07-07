@@ -8,10 +8,16 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
 
-class ColorCollectionViewController: UICollectionViewController {
+class ColorCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    let colors: [UIColor] = [Theme.Color.red, Theme.Color.orange, Theme.Color.yellow, Theme.Color.green, Theme.Color.blue, Theme.Color.magenta, Theme.Color.purple]
+    
+    let lightColors: [UIColor] = [Theme.Color.lightRed, Theme.Color.lightOrange, Theme.Color.lightYellow, Theme.Color.lightGreen, Theme.Color.lightBlue, Theme.Color.lightMagenta, Theme.Color.lightPurple]
+    
+    var selectedParentViewCellIndex = 0
+    var delegate: ChildViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,20 +26,12 @@ class ColorCollectionViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")
-
         // Do any additional setup after loading the view.
        collectionView.backgroundColor = Theme.Color.background
+        
     }
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -45,45 +43,25 @@ class ColorCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return 6
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
 
-        cell.backgroundColor = UIColor.red
+        cell.setGradientBackground(colorOne: colors[indexPath.row], colorTwo: lightColors[indexPath.row], locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+    //MARK: DelegateFlowLayout Methods
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.width/3)
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        delegate?.childViewControllerResponse(response: [colors[indexPath.row],lightColors[indexPath.row]], selectedParentViewCellIndex: selectedParentViewCellIndex)
+        navigationController?.popViewController(animated: true)
     }
-    */
 
 }

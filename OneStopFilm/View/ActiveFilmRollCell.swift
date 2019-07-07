@@ -259,7 +259,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         
         topOfRoll.setGradientBackground(colorOne: .black, colorTwo: Theme.Color.capGrey, locations: [0.5,1], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 0, y: 1))
         
-        filmColor.setGradientBackground(colorOne: Theme.Color.yellow, colorTwo: Theme.Color.lightyellow, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
+        filmColor.setGradientBackground(colorOne: Theme.Color.yellow, colorTwo: Theme.Color.lightYellow, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
         
         labelBackground.setGradientBackground(colorOne: .black, colorTwo: Theme.Color.capGrey, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
 

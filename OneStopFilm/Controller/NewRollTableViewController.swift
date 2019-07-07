@@ -18,6 +18,8 @@ class NewRollTableViewController: UITableViewController, ChildViewControllerDele
     let newRollModel = NewRollModel()
     var filmResponseText = "FILM"
     var cameraResponseText = "CAMERA"
+    var colorBackground = UIColor.white
+    var lightColorBackground = UIColor.white
     var delegate: NewRollTableViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +65,16 @@ class NewRollTableViewController: UITableViewController, ChildViewControllerDele
                 cell.selectionLabel.textColor = .black
                 cell.titleLabel.alpha = 1
             }
+        }
+            
+        else if indexPath.row == 5 {
+            let cell = cell as! NewRollLabelTableViewCell
+            
+            if colorBackground != .white {
+                cell.selectionLabel.setGradientBackground(colorOne: colorBackground, colorTwo: lightColorBackground, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
+                cell.selectionLabel.textColor = .clear
+                cell.titleLabel.alpha = 1
+            }
             
         }
         return cell
@@ -96,7 +108,15 @@ class NewRollTableViewController: UITableViewController, ChildViewControllerDele
         }
         else if indexPath.row == 5 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let colorCollectionViewController =  ColorCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+            
+            let layout = UICollectionViewFlowLayout()
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+            
+            
+            let colorCollectionViewController =  ColorCollectionViewController(collectionViewLayout: layout)
+            colorCollectionViewController.selectedParentViewCellIndex = indexPath.row
+            colorCollectionViewController.delegate = self
             navigationController?.pushViewController(colorCollectionViewController, animated: true)
         }
     }
@@ -129,11 +149,15 @@ class NewRollTableViewController: UITableViewController, ChildViewControllerDele
     }
     
     //MARK: childViewController Delegate Methods
-    func childViewControllerResponse(response: String, selectedParentViewCellIndex: Int) {
+    func childViewControllerResponse(response: Any, selectedParentViewCellIndex: Int) {
         if selectedParentViewCellIndex == 1 {
-            filmResponseText = response
+            filmResponseText = response as! String
+        } else if selectedParentViewCellIndex == 4 {
+            cameraResponseText = response as! String
         } else {
-            cameraResponseText = response
+            let responseArray = response as! [UIColor]
+            colorBackground = responseArray[0]
+            lightColorBackground = responseArray[1]
         }
         
         tableView.reloadData()

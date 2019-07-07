@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol ChildViewControllerDelegate {
-    func childViewControllerResponse(response: String, selectedParentViewCellIndex: Int)
+    func childViewControllerResponse(response: Any, selectedParentViewCellIndex: Int)
 }
 
 class FilmTableViewController: UITableViewController {
