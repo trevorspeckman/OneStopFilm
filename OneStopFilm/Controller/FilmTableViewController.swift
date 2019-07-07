@@ -10,14 +10,17 @@ import UIKit
 import CoreData
 
 protocol ChildViewControllerDelegate {
-    func childViewControllerResponse(response: String)
+    func childViewControllerResponse(response: String, selectedParentViewCellIndex: Int)
 }
 
 class FilmTableViewController: UITableViewController {
+    
+
 
     var filmArray = [Film]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    var selectedParentViewCellIndex = 0
     var delegate: ChildViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -31,7 +34,7 @@ class FilmTableViewController: UITableViewController {
     }
     
     
-    let addFilmPopup = AddFilmPopUp()
+    let addFilmPopup = AddFilmPopup()
     
     @objc func addTapped() {
         
@@ -123,7 +126,9 @@ class FilmTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        self.delegate?.childViewControllerResponse(response: cell?.textLabel?.text ?? "")
+        self.delegate?.childViewControllerResponse(response: cell?.textLabel?.text ?? "", selectedParentViewCellIndex: selectedParentViewCellIndex)
+        
+        
         navigationController?.popViewController(animated: true)
     }
     

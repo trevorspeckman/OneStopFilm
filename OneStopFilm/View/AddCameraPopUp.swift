@@ -1,24 +1,24 @@
 //
-//  AddFilmPopUp.swift
+//  AddCameraPopUp.swift
 //  OneStopFilm
 //
-//  Created by Trevor Speckman on 7/1/19.
+//  Created by Trevor Speckman on 7/7/19.
 //  Copyright © 2019 Trevor Speckman. All rights reserved.
 //
 
 import UIKit
 
-class AddFilmPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, NewRollTextFieldTableViewCellDelegate {
+class AddCameraPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, NewRollTextFieldTableViewCellDelegate {
     
     
     
     
-
-//MARK: Subview Initialization
     
-    var addFilmPopUpModel = [NewRollTextField]()
-    lazy var typedText = [String?](repeating: nil, count:addFilmPopUpModel.count)
-    lazy var isEmptyArray = [Bool?](repeating: nil, count:addFilmPopUpModel.count)
+    //MARK: Subview Initialization
+    
+    var addCameraPopUpModel = [NewRollTextField]()
+    lazy var typedText = [String?](repeating: nil, count:addCameraPopUpModel.count)
+    lazy var isEmptyArray = [Bool?](repeating: nil, count:addCameraPopUpModel.count)
     let table: SelfSizedTableView = {
         let tableView = SelfSizedTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,14 +32,14 @@ class AddFilmPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, NewRo
     fileprivate let titleLabel: UILabel = {
         let label = UILabel()
         //label.backgroundColor = UIColor.green
-        label.text = "ADD FILM"
+        label.text = "ADD CAMERA"
         label.font = Theme.Font.titleLabelFont!
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-
+    
     fileprivate lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [titleLabel,table,buttonStackView])
         stack.axis = NSLayoutConstraint.Axis.vertical
@@ -75,13 +75,13 @@ class AddFilmPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, NewRo
         container.topAnchor.constraint(equalTo: self.topAnchor, constant: 100).isActive = true
         container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         container.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7).isActive = true
-       
+        
         
         
         
     }
     
-// MARK: - Table view data source
+    // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -89,27 +89,27 @@ class AddFilmPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, NewRo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return addFilmPopUpModel.count
+        return addCameraPopUpModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = table.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! NewRollTextFieldTableViewCell
         cell.delegate = self
-        cell.newRoll = addFilmPopUpModel[indexPath.row]
+        cell.newRoll = addCameraPopUpModel[indexPath.row]
         return cell
         
     }
     
-//MARK: Setup addFilmPopUpModel
+    //MARK: Setup addCameraPopUpModel
     func setupModel() {
         let cell1 = NewRollTextField(text: "BRAND", textLengthLimit: 20, keyboard: 0)
-        let cell2 = NewRollTextField(text: "FILM NAME", textLengthLimit: 20, keyboard: 0)
-        addFilmPopUpModel = [cell1,cell2]
+        let cell2 = NewRollTextField(text: "CAMERA NAME", textLengthLimit: 20, keyboard: 0)
+        addCameraPopUpModel = [cell1,cell2]
     }
     
     
-//MARK: Delegate Methods
+    //MARK: Delegate Methods
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return BaseTableViewCell.cellHeight
@@ -142,6 +142,6 @@ class AddFilmPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, NewRo
         
     }
     
-   
+    
     
 }

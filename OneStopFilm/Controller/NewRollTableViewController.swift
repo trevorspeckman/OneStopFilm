@@ -9,13 +9,16 @@
 import UIKit
 import CoreData
 
+
+
 class NewRollTableViewController: UITableViewController, ChildViewControllerDelegate {
     
     
 
     let newRollModel = NewRollModel()
-    var responseText = "FILM"
-    
+    var filmResponseText = "FILM"
+    var cameraResponseText = "CAMERA"
+    var delegate: NewRollTableViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,17 +47,25 @@ class NewRollTableViewController: UITableViewController, ChildViewControllerDele
         item.configure(cell: cell)
         
         if indexPath.row == 1 {
-            let cell = cell as? NewRollLabelTableViewCell
-            cell?.selectionLabel.text = responseText
-            if responseText != "FILM" {
-                cell?.selectionLabel.textColor = .black
-                cell?.titleLabel.alpha = 1
+            let cell = cell as! NewRollLabelTableViewCell
+            cell.selectionLabel.text = filmResponseText
+            if filmResponseText != "FILM" {
+                cell.selectionLabel.textColor = .black
+                cell.titleLabel.alpha = 1
             }
+            return cell
         }
-        
-        
+            
+        else if indexPath.row == 4 {
+            let cell = cell as! NewRollLabelTableViewCell
+            cell.selectionLabel.text = cameraResponseText
+            if cameraResponseText != "CAMERA" {
+                cell.selectionLabel.textColor = .black
+                cell.titleLabel.alpha = 1
+            }
+            
+        }
         return cell
-
     }
     
 
@@ -71,14 +82,17 @@ class NewRollTableViewController: UITableViewController, ChildViewControllerDele
         if indexPath.row == 1 {
             tableView.deselectRow(at: indexPath, animated: true)
             let filmTableViewController = FilmTableViewController()
-
+            filmTableViewController.selectedParentViewCellIndex = indexPath.row
             filmTableViewController.delegate = self
             navigationController?.pushViewController(filmTableViewController, animated: true)
         }
         else if indexPath.row == 4 {
             tableView.deselectRow(at: indexPath, animated: true)
             let cameraTableViewController = CameraTableViewController()
+            cameraTableViewController.selectedParentViewCellIndex = indexPath.row
+            cameraTableViewController.delegate = self
             navigationController?.pushViewController(cameraTableViewController, animated: true)
+            
         }
         else if indexPath.row == 5 {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -115,8 +129,13 @@ class NewRollTableViewController: UITableViewController, ChildViewControllerDele
     }
     
     //MARK: childViewController Delegate Methods
-    func childViewControllerResponse(response: String) {
-        responseText = response
+    func childViewControllerResponse(response: String, selectedParentViewCellIndex: Int) {
+        if selectedParentViewCellIndex == 1 {
+            filmResponseText = response
+        } else {
+            cameraResponseText = response
+        }
+        
         tableView.reloadData()
     }
     
