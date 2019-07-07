@@ -11,12 +11,14 @@ import UIKit
 class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource, NewRollTextFieldTableViewCellDelegate {
     
     
+    
+    
 
 //MARK: Subview Initialization
     
     var addFilmPopUpModel = [NewRollTextField]()
-    var typedText = [String]()
-    
+    lazy var typedText = [String?](repeating: nil, count:addFilmPopUpModel.count)
+    lazy var isEmptyArray = [Bool?](repeating: nil, count:addFilmPopUpModel.count)
     let table: SelfSizedTableView = {
         let tableView = SelfSizedTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -116,8 +118,28 @@ class AddFilmPopUp: BasePopUp, UITableViewDelegate, UITableViewDataSource, NewRo
     //MARK: NewRoll Delegate
     func textFieldDidEndEditing(text: String, cell: NewRollTextFieldTableViewCell) {
         if let indexPath = table.indexPath(for: cell) {
-            typedText.insert(text, at: indexPath.row)
+            typedText[indexPath.row] = text
         }
+        
+    }
+    
+    func textFieldDidChange(text: String?, cell: NewRollTextFieldTableViewCell) {
+        if let indexPath = table.indexPath(for: cell) {
+            if text?.isEmpty == false {
+                isEmptyArray[indexPath.row] = false
+            } else {
+                isEmptyArray[indexPath.row] = true
+            }
+            
+            if isEmptyArray.allSatisfy({$0 == false}) {
+                saveButton.isEnabled = true
+                saveButton.setTitleColor(.orange, for: .normal)
+            } else {
+                saveButton.isEnabled = false
+                saveButton.setTitleColor(.officialApplePlaceholderGray, for: .normal)
+            }
+        }
+        
     }
     
    

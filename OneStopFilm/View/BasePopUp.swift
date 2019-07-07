@@ -14,7 +14,8 @@ class BasePopUp: UIView {
         let button = UIButton()
         //button.backgroundColor = .blue
         button.setTitle("Add Film", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.isEnabled = false
+        button.setTitleColor(.officialApplePlaceholderGray, for: .normal)
         button.layer.masksToBounds = true
         return button
     }()
@@ -22,8 +23,9 @@ class BasePopUp: UIView {
     let cancelButton: UIButton = {
         let button = UIButton()
         // button.backgroundColor = .yellow
-        button.setTitle("Cancel", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.setTitle("Cancel", for: .normal)
+
         
         return button
     }()

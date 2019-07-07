@@ -11,6 +11,7 @@ import UIKit
 
 protocol NewRollTextFieldTableViewCellDelegate {
     func textFieldDidEndEditing(text: String, cell: NewRollTextFieldTableViewCell)
+    func textFieldDidChange(text: String?, cell: NewRollTextFieldTableViewCell)
 }
 
 class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UITextFieldDelegate {
@@ -50,7 +51,7 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
         let textField = UITextField()
 //        textField.backgroundColor = UIColor.green
         textField.adjustsFontSizeToFitWidth = true
-
+        textField.clearButtonMode = .whileEditing
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -106,8 +107,8 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
         else {
             titleLabel.fadeOut()
         }
-        
         cellTextField.text =  cellTextField.text?.uppercased()
+        delegate?.textFieldDidChange(text: cellTextField.text, cell: self)
     }
     
     

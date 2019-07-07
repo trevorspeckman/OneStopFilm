@@ -9,12 +9,16 @@
 import UIKit
 import CoreData
 
+protocol ChildViewControllerDelegate {
+    func childViewControllerResponse(response: String)
+}
+
 class FilmTableViewController: UITableViewController {
 
     var filmArray = [Film]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    
+    var delegate: ChildViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,8 @@ class FilmTableViewController: UITableViewController {
         
         if let window = UIApplication.shared.keyWindow {
             addFilmPopup.table.reloadData()
+            addFilmPopup.saveButton.setTitleColor(.officialApplePlaceholderGray, for: .normal)
+            addFilmPopup.isEmptyArray = [Bool?](repeating: nil, count:addFilmPopup.addFilmPopUpModel.count)
             addFilmPopup.backgroundColor = UIColor(white: 0, alpha: 0.5)
             
             addFilmPopup.cancelButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelTapped)))
@@ -116,11 +122,18 @@ class FilmTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        let cell = tableView.cellForRow(at: indexPath)
+        self.delegate?.childViewControllerResponse(response: cell?.textLabel?.text ?? "")
         navigationController?.popViewController(animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Film"
+    }
     
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return BaseTableViewCell.cellHeight
+//    }
 
     //MARK: Setup Methods
     fileprivate func setupNavBar() {

@@ -9,17 +9,19 @@
 import UIKit
 import CoreData
 
-class NewRollTableViewController: UITableViewController {
+class NewRollTableViewController: UITableViewController, ChildViewControllerDelegate {
+    
+    
 
     let newRollModel = NewRollModel()
-    
+    var responseText = "FILM"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavBar()
         setupTableView()
-
+        
 
     }
 
@@ -41,6 +43,15 @@ class NewRollTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId)!
         item.configure(cell: cell)
         
+        if indexPath.row == 1 {
+            let cell = cell as? NewRollLabelTableViewCell
+            cell?.selectionLabel.text = responseText
+            if responseText != "FILM" {
+                cell?.selectionLabel.textColor = .black
+                cell?.titleLabel.alpha = 1
+            }
+        }
+        
         
         return cell
 
@@ -56,10 +67,13 @@ class NewRollTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.endEditing(true)
         if indexPath.row == 1 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let filmStockTableViewController = FilmTableViewController()
-            navigationController?.pushViewController(filmStockTableViewController, animated: true)
+            let filmTableViewController = FilmTableViewController()
+
+            filmTableViewController.delegate = self
+            navigationController?.pushViewController(filmTableViewController, animated: true)
         }
         else if indexPath.row == 4 {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -100,7 +114,11 @@ class NewRollTableViewController: UITableViewController {
         tableView.alwaysBounceVertical = false;
     }
     
-
+    //MARK: childViewController Delegate Methods
+    func childViewControllerResponse(response: String) {
+        responseText = response
+        tableView.reloadData()
+    }
     
 
 }
