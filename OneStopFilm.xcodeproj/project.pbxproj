@@ -29,6 +29,7 @@
 		E50A454922BACD390047ABFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50A454722BACD390047ABFE /* Main.storyboard */; };
 		E50A454B22BACD3D0047ABFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E50A454A22BACD3D0047ABFE /* Assets.xcassets */; };
 		E50A454E22BACD3D0047ABFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50A454C22BACD3D0047ABFE /* LaunchScreen.storyboard */; };
+		E526441722D31F0E008D5FAD /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E526441622D31F0E008D5FAD /* Gradient.swift */; };
 		E55BDBD822CC24FE005AE251 /* LabelWithImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBD722CC24FE005AE251 /* LabelWithImageTableViewCell.swift */; };
 		E55BDBDA22CC3284005AE251 /* SwiftDisclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBD922CC3284005AE251 /* SwiftDisclosureIndicator.swift */; };
 		E55BDBDC22CC425B005AE251 /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBDB22CC425B005AE251 /* SliderTableViewCell.swift */; };
@@ -77,6 +78,7 @@
 		E50A454A22BACD3D0047ABFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E50A454D22BACD3D0047ABFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E50A454F22BACD3D0047ABFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E526441622D31F0E008D5FAD /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		E55BDBD722CC24FE005AE251 /* LabelWithImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithImageTableViewCell.swift; sourceTree = "<group>"; };
 		E55BDBD922CC3284005AE251 /* SwiftDisclosureIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDisclosureIndicator.swift; sourceTree = "<group>"; };
 		E55BDBDB22CC425B005AE251 /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				E509978722CB0B200069DFCB /* FramesTableModel.swift */,
 				E55BDBDD22CC4718005AE251 /* DetailFrameModel.swift */,
 				E55BDBE122CD014C005AE251 /* DataModel.xcdatamodeld */,
+				E526441622D31F0E008D5FAD /* Gradient.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				E509977E22CAC5050069DFCB /* BasePopup.swift in Sources */,
 				E5841D4122BD9F7B00F99BC3 /* DevelopTableViewController.swift in Sources */,
 				E509977A22CAB6330069DFCB /* AddFilmPopup.swift in Sources */,
+				E526441722D31F0E008D5FAD /* Gradient.swift in Sources */,
 				E58B60FC22C2FFCA00DC9294 /* NewRollTableViewController.swift in Sources */,
 				E55BDBDE22CC4718005AE251 /* DetailFrameModel.swift in Sources */,
 				E50A454622BACD390047ABFE /* ActiveFilmRollsViewController.swift in Sources */,

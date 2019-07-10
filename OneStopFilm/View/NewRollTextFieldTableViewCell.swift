@@ -16,7 +16,9 @@ protocol NewRollTextFieldTableViewCellDelegate {
 
 class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UITextFieldDelegate {
 
-    
+    var value: String? {
+        return cellTextField.text
+    }
     
     var newRoll: NewRollTextField! {
         didSet{

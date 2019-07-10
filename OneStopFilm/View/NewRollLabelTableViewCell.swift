@@ -12,6 +12,13 @@ import UIKit
 
 class NewRollLabelTableViewCell: BaseTableViewCell, ConfigurableCell {
 
+    
+    var value: String? {
+        return selectionLabel.text
+    }
+    
+    
+    
 //MARK: Subview Initialization
     let titleLabel: UILabel = {
         let label = UILabel()

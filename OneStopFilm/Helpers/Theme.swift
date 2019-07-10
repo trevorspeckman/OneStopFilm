@@ -13,19 +13,19 @@ struct Theme {
         static let background = UIColor(hexFromString: "EEEEEE")
         static let labelBackground = UIColor(hexFromString: "343434")
         static let green = UIColor(hexFromString: "01A13A")
-        static let lightGreen = UIColor(hexFromString: "54D683")
+        static let greenLight = UIColor(hexFromString: "54D683")
         static let yellow = UIColor(hexFromString: "FDBA20")
-        static let lightYellow = UIColor(hexFromString: "FFE19C")
+        static let yellowLight = UIColor(hexFromString: "FFE19C")
         static let red = UIColor(hexFromString: "eb1c27")
-        static let lightRed = UIColor(hexFromString: "FF767D")
+        static let redLight = UIColor(hexFromString: "FF767D")
         static let blue = UIColor(hexFromString: "464892")
-        static let lightBlue = UIColor(hexFromString: "8E91FF")
+        static let blueLight = UIColor(hexFromString: "8E91FF")
         static let magenta = UIColor(hexFromString: "922579")
-        static let lightMagenta = UIColor(hexFromString: "FF7AE0")
+        static let magentaLight = UIColor(hexFromString: "FF7AE0")
         static let purple = UIColor(hexFromString: "6F0064")
-        static let lightPurple = UIColor(hexFromString: "c492bf")
+        static let purpleLight = UIColor(hexFromString: "c492bf")
         static let orange = UIColor(hexFromString: "FB6522")
-        static let lightOrange = UIColor(hexFromString: "FFA05E")
+        static let orangeLight = UIColor(hexFromString: "FFA05E")
         static let capGrey = UIColor(hexFromString: "363636")
         static let translucentWhite = UIColor(hexFromString: "FFFFFF").withAlphaComponent(0.9)
         
@@ -39,4 +39,8 @@ struct Theme {
         static let bodyLabelFont = UIFont(name: "Avenir-Light", size: 14)
         static let newRollTitleLabelFont = UIFont(name: "Avenir-Light", size: 10)
     }
+    
+    static var colorDictionary = [Theme.Color.red:"red", Theme.Color.orange:"orange", Theme.Color.yellow:"yellow", Theme.Color.green:"green", Theme.Color.blue:"blue", Theme.Color.magenta:"magenta", Theme.Color.purple:"purple"]
+    
+    static var lightColorDictionary = [Theme.Color.redLight:"red", Theme.Color.orangeLight:"orange", Theme.Color.yellow:"yellow", Theme.Color.green:"green", Theme.Color.blue:"blue", Theme.Color.magenta:"magenta", Theme.Color.purple:"purple"]
 }

@@ -63,9 +63,7 @@ class FilmTableViewController: UITableViewController {
             self.addFilmPopup.alpha = 0
         }
         addFilmPopup.endEditing(true)
-        
     }
-    
     @objc func saveTapped() {
         UIView.animate(withDuration: 0.5) {
             self.addFilmPopup.alpha = 0
@@ -127,7 +125,6 @@ class FilmTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         self.delegate?.childViewControllerResponse(response: cell?.textLabel?.text ?? "", selectedParentViewCellIndex: selectedParentViewCellIndex)
-        
         
         navigationController?.popViewController(animated: true)
     }
@@ -205,3 +202,4 @@ extension FilmTableViewController: UISearchResultsUpdating, UISearchBarDelegate 
     }
 
 }
+

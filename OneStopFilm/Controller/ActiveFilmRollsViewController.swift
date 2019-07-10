@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 class ActiveFilmRollsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
@@ -15,29 +15,8 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     
     var activeFilmRolls = [ActiveFilmRoll]()
     
-    func setupData() {
-//        let camera = Camera()
-//        camera.brand = "Pentax"
-//        camera.name = "K1000"
-//        
-//        let film = Film()
-//        film.brand = "Kodak"
-//        film.name = "Portra"
-//        
-//        let activeFilmRoll = ActiveFilmRoll()
-//        activeFilmRoll.title = "TRIP TO YOSEMITE"
-//        activeFilmRoll.film = film
-//        activeFilmRoll.filmSpeed = 400
-//        activeFilmRoll.frameCount = 24
-//        activeFilmRoll.completedFrames = 1
-//        activeFilmRoll.camera = camera
-//        activeFilmRoll.colorName = "yellow"
-//        activeFilmRoll.date = Date()
-//        
-//        activeFilmRolls = [activeFilmRoll]
-    }
-    
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +35,13 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
         collectionView.register(ActiveFilmRollCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0,right: 0)
-        
-        setupData()
+
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadItems()
+        collectionView.reloadData()
+    }
     
 
     
@@ -97,7 +79,16 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
         navigationController?.pushViewController(framesTableViewController, animated: true)
     }
     
-  
+    //MARK: Model Manipulation Methods
+    func loadItems(with request: NSFetchRequest<ActiveFilmRoll> = ActiveFilmRoll.fetchRequest()) {
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        do {
+            activeFilmRolls = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
 
 }
 

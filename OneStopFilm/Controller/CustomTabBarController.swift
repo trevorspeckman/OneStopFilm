@@ -40,7 +40,7 @@ class CustomTabBarController: UITabBarController {
         viewControllers = [logNavController, developNavController, archiveNavController, settingsNavController]
         
         tabBar.isTranslucent = true
-        tabBar.tintColor = Theme.Color.lightOrange
+        tabBar.tintColor = Theme.Color.orangeLight
     }
     
 

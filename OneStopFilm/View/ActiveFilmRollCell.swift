@@ -9,35 +9,6 @@
 import UIKit
 
 
-//class Film {
-//    var brand: String?
-//    var name: String?
-//}
-//
-//class Camera {
-//    var brand: String?
-//    var name: String?
-//}
-//
-//class Lens {
-//    var brand: String?
-//    var name: String?
-//    var focalLength: Int?
-//    var minAperature: Float?
-//    var maxAperature: Float?
-//}
-//
-//
-//class ActiveFilmRoll {
-//    var title: String?
-//    var film: Film?
-//    var filmSpeed: Int?
-//    var frameCount: Int?
-//    var completedFrames: Int?
-//    var camera: Camera?
-//    var colorName: String?
-//    var date: Date?
-//}
 
 class ActiveFilmRollCell: BaseCollectionViewCell {
     
@@ -57,16 +28,37 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
             }
             
             //filmLabel
-            filmLabel.titleLabel.text = "\(activeFilmRoll?.film?.brand ?? "?") \(activeFilmRoll?.film?.name ?? "?")"
+            filmLabel.titleLabel.text = "\(activeFilmRoll?.film ?? "?")"
             
             //cameraLabel
-            cameraLabel.titleLabel.text = "\(activeFilmRoll?.camera?.brand ?? "") \(activeFilmRoll?.camera?.name ?? "")"
+            cameraLabel.titleLabel.text = "\(activeFilmRoll?.camera ?? "")"
             
             //circularProggresBar
             if let currentFrame = activeFilmRoll?.completedFrames {
                 if let frameCount = activeFilmRoll?.frameCount {
                     circularProgressBar.progressLabel.text = "\(currentFrame)/\(frameCount)"
                     circularProgressBar.progressAngle = CGFloat(currentFrame) / CGFloat(frameCount) * 2*CGFloat.pi
+                }
+                
+                
+                //gradient color
+                switch activeFilmRoll?.colorName {
+                case "red" :
+                    gradient = Gradient(name: "red", color1: Theme.Color.red, color2: Theme.Color.redLight)
+                case "orange" :
+                    gradient = Gradient(name: "orange", color1: Theme.Color.orange, color2: Theme.Color.orangeLight)
+                case "yellow" :
+                    gradient = Gradient(name: "yellow", color1: Theme.Color.yellow, color2: Theme.Color.yellowLight)
+                case "green" :
+                    gradient = Gradient(name: "green", color1: Theme.Color.green, color2: Theme.Color.greenLight)
+                case "blue" :
+                    gradient = Gradient(name: "blue", color1: Theme.Color.blue, color2: Theme.Color.blueLight)
+                case "magenta" :
+                    gradient = Gradient(name: "magenta", color1: Theme.Color.magenta, color2: Theme.Color.magentaLight)
+                case "purple" :
+                    gradient = Gradient(name: "purple", color1: Theme.Color.purple, color2: Theme.Color.purpleLight)
+                default:
+                    return
                 }
             }
 
@@ -249,7 +241,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
 
     }
     
-    
+    var gradient = Gradient(name: "", color1: .clear, color2: .clear)
     
     //MARK: Setup gradients
     override func setupGradients() {
@@ -259,7 +251,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         
         topOfRoll.setGradientBackground(colorOne: .black, colorTwo: Theme.Color.capGrey, locations: [0.5,1], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 0, y: 1))
         
-        filmColor.setGradientBackground(colorOne: Theme.Color.yellow, colorTwo: Theme.Color.lightYellow, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
+        filmColor.setGradientBackground(colorOne: gradient.color1, colorTwo: gradient.color2, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
         
         labelBackground.setGradientBackground(colorOne: .black, colorTwo: Theme.Color.capGrey, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
 
