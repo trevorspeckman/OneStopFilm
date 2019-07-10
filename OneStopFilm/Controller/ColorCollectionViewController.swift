@@ -72,10 +72,9 @@ class ColorCollectionViewController: UICollectionViewController, UICollectionVie
         let yellowGradient = Gradient(name: "yellow", color1: Theme.Color.yellow, color2: Theme.Color.yellowLight)
         let greenGradient = Gradient(name: "green", color1: Theme.Color.green, color2: Theme.Color.greenLight)
         let blueGradient = Gradient(name: "blue", color1: Theme.Color.blue, color2: Theme.Color.blueLight)
-        let magentaGradient = Gradient(name: "magenta", color1: Theme.Color.magenta, color2: Theme.Color.magentaLight)
          let purpleGradient = Gradient(name: "purple", color1: Theme.Color.purple, color2: Theme.Color.purpleLight)
         
-        colors = [blackGrdient, redGradient,orangeGradient,yellowGradient,greenGradient,blueGradient,magentaGradient, purpleGradient]
+        colors = [blackGrdient, redGradient,orangeGradient,yellowGradient,greenGradient,blueGradient, purpleGradient]
     }
 
 }

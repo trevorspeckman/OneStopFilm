@@ -13,12 +13,22 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
 
     
     
-    var activeFilmRolls = [ActiveFilmRoll]()
+    var activeFilmRolls = [ActiveFilmRoll]() {
+        didSet{
+            if activeFilmRolls.count == 0 {
+                isEditing = false
+                navigationItem.leftBarButtonItem?.isEnabled = false
+            } else {
+                navigationItem.leftBarButtonItem?.isEnabled = true
+            }
+            
+        }
+    }
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 
-    
+    let hasCells: Bool = true
     
     
     
@@ -34,9 +44,9 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
         loadItems()
         collectionView.reloadData()
         
-        if activeFilmRolls.count != 0 {
-            navigationItem.leftBarButtonItem = editButtonItem
-        }
+        
+       
+        
     }
     
 
@@ -81,6 +91,8 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
             }
         }
         
+
+        
     }
     
     //MARK: DelegateFlowLayout Methods
@@ -99,7 +111,7 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
         navigationItem.title = "CURRENT ROLLS"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: Theme.Font.titleFont!]
         self.navigationController?.navigationBar.tintColor = .black
-        
+        navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
     }
     

@@ -47,8 +47,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
             }
             
             //xButtonContainer
-            
-            xButtonContainer.isHidden = !isEditing
+            xButtonContainer.isHidden = true
             
             
             //gradient color
@@ -65,8 +64,6 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
                 gradient = Gradient(name: "green", color1: Theme.Color.green, color2: Theme.Color.greenLight)
             case "blue" :
                 gradient = Gradient(name: "blue", color1: Theme.Color.blue, color2: Theme.Color.blueLight)
-            case "magenta" :
-                gradient = Gradient(name: "magenta", color1: Theme.Color.magenta, color2: Theme.Color.magentaLight)
             case "purple" :
                 gradient = Gradient(name: "purple", color1: Theme.Color.purple, color2: Theme.Color.purpleLight)
             default:
