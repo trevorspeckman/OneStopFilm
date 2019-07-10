@@ -44,7 +44,7 @@ class ColorCollectionViewController: UICollectionViewController, UICollectionVie
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 6
+        return Theme.colorDictionary.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -66,6 +66,7 @@ class ColorCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func createGradients() {
+        let blackGrdient = Gradient(name: "black", color1: Theme.Color.black, color2: Theme.Color.blackLight)
         let redGradient = Gradient(name: "red", color1: Theme.Color.red, color2: Theme.Color.redLight)
         let orangeGradient = Gradient(name: "orange", color1: Theme.Color.orange, color2: Theme.Color.orangeLight)
         let yellowGradient = Gradient(name: "yellow", color1: Theme.Color.yellow, color2: Theme.Color.yellowLight)
@@ -74,7 +75,7 @@ class ColorCollectionViewController: UICollectionViewController, UICollectionVie
         let magentaGradient = Gradient(name: "magenta", color1: Theme.Color.magenta, color2: Theme.Color.magentaLight)
          let purpleGradient = Gradient(name: "purple", color1: Theme.Color.purple, color2: Theme.Color.purpleLight)
         
-        colors = [redGradient,orangeGradient,yellowGradient,greenGradient,blueGradient,magentaGradient, purpleGradient]
+        colors = [blackGrdient, redGradient,orangeGradient,yellowGradient,greenGradient,blueGradient,magentaGradient, purpleGradient]
     }
 
 }

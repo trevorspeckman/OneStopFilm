@@ -17,6 +17,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         setupGradients()
+        roundCorners()
     }
     
     func setupViews() {
@@ -24,6 +25,10 @@ class BaseCollectionViewCell: UICollectionViewCell {
     }
     
     func setupGradients() {
+        
+    }
+    
+    func roundCorners() {
         
     }
     

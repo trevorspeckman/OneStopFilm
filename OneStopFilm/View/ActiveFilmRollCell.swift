@@ -8,9 +8,14 @@
 
 import UIKit
 
-
+protocol ActiveFilmRollCellDelegate: class {
+    func delete(cell: ActiveFilmRollCell)
+}
 
 class ActiveFilmRollCell: BaseCollectionViewCell {
+    
+    
+    weak var delegate: ActiveFilmRollCellDelegate?
     
 //MARK: Fill Cell from Model
     var activeFilmRoll: ActiveFilmRoll? {
@@ -39,37 +44,47 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
                     circularProgressBar.progressLabel.text = "\(currentFrame)/\(frameCount)"
                     circularProgressBar.progressAngle = CGFloat(currentFrame) / CGFloat(frameCount) * 2*CGFloat.pi
                 }
-                
-                
-                //gradient color
-                switch activeFilmRoll?.colorName {
-                case "red" :
-                    gradient = Gradient(name: "red", color1: Theme.Color.red, color2: Theme.Color.redLight)
-                case "orange" :
-                    gradient = Gradient(name: "orange", color1: Theme.Color.orange, color2: Theme.Color.orangeLight)
-                case "yellow" :
-                    gradient = Gradient(name: "yellow", color1: Theme.Color.yellow, color2: Theme.Color.yellowLight)
-                case "green" :
-                    gradient = Gradient(name: "green", color1: Theme.Color.green, color2: Theme.Color.greenLight)
-                case "blue" :
-                    gradient = Gradient(name: "blue", color1: Theme.Color.blue, color2: Theme.Color.blueLight)
-                case "magenta" :
-                    gradient = Gradient(name: "magenta", color1: Theme.Color.magenta, color2: Theme.Color.magentaLight)
-                case "purple" :
-                    gradient = Gradient(name: "purple", color1: Theme.Color.purple, color2: Theme.Color.purpleLight)
-                default:
-                    return
-                }
+            }
+            
+            //xButtonContainer
+            
+            xButtonContainer.isHidden = !isEditing
+            
+            
+            //gradient color
+            switch activeFilmRoll?.colorName {
+            case "black" :
+                gradient = Gradient(name: "black", color1: Theme.Color.black, color2: Theme.Color.blackLight)
+            case "red" :
+                gradient = Gradient(name: "red", color1: Theme.Color.red, color2: Theme.Color.redLight)
+            case "orange" :
+                gradient = Gradient(name: "orange", color1: Theme.Color.orange, color2: Theme.Color.orangeLight)
+            case "yellow" :
+                gradient = Gradient(name: "yellow", color1: Theme.Color.yellow, color2: Theme.Color.yellowLight)
+            case "green" :
+                gradient = Gradient(name: "green", color1: Theme.Color.green, color2: Theme.Color.greenLight)
+            case "blue" :
+                gradient = Gradient(name: "blue", color1: Theme.Color.blue, color2: Theme.Color.blueLight)
+            case "magenta" :
+                gradient = Gradient(name: "magenta", color1: Theme.Color.magenta, color2: Theme.Color.magentaLight)
+            case "purple" :
+                gradient = Gradient(name: "purple", color1: Theme.Color.purple, color2: Theme.Color.purpleLight)
+            default:
+                return
             }
 
         }
     }
     
+    var isEditing: Bool = false {
+        didSet{
+            xButtonContainer.isHidden = !isEditing
+        }
+    }
     
 //MARK: Subview definitions
     let bottomCap: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.black
         view.layer.cornerRadius = 3
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +93,6 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     
     let topCap: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.black
         view.layer.cornerRadius = 3
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +101,6 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     
     let topOfRoll: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.black
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
         
@@ -95,23 +108,18 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     
     let filmColor: UIView = {
         let view = UIView()
-        //view.backgroundColor = Theme.Color.yellow
-
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     let labelBackground: UIView = {
         let view = UIView()
-        view.backgroundColor = Theme.Color.labelBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        //label.backgroundColor = UIColor.green
-        //label.text = "TRIP TO YOSEMITE"
         label.font = Theme.Font.titleLabelFont!
         label.textColor = UIColor.white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -120,8 +128,6 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     
     let dateLabel: LabelWithImageView = {
         let label = LabelWithImageView()
-//        label.backgroundColor = UIColor.green
-        
         label.titleLabel.font = Theme.Font.bodyLabelFont!
         label.titleLabel.textColor = UIColor.white
         label.viewColor = .white
@@ -132,7 +138,6 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     
     let filmLabel: LabelWithImageView = {
         let label = LabelWithImageView()
-//        label.backgroundColor = UIColor.blue
         label.titleLabel.font = Theme.Font.bodyLabelFont!
         label.titleLabel.textColor = UIColor.white
         label.viewColor = .white
@@ -143,7 +148,6 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     
     let cameraLabel: LabelWithImageView = {
         let label = LabelWithImageView()
-//        label.backgroundColor = UIColor.red
         label.titleLabel.font = Theme.Font.bodyLabelFont!
         label.titleLabel.textColor = UIColor.white
         label.viewColor = .white
@@ -165,12 +169,29 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     
     let circularProgressBar: CircularProgressBar = {
         let view =  CircularProgressBar()
-        //view.backgroundColor = UIColor.green
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
+    let xButtonContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = Theme.Color.redLight
+        view.layer.shadowRadius = 6
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
+    let xButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "icon_x")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    @objc func xButtonTapped() {
+       delegate?.delete(cell: self)
+    }
     
     
     
@@ -179,6 +200,8 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     //MARK: Setup constraints
     override func setupViews() {
 
+        xButton.addTarget(self, action: #selector(xButtonTapped), for: .touchUpInside)
+        
         addSubview(bottomCap)
         addSubview(topCap)
         addSubview(topOfRoll)
@@ -186,8 +209,9 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         addSubview(labelBackground)
         addSubview(titleLabel)
         addSubview(stackView)
-        
         addSubview(circularProgressBar)
+        addSubview(xButtonContainer)
+        xButtonContainer.addSubview(xButton)
         
         //bottomCap constraints
         bottomCap.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -238,6 +262,22 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         circularProgressBar.heightAnchor.constraint(equalToConstant: 58).isActive = true
         circularProgressBar.widthAnchor.constraint(equalToConstant: 58).isActive = true
         
+        //xbuttonContainer constraints
+        xButtonContainer.centerYAnchor.constraint(equalTo: topCap.topAnchor, constant: 5).isActive = true
+        xButtonContainer.centerXAnchor.constraint(equalTo: topCap.centerXAnchor).isActive = true
+        xButtonContainer.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        xButtonContainer.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        
+        //xButton constraints
+        xButton.centerYAnchor.constraint(equalTo: xButtonContainer.centerYAnchor).isActive = true
+        xButton.centerXAnchor.constraint(equalTo: xButtonContainer.centerXAnchor).isActive = true
+        xButton.heightAnchor.constraint(equalTo: xButtonContainer.heightAnchor, multiplier: 0.5).isActive = true
+        xButton.widthAnchor.constraint(equalTo: xButtonContainer.widthAnchor, multiplier: 0.5).isActive = true
+        
+        
+        
+        
 
     }
     
@@ -257,4 +297,23 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
 
         
     }
+    
+    override func roundCorners() {
+        
+        let cornerRadius = xButtonContainer.bounds.width/2
+        xButtonContainer.layer.cornerRadius = cornerRadius
+
+
+        // corner radius
+        xButtonContainer.layer.cornerRadius = cornerRadius
+        
+
+        
+        // shadow
+        xButtonContainer.layer.shadowColor = UIColor.black.cgColor
+        xButtonContainer.layer.shadowOffset = CGSize(width: -3, height: 3)
+        xButtonContainer.layer.shadowOpacity = 0.7
+        xButtonContainer.layer.shadowRadius = 4.0
+    }
+    
 }

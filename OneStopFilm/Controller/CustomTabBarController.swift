@@ -14,6 +14,7 @@ class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         
         let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 15
         let currentRolls = ActiveFilmRollsViewController(collectionViewLayout: layout)
         let logNavController = UINavigationController(rootViewController: currentRolls)
         

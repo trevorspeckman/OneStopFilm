@@ -11,6 +11,8 @@ import UIKit
 struct Theme {
     struct Color {
         static let background = UIColor(hexFromString: "EEEEEE")
+        static let black = UIColor(hexFromString: "000000")
+        static let blackLight = UIColor(hexFromString: "8D8D8D")
         static let labelBackground = UIColor(hexFromString: "343434")
         static let green = UIColor(hexFromString: "01A13A")
         static let greenLight = UIColor(hexFromString: "54D683")
@@ -27,7 +29,8 @@ struct Theme {
         static let orange = UIColor(hexFromString: "FB6522")
         static let orangeLight = UIColor(hexFromString: "FFA05E")
         static let capGrey = UIColor(hexFromString: "363636")
-        static let translucentWhite = UIColor(hexFromString: "FFFFFF").withAlphaComponent(0.9)
+        static let translucentWhite = UIColor(hexFromString: "FFFFFF").withAlphaComponent(0.7)
+        
         
     }
     
@@ -40,7 +43,7 @@ struct Theme {
         static let newRollTitleLabelFont = UIFont(name: "Avenir-Light", size: 10)
     }
     
-    static var colorDictionary = [Theme.Color.red:"red", Theme.Color.orange:"orange", Theme.Color.yellow:"yellow", Theme.Color.green:"green", Theme.Color.blue:"blue", Theme.Color.magenta:"magenta", Theme.Color.purple:"purple"]
+    static var colorDictionary = [Theme.Color.black:"black", Theme.Color.red:"red", Theme.Color.orange:"orange", Theme.Color.yellow:"yellow", Theme.Color.green:"green", Theme.Color.blue:"blue", Theme.Color.magenta:"magenta", Theme.Color.purple:"purple"]
     
-    static var lightColorDictionary = [Theme.Color.redLight:"red", Theme.Color.orangeLight:"orange", Theme.Color.yellow:"yellow", Theme.Color.green:"green", Theme.Color.blue:"blue", Theme.Color.magenta:"magenta", Theme.Color.purple:"purple"]
+    static var lightColorDictionary = [Theme.Color.blackLight:"black",Theme.Color.redLight:"red", Theme.Color.orangeLight:"orange", Theme.Color.yellow:"yellow", Theme.Color.green:"green", Theme.Color.blue:"blue", Theme.Color.magenta:"magenta", Theme.Color.purple:"purple"]
 }

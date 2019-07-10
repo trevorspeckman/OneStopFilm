@@ -17,30 +17,26 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
+
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //setup navigation bar
-        navigationItem.title = "CURRENT ROLLS"
-        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: Theme.Font.titleFont!]
-        self.navigationController?.navigationBar.tintColor = .black
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-
-
-        
-        //setup Collection View
-        collectionView.backgroundColor = Theme.Color.background
-        collectionView.register(ActiveFilmRollCell.self, forCellWithReuseIdentifier: "cellId")
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0,right: 0)
+        setupNavBar()
+        setupCollectionView()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadItems()
         collectionView.reloadData()
+        
+        if activeFilmRolls.count != 0 {
+            navigationItem.leftBarButtonItem = editButtonItem
+        }
     }
     
 
@@ -52,6 +48,7 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
         
     }
     
+    
     //MARK: DataSource Methods
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return activeFilmRolls.count
@@ -62,11 +59,28 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
         
         cell.layer.shouldRasterize = true;
         cell.layer.rasterizationScale = UIScreen.main.scale
-        
+        cell.delegate = self
         cell.activeFilmRoll = activeFilmRolls[indexPath.row]
             
         
         return cell
+    }
+    
+    
+    //MARK: Delete Items
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        navigationItem.rightBarButtonItem?.isEnabled = !editing
+        collectionView.allowsSelection = !editing
+        if let indexPaths = collectionView?.indexPathsForVisibleItems {
+            for indexPath in indexPaths {
+                if let cell = collectionView?.cellForItem(at: indexPath) as? ActiveFilmRollCell {
+                    cell.isEditing = editing
+                }
+            }
+        }
+        
     }
     
     //MARK: DelegateFlowLayout Methods
@@ -79,7 +93,35 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
         navigationController?.pushViewController(framesTableViewController, animated: true)
     }
     
+    
+    
+    fileprivate func setupNavBar() {
+        navigationItem.title = "CURRENT ROLLS"
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: Theme.Font.titleFont!]
+        self.navigationController?.navigationBar.tintColor = .black
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+    }
+    
+    fileprivate func setupCollectionView() {
+        collectionView.backgroundColor = Theme.Color.background
+        collectionView.register(ActiveFilmRollCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0,right: 0)
+    }
+    
+    
     //MARK: Model Manipulation Methods
+    func saveItems() {
+        
+        do{
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+        
+    }
+    
     func loadItems(with request: NSFetchRequest<ActiveFilmRoll> = ActiveFilmRoll.fetchRequest()) {
         
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
@@ -92,3 +134,17 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
 
 }
 
+
+//MARK: ActiveFilmRollCellDelegate Methods
+extension ActiveFilmRollsViewController: ActiveFilmRollCellDelegate {
+    func delete(cell: ActiveFilmRollCell) {
+        if let indexPath = collectionView?.indexPath(for: cell) {
+            context.delete(activeFilmRolls[indexPath.row])
+            saveItems()
+            loadItems()
+            collectionView.deleteItems(at: [indexPath])
+        }
+    }
+    
+    
+}
