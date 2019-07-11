@@ -28,10 +28,6 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 
-    let hasCells: Bool = true
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,10 +39,7 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     override func viewWillAppear(_ animated: Bool) {
         loadItems()
         collectionView.reloadData()
-        
-        
-       
-        
+
     }
     
 

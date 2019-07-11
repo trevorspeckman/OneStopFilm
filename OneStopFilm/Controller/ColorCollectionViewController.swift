@@ -13,9 +13,9 @@ class ColorCollectionViewController: UICollectionViewController, UICollectionVie
 
     var colors = [Gradient]()
     
-//    let lightColors: [UIColor] = [Theme.Color.redLight, Theme.Color.orangeLight, Theme.Color.yellowLight, Theme.Color.greenLight, Theme.Color.blueLight, Theme.Color.magentaLight, Theme.Color.purpleLight]
     
     var selectedParentViewCellIndex = 0
+    
     var delegate: ChildViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class ColorCollectionViewController: UICollectionViewController, UICollectionVie
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return Theme.colorDictionary.count
+        return colors.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -72,7 +72,7 @@ class ColorCollectionViewController: UICollectionViewController, UICollectionVie
         let yellowGradient = Gradient(name: "yellow", color1: Theme.Color.yellow, color2: Theme.Color.yellowLight)
         let greenGradient = Gradient(name: "green", color1: Theme.Color.green, color2: Theme.Color.greenLight)
         let blueGradient = Gradient(name: "blue", color1: Theme.Color.blue, color2: Theme.Color.blueLight)
-         let purpleGradient = Gradient(name: "purple", color1: Theme.Color.purple, color2: Theme.Color.purpleLight)
+        let purpleGradient = Gradient(name: "purple", color1: Theme.Color.purple, color2: Theme.Color.purpleLight)
         
         colors = [blackGrdient, redGradient,orangeGradient,yellowGradient,greenGradient,blueGradient, purpleGradient]
     }

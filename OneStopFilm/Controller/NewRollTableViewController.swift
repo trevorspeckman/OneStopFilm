@@ -13,10 +13,7 @@ import CoreData
 
 class NewRollTableViewController: UITableViewController, ChildViewControllerDelegate, NewRollTextFieldTableViewCellDelegate {
     
-    
-    
 
-    
     let newRollModel = NewRollModel()
     var filmResponseText = "FILM"
     var cameraResponseText = "CAMERA"

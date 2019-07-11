@@ -51,26 +51,16 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
             
             
             //gradient color
-            switch activeFilmRoll?.colorName {
-            case "black" :
-                gradient = Gradient(name: "black", color1: Theme.Color.black, color2: Theme.Color.blackLight)
-            case "red" :
-                gradient = Gradient(name: "red", color1: Theme.Color.red, color2: Theme.Color.redLight)
-            case "orange" :
-                gradient = Gradient(name: "orange", color1: Theme.Color.orange, color2: Theme.Color.orangeLight)
-            case "yellow" :
-                gradient = Gradient(name: "yellow", color1: Theme.Color.yellow, color2: Theme.Color.yellowLight)
-            case "green" :
-                gradient = Gradient(name: "green", color1: Theme.Color.green, color2: Theme.Color.greenLight)
-            case "blue" :
-                gradient = Gradient(name: "blue", color1: Theme.Color.blue, color2: Theme.Color.blueLight)
-            case "purple" :
-                gradient = Gradient(name: "purple", color1: Theme.Color.purple, color2: Theme.Color.purpleLight)
-            default:
-                return
+            guard let colorName = activeFilmRoll?.colorName else {print("error: no colorName"); return}
+            if let dictionaryName = Theme.Color.gradientDictionary[colorName] {
+                let color1 = dictionaryName[0]
+                let color2 = dictionaryName[1]
+                gradient = Gradient(name: colorName, color1: color1, color2: color2)
             }
 
+            
         }
+
     }
     
     var isEditing: Bool = false {
@@ -262,8 +252,8 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         //xbuttonContainer constraints
         xButtonContainer.centerYAnchor.constraint(equalTo: topCap.topAnchor, constant: 5).isActive = true
         xButtonContainer.centerXAnchor.constraint(equalTo: topCap.centerXAnchor).isActive = true
-        xButtonContainer.widthAnchor.constraint(equalToConstant: 35).isActive = true
-        xButtonContainer.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        xButtonContainer.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        xButtonContainer.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         
         //xButton constraints

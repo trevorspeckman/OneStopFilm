@@ -29,6 +29,15 @@ struct Theme {
         static let capGrey = UIColor(hexFromString: "363636")
         static let translucentWhite = UIColor(hexFromString: "FFFFFF").withAlphaComponent(0.7)
         
+        static var gradientDictionary = [
+            "black" : [Theme.Color.black, Theme.Color.blackLight],
+            "red" : [Theme.Color.red, Theme.Color.redLight],
+            "orange" : [Theme.Color.orange, Theme.Color.orangeLight],
+            "yellow" : [Theme.Color.yellow, Theme.Color.yellowLight],
+            "green" : [Theme.Color.green, Theme.Color.greenLight],
+            "blue" : [Theme.Color.blue, Theme.Color.blueLight],
+            "purple" : [Theme.Color.purple, Theme.Color.purpleLight]
+        ]
         
     }
     
@@ -41,7 +50,6 @@ struct Theme {
         static let newRollTitleLabelFont = UIFont(name: "Avenir-Light", size: 10)
     }
     
-    static var colorDictionary = [Theme.Color.black:"black", Theme.Color.red:"red", Theme.Color.orange:"orange", Theme.Color.yellow:"yellow", Theme.Color.green:"green", Theme.Color.blue:"blue", Theme.Color.purple:"purple"]
     
-    static var lightColorDictionary = [Theme.Color.blackLight:"black",Theme.Color.redLight:"red", Theme.Color.orangeLight:"orange", Theme.Color.yellow:"yellow", Theme.Color.green:"green", Theme.Color.blue:"blue", Theme.Color.purple:"purple"]
+
 }
