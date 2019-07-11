@@ -10,6 +10,13 @@ import UIKit
 
 class FramesTableViewCell: BaseTableViewCell, ConfigurableCell {
 
+    
+    
+ 
+    
+    
+    
+    
 //MARK: Subview Initialization
     let numberLabel: UILabel = {
         let label = UILabel()

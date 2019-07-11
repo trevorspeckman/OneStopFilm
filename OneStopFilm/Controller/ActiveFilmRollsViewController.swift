@@ -95,6 +95,10 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let framesTableViewController = FramesTableViewController()
+        
+        if let colorName = activeFilmRolls[indexPath.row].colorName {
+            framesTableViewController.navBarColorName = colorName
+        }
         navigationController?.pushViewController(framesTableViewController, animated: true)
     }
     

@@ -12,6 +12,14 @@ class FramesTableViewController: UITableViewController {
 
     let framesTableModel = FramesTableModel()
     
+    var navBarColorName = "" {
+        didSet{
+            if let pageColorName = Theme.Color.gradientDictionary[navBarColorName] {
+                let pageColor = pageColorName[0]
+                self.navigationController?.navigationBar.barTintColor = pageColor
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +30,9 @@ class FramesTableViewController: UITableViewController {
     }
     
     override func willMove(toParent parent: UIViewController?) {
-        navigationController?.navigationBar.barTintColor = .white
+        if let navigationBar = self.navigationController?.navigationBar {
+                navigationBar.setGradientBackgroundImage(colorOne: .white, colorTwo: .white)
+        }
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: Theme.Font.titleFont!]
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.barStyle = .default
@@ -70,13 +80,26 @@ class FramesTableViewController: UITableViewController {
     fileprivate func setupNavBar() {
         navigationItem.title = "TRIP TO YOSEMITE"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: Theme.Font.titleFont!]
-        self.navigationController?.navigationBar.barTintColor = Theme.Color.yellow
+        if let navigationBar = self.navigationController?.navigationBar {
+            if let gradientColors = Theme.Color.gradientDictionary[navBarColorName]{
+               navigationBar.setGradientBackgroundImage(colorOne: gradientColors[0], colorTwo: gradientColors[1])
+            }
+        }
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barStyle = .black
     }
     
-    
+    func getImageFrom(gradientLayer:CAGradientLayer) -> UIImage? {
+        var gradientImage:UIImage?
+        UIGraphicsBeginImageContext(gradientLayer.frame.size)
+        if let context = UIGraphicsGetCurrentContext() {
+            gradientLayer.render(in: context)
+            gradientImage = UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch)
+        }
+        UIGraphicsEndImageContext()
+        return gradientImage
+    }
     
     fileprivate func setupTableView() {
         tableView.tableFooterView = UIView()

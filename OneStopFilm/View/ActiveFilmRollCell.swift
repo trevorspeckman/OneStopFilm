@@ -20,10 +20,10 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
 //MARK: Fill Cell from Model
     var activeFilmRoll: ActiveFilmRoll? {
         didSet{
-            //titleLabel
+            // titleLabel
             titleLabel.text = activeFilmRoll?.title
             
-            //dateLabel
+            // dateLabel
             if let date = activeFilmRoll?.date {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .medium
@@ -32,13 +32,13 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
                 dateLabel.titleLabel.text = dateFormatter.string(from: date)
             }
             
-            //filmLabel
+            // filmLabel
             filmLabel.titleLabel.text = "\(activeFilmRoll?.film ?? "?")"
             
-            //cameraLabel
+            // cameraLabel
             cameraLabel.titleLabel.text = "\(activeFilmRoll?.camera ?? "")"
             
-            //circularProggresBar
+            // circularProggresBar
             if let currentFrame = activeFilmRoll?.completedFrames {
                 if let frameCount = activeFilmRoll?.frameCount {
                     circularProgressBar.progressLabel.text = "\(currentFrame)/\(frameCount)"
@@ -46,11 +46,11 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
                 }
             }
             
-            //xButtonContainer
+            // xButtonContainer
             xButtonContainer.isHidden = true
             
             
-            //gradient color
+            // gradient color
             guard let colorName = activeFilmRoll?.colorName else {print("error: no colorName"); return}
             if let dictionaryName = Theme.Color.gradientDictionary[colorName] {
                 let color1 = dictionaryName[0]
@@ -69,7 +69,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         }
     }
     
-//MARK: Subview definitions
+// MARK: Subview definitions
     let bottomCap: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 3
@@ -184,7 +184,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     
     
     
-    //MARK: Setup constraints
+    // MARK: Setup constraints
     override func setupViews() {
 
         xButton.addTarget(self, action: #selector(xButtonTapped), for: .touchUpInside)
@@ -200,63 +200,63 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         addSubview(xButtonContainer)
         xButtonContainer.addSubview(xButton)
         
-        //bottomCap constraints
+        // bottomCap constraints
         bottomCap.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         bottomCap.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         bottomCap.widthAnchor.constraint(equalToConstant: 12).isActive = true
         bottomCap.heightAnchor.constraint(equalToConstant: 180).isActive = true
         
-        //topOfROll constraints
+        // topOfROll constraints
         topOfRoll.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         topOfRoll.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         topOfRoll.widthAnchor.constraint(equalToConstant: 18).isActive = true
         topOfRoll.heightAnchor.constraint(equalToConstant: 84).isActive = true
         
-        //topCap constraints
+        // topCap constraints
         topCap.trailingAnchor.constraint(equalTo: topOfRoll.leadingAnchor).isActive = true
         topCap.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         topCap.widthAnchor.constraint(equalToConstant: 12).isActive = true
         topCap.heightAnchor.constraint(equalToConstant: 180).isActive = true
         
-        //filmcolor constraints
+        // filmcolor constraints
         filmColor.leadingAnchor.constraint(equalTo: bottomCap.trailingAnchor).isActive = true
         filmColor.trailingAnchor.constraint(equalTo: topCap.leadingAnchor).isActive = true
         filmColor.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
         filmColor.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4).isActive = true
 
-        //labelBackground constraints
+        // labelBackground constraints
         labelBackground.leadingAnchor.constraint(equalTo: bottomCap.trailingAnchor).isActive = true
         labelBackground.trailingAnchor.constraint(equalTo: topCap.leadingAnchor).isActive = true
         labelBackground.topAnchor.constraint(equalTo: topAnchor, constant: 63).isActive = true
         labelBackground.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4).isActive = true
 
         
-        //titleLabel constraints
+        // titleLabel constraints
         titleLabel.leadingAnchor.constraint(equalTo: labelBackground.leadingAnchor,constant: 10).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: labelBackground.trailingAnchor,constant: -10).isActive = true
         titleLabel.topAnchor.constraint(equalTo: labelBackground.topAnchor,constant: 10).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-        //stackView constraints
+        // stackView constraints
         stackView.leadingAnchor.constraint(equalTo: labelBackground.leadingAnchor,constant: 10).isActive = true
             stackView.trailingAnchor.constraint(equalTo: circularProgressBar.leadingAnchor,constant: -10).isActive = true
             stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
             stackView.bottomAnchor.constraint(equalTo: labelBackground.bottomAnchor,constant: -10 ).isActive = true
         
-        //progressRingContainer constraints
+        // progressRingContainer constraints
         circularProgressBar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         circularProgressBar.trailingAnchor.constraint(equalTo: labelBackground.trailingAnchor,constant: -16).isActive = true
         circularProgressBar.heightAnchor.constraint(equalToConstant: 58).isActive = true
         circularProgressBar.widthAnchor.constraint(equalToConstant: 58).isActive = true
         
-        //xbuttonContainer constraints
+        // xbuttonContainer constraints
         xButtonContainer.centerYAnchor.constraint(equalTo: topCap.topAnchor, constant: 5).isActive = true
         xButtonContainer.centerXAnchor.constraint(equalTo: topCap.centerXAnchor).isActive = true
         xButtonContainer.widthAnchor.constraint(equalToConstant: 30).isActive = true
         xButtonContainer.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         
-        //xButton constraints
+        // xButton constraints
         xButton.centerYAnchor.constraint(equalTo: xButtonContainer.centerYAnchor).isActive = true
         xButton.centerXAnchor.constraint(equalTo: xButtonContainer.centerXAnchor).isActive = true
         xButton.heightAnchor.constraint(equalTo: xButtonContainer.heightAnchor, multiplier: 0.5).isActive = true
@@ -270,7 +270,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     
     var gradient = Gradient(name: "", color1: .clear, color2: .clear)
     
-    //MARK: Setup gradients
+    // MARK: Setup gradients
     override func setupGradients() {
         bottomCap.setGradientBackground(colorOne: .black, colorTwo: Theme.Color.capGrey, locations: [0.5,1], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 0, y: 1))
         

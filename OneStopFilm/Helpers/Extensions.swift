@@ -67,7 +67,7 @@ extension UILabel {
     }
 }
 
-//MARK: Add gradient backgrounds
+// MARK: Add gradient backgrounds to UIViews
 
 extension UIView {
     func setGradientBackground(colorOne: UIColor, colorTwo: UIColor, locations: [NSNumber], startPoint: CGPoint, endPoint: CGPoint) {
@@ -78,9 +78,39 @@ extension UIView {
         gradientLayer.startPoint = startPoint
         gradientLayer.endPoint = endPoint
         self.layer.addSublayer(gradientLayer)
-//        layer.insertSublayer(
-//            gradientLayer, at: 0)
     }
+}
+
+// MARK: Add gradient backgrounds to Navigation Bar
+extension UINavigationBar {
+    
+    func getImageFrom(gradientLayer:CAGradientLayer) -> UIImage? {
+        var gradientImage:UIImage?
+        UIGraphicsBeginImageContext(gradientLayer.frame.size)
+        if let context = UIGraphicsGetCurrentContext() {
+            gradientLayer.render(in: context)
+            gradientImage = UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch)
+        }
+        UIGraphicsEndImageContext()
+        return gradientImage
+    }
+    
+    func setGradientBackgroundImage(colorOne: UIColor, colorTwo: UIColor) {
+        let gradient = CAGradientLayer()
+        var bounds = self.bounds
+        bounds.size.height += UIApplication.shared.statusBarFrame.size.height
+        gradient.frame = bounds
+        gradient.colors = [colorOne.cgColor, colorTwo.cgColor]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 0)
+        
+        if let image = getImageFrom(gradientLayer: gradient) {
+            self.setBackgroundImage(image, for: UIBarMetrics.default)
+        }
+        
+        
+    }
+
 }
 
 //Mark: Fade in and out animation
