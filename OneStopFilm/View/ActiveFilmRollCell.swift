@@ -48,15 +48,6 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
             
             // xButtonContainer
             xButtonContainer.isHidden = true
-            
-            
-            // gradient color
-            guard let colorName = activeFilmRoll?.colorName else {print("error: no colorName"); return}
-            if let dictionaryName = Color.gradientDictionary[colorName] {
-                let color1 = dictionaryName[0]
-                let color2 = dictionaryName[1]
-                gradient = Gradient(name: colorName, color1: color1, color2: color2)
-            }
 
             
         }
@@ -268,7 +259,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
 
     }
     
-    var gradient = Gradient(name: "", color1: .clear, color2: .clear)
+    
     
     // MARK: Setup gradients
     override func setupGradients() {
@@ -278,7 +269,11 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         
         topOfRoll.setGradientBackground(colorOne: .black, colorTwo: Color.capGrey, locations: [0.5,1], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 0, y: 1))
         
-        filmColor.setGradientBackground(colorOne: gradient.color1, colorTwo: gradient.color2, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
+        if let colorName = activeFilmRoll?.colorName {
+            if let dictionaryName = Color.gradientDictionary[colorName] {
+                filmColor.setGradientBackground(colorOne: dictionaryName.colorOne, colorTwo: dictionaryName.colorTwo, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
+            }
+        }
         
         labelBackground.setGradientBackground(colorOne: .black, colorTwo: Color.capGrey, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
 

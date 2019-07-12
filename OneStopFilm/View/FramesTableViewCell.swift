@@ -15,11 +15,17 @@ class FramesTableViewCell: BaseTableViewCell {
 //MARK: Subview Initialization
     let numberLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = ActiveRollTheme.current.colorOne
         label.text = "1"
+        label.textColor = Theme.current.textColor
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    let numberLabelContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     let aperatureLabel: LabelWithImageView = {
@@ -72,7 +78,8 @@ class FramesTableViewCell: BaseTableViewCell {
         
         //self.accessoryType = .disclosureIndicator
         
-        addSubview(numberLabel)
+        addSubview(numberLabelContainer)
+        numberLabelContainer.addSubview(numberLabel)
         addSubview(aperatureLabel)
         addSubview(shutterSpeedLabel)
         addSubview(dateLabel)
@@ -80,35 +87,47 @@ class FramesTableViewCell: BaseTableViewCell {
         
         
 
-        numberLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        numberLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        numberLabel.widthAnchor.constraint(equalToConstant: 35).isActive = true
-        numberLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        numberLabelContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        numberLabelContainer.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        numberLabelContainer.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        numberLabelContainer.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        
+        numberLabel.centerXAnchor.constraint(equalTo: numberLabelContainer.centerXAnchor).isActive = true
+        numberLabel.centerYAnchor.constraint(equalTo: numberLabelContainer.centerYAnchor).isActive = true
+        
         
         
         aperatureLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        aperatureLabel.leadingAnchor.constraint(equalTo: numberLabel.trailingAnchor, constant: 10).isActive = true
+        aperatureLabel.leadingAnchor.constraint(equalTo: numberLabelContainer.trailingAnchor, constant: 10).isActive = true
         aperatureLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25).isActive = true
-        aperatureLabel.heightAnchor.constraint(equalTo: numberLabel.heightAnchor).isActive = true
+        aperatureLabel.heightAnchor.constraint(equalTo: numberLabelContainer.heightAnchor).isActive = true
         
         
         shutterSpeedLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         shutterSpeedLabel.leadingAnchor.constraint(equalTo: aperatureLabel.trailingAnchor).isActive = true
          shutterSpeedLabel.widthAnchor.constraint(equalTo: aperatureLabel.widthAnchor).isActive = true
-        shutterSpeedLabel.heightAnchor.constraint(equalTo: numberLabel.heightAnchor).isActive = true
+        shutterSpeedLabel.heightAnchor.constraint(equalTo: numberLabelContainer.heightAnchor).isActive = true
         
         
         
         dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         dateLabel.leadingAnchor.constraint(equalTo: shutterSpeedLabel.trailingAnchor).isActive = true
         dateLabel.widthAnchor.constraint(equalTo: aperatureLabel.widthAnchor).isActive = true
-        dateLabel.heightAnchor.constraint(equalTo: numberLabel.heightAnchor).isActive = true
+        dateLabel.heightAnchor.constraint(equalTo: numberLabelContainer.heightAnchor).isActive = true
         
         
         colorIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         colorIndicator.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
         colorIndicator.widthAnchor.constraint(equalToConstant: 20).isActive = true
         colorIndicator.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+    }
+    
+    override func layoutSubviews() {
+        super .layoutSubviews()
+        
+        numberLabelContainer.setGradientBackground(colorOne: ActiveRollTheme.current.colorOne, colorTwo: ActiveRollTheme.current.colorTwo, locations: [0.5,1], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
         
     }
     

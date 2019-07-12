@@ -230,14 +230,14 @@
 		E526441822D7FEC4008D5FAD /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				E5841D3A22BD758300F99BC3 /* Theme.swift */,
-				E526442122D804EC008D5FAD /* ActiveRollTheme.swift */,
-				E526441922D7FF04008D5FAD /* ThemeProtocol.swift */,
-				E526442322D80519008D5FAD /* ActiveRollThemeProtocol.swift */,
 				E526441B22D8004A008D5FAD /* Color.swift */,
+				E526442322D80519008D5FAD /* ActiveRollThemeProtocol.swift */,
+				E526442122D804EC008D5FAD /* ActiveRollTheme.swift */,
+				E526442522D80585008D5FAD /* ActiveRollThemes.swift */,
+				E526441922D7FF04008D5FAD /* ThemeProtocol.swift */,
+				E5841D3A22BD758300F99BC3 /* Theme.swift */,
 				E526441D22D80214008D5FAD /* LightTheme.swift */,
 				E526441F22D802CC008D5FAD /* DarkTheme.swift */,
-				E526442522D80585008D5FAD /* ActiveRollThemes.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";

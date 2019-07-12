@@ -97,7 +97,10 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
         let framesTableViewController = FramesTableViewController()
         
         if let colorName = activeFilmRolls[indexPath.row].colorName {
-            framesTableViewController.navBarColorName = colorName
+            if let filmColor = Color.gradientDictionary[colorName] {
+                ActiveRollTheme.current = filmColor
+            }
+
         }
         navigationController?.pushViewController(framesTableViewController, animated: true)
     }
@@ -135,7 +138,7 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     
     func loadItems(with request: NSFetchRequest<ActiveFilmRoll> = ActiveFilmRoll.fetchRequest()) {
         
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        //request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         do {
             activeFilmRolls = try context.fetch(request)
         } catch {

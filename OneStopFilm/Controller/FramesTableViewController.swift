@@ -13,14 +13,14 @@ class FramesTableViewController: UITableViewController {
     let framesArray = [Frame]()
     let cellId = "cellId"
     
-    var navBarColorName = "" {
-        didSet{
-            if let pageColorName = Color.gradientDictionary[navBarColorName] {
-                let pageColor = pageColorName[0]
-                self.navigationController?.navigationBar.barTintColor = pageColor
-            }
-        }
-    }
+//    var navBarColorName = "" {
+//        didSet{
+//            if let pageColorName = Color.gradientDictionary[navBarColorName] {
+//                let pageColor = pageColorName.colorOne
+//                self.navigationController?.navigationBar.barTintColor = pageColor
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,25 +81,24 @@ class FramesTableViewController: UITableViewController {
         navigationItem.title = "TRIP TO YOSEMITE"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: Theme.Font.titleFont!]
         if let navigationBar = self.navigationController?.navigationBar {
-            if let gradientColors = Color.gradientDictionary[navBarColorName]{
-               navigationBar.setGradientBackgroundImage(colorOne: gradientColors[0], colorTwo: gradientColors[1])
-            }
+            let gradientColors = ActiveRollTheme.current
+               navigationBar.setGradientBackgroundImage(colorOne: gradientColors.colorOne, colorTwo: gradientColors.colorTwo)
         }
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barStyle = .black
     }
     
-    func getImageFrom(gradientLayer:CAGradientLayer) -> UIImage? {
-        var gradientImage:UIImage?
-        UIGraphicsBeginImageContext(gradientLayer.frame.size)
-        if let context = UIGraphicsGetCurrentContext() {
-            gradientLayer.render(in: context)
-            gradientImage = UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch)
-        }
-        UIGraphicsEndImageContext()
-        return gradientImage
-    }
+//    func getImageFrom(gradientLayer:CAGradientLayer) -> UIImage? {
+//        var gradientImage:UIImage?
+//        UIGraphicsBeginImageContext(gradientLayer.frame.size)
+//        if let context = UIGraphicsGetCurrentContext() {
+//            gradientLayer.render(in: context)
+//            gradientImage = UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch)
+//        }
+//        UIGraphicsEndImageContext()
+//        return gradientImage
+//    }
     
     fileprivate func setupTableView() {
         

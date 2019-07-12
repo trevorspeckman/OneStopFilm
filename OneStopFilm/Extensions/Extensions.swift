@@ -72,12 +72,22 @@ extension UILabel {
 extension UIView {
     func setGradientBackground(colorOne: UIColor, colorTwo: UIColor, locations: [NSNumber], startPoint: CGPoint, endPoint: CGPoint) {
         let gradientLayer = CAGradientLayer()
+        
+//        if let existingLayer = (layer.sublayers?.compactMap { $0 as? CAGradientLayer })?.first {
+//            gradientLayer = existingLayer
+//        }
+        
+        
         gradientLayer.frame = self.bounds
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
         gradientLayer.locations = locations
         gradientLayer.startPoint = startPoint
         gradientLayer.endPoint = endPoint
-        self.layer.addSublayer(gradientLayer)
+        
+        let gradientlayers = self.layer.sublayers?.compactMap {$0 as? CAGradientLayer}
+        gradientlayers?.forEach{$0.removeFromSuperlayer()}
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
 

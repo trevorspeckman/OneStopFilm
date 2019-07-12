@@ -31,14 +31,14 @@ struct Color {
     static let capGrey = UIColor(hexFromString: "363636")
     static let translucentWhite = UIColor(hexFromString: "FFFFFF").withAlphaComponent(0.7)
     
-    static var gradientDictionary = [
-        "black" : [Color.black, Color.blackLight],
-        "red" : [Color.red, Color.redLight],
-        "orange" : [Color.orange, Color.orangeLight],
-        "yellow" : [Color.yellow, Color.yellowLight],
-        "green" : [Color.green, Color.greenLight],
-        "blue" : [Color.blue, Color.blueLight],
-        "purple" : [Color.purple, Color.purpleLight]
-    ]
+    static var gradientDictionary: [String : ActiveRollThemeProtocol] = [
+        "black" : Black(),
+        "red" : Red(),
+        "orange" : Orange(),
+        "yellow" : Yellow(),
+        "green" : Green(),
+        "blue" : Blue(),
+        "purple" : Purple()
+        ]
     
 }
