@@ -41,7 +41,8 @@ class CustomTabBarController: UITabBarController {
         viewControllers = [logNavController, developNavController, archiveNavController, settingsNavController]
         
         tabBar.isTranslucent = true
-        tabBar.tintColor = .black
+        tabBar.barTintColor = Theme.current.cellColor
+        tabBar.tintColor = Theme.current.textColor
     }
     
 

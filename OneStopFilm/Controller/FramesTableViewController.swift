@@ -10,11 +10,12 @@ import UIKit
 
 class FramesTableViewController: UITableViewController {
 
-    let framesTableModel = FramesTableModel()
+    let framesArray = [Frame]()
+    let cellId = "cellId"
     
     var navBarColorName = "" {
         didSet{
-            if let pageColorName = Theme.Color.gradientDictionary[navBarColorName] {
+            if let pageColorName = Color.gradientDictionary[navBarColorName] {
                 let pageColor = pageColorName[0]
                 self.navigationController?.navigationBar.barTintColor = pageColor
             }
@@ -26,16 +27,16 @@ class FramesTableViewController: UITableViewController {
         
         setupNavBar()
         setupTableView()
-        
+        UILabel.appearance(whenContainedInInstancesOf: [FramesTableViewCell.self]).backgroundColor = .green
     }
     
     override func willMove(toParent parent: UIViewController?) {
         if let navigationBar = self.navigationController?.navigationBar {
-                navigationBar.setGradientBackgroundImage(colorOne: .white, colorTwo: .white)
+                navigationBar.setGradientBackgroundImage(colorOne: Theme.current.cellColor, colorTwo: Theme.current.cellColor)
         }
-        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: Theme.Font.titleFont!]
-        self.navigationController?.navigationBar.tintColor = .black
-        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.textColor, NSAttributedString.Key.font: Theme.Font.titleFont!]
+        self.navigationController?.navigationBar.tintColor = Theme.current.textColor
+        self.navigationController?.navigationBar.barStyle = Theme.current.barStyle
     }
     
     // MARK: - Table view data source
@@ -46,15 +47,14 @@ class FramesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return framesTableModel.items.count
+        
+        
+        return framesArray.count == 0 ? 1 : framesArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let item = framesTableModel.items[indexPath.row]
-        item.register(in: tableView)
-        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId)!
-        item.configure(cell: cell)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! FramesTableViewCell
         return cell
         
     }
@@ -81,7 +81,7 @@ class FramesTableViewController: UITableViewController {
         navigationItem.title = "TRIP TO YOSEMITE"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: Theme.Font.titleFont!]
         if let navigationBar = self.navigationController?.navigationBar {
-            if let gradientColors = Theme.Color.gradientDictionary[navBarColorName]{
+            if let gradientColors = Color.gradientDictionary[navBarColorName]{
                navigationBar.setGradientBackgroundImage(colorOne: gradientColors[0], colorTwo: gradientColors[1])
             }
         }
@@ -102,7 +102,10 @@ class FramesTableViewController: UITableViewController {
     }
     
     fileprivate func setupTableView() {
+        
+        tableView.register(FramesTableViewCell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = Theme.current.backgroundColor
     }
     
    

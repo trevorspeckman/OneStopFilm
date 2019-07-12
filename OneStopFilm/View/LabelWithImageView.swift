@@ -22,8 +22,10 @@ class LabelWithImageView: UIView {
         let label = UILabel()
 //        label.backgroundColor = UIColor.purple
         
-        label.text = "f/1.4"
+        label.text = "-"
         label.textAlignment = .left
+        label.font = Theme.Font.titleLabelFont!
+        label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

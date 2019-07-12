@@ -27,7 +27,7 @@ class ColorCollectionViewController: UICollectionViewController, UICollectionVie
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellID")
         // Do any additional setup after loading the view.
-       collectionView.backgroundColor = Theme.Color.background
+       collectionView.backgroundColor = Theme.current.backgroundColor
         
         createGradients()
     }
@@ -66,13 +66,13 @@ class ColorCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     func createGradients() {
-        let blackGrdient = Gradient(name: "black", color1: Theme.Color.black, color2: Theme.Color.blackLight)
-        let redGradient = Gradient(name: "red", color1: Theme.Color.red, color2: Theme.Color.redLight)
-        let orangeGradient = Gradient(name: "orange", color1: Theme.Color.orange, color2: Theme.Color.orangeLight)
-        let yellowGradient = Gradient(name: "yellow", color1: Theme.Color.yellow, color2: Theme.Color.yellowLight)
-        let greenGradient = Gradient(name: "green", color1: Theme.Color.green, color2: Theme.Color.greenLight)
-        let blueGradient = Gradient(name: "blue", color1: Theme.Color.blue, color2: Theme.Color.blueLight)
-        let purpleGradient = Gradient(name: "purple", color1: Theme.Color.purple, color2: Theme.Color.purpleLight)
+        let blackGrdient = Gradient(name: "black", color1: Color.black, color2: Color.blackLight)
+        let redGradient = Gradient(name: "red", color1: Color.red, color2: Color.redLight)
+        let orangeGradient = Gradient(name: "orange", color1: Color.orange, color2: Color.orangeLight)
+        let yellowGradient = Gradient(name: "yellow", color1: Color.yellow, color2: Color.yellowLight)
+        let greenGradient = Gradient(name: "green", color1:Color.green, color2: Color.greenLight)
+        let blueGradient = Gradient(name: "blue", color1: Color.blue, color2: Color.blueLight)
+        let purpleGradient = Gradient(name: "purple", color1: Color.purple, color2: Color.purpleLight)
         
         colors = [blackGrdient, redGradient,orangeGradient,yellowGradient,greenGradient,blueGradient, purpleGradient]
     }

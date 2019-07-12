@@ -24,6 +24,7 @@ class NewRollLabelTableViewCell: BaseTableViewCell, ConfigurableCell {
         let label = UILabel()
         //label.backgroundColor = UIColor.red
         label.text = "FILM"
+        label.textColor = Theme.current.textColor
         label.alpha = 0
         label.font = Theme.Font.newRollTitleLabelFont!
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +36,7 @@ class NewRollLabelTableViewCell: BaseTableViewCell, ConfigurableCell {
         //textField.backgroundColor = UIColor.green
         let placeholder = "FILM"
         label.text = placeholder
-        label.textColor = UIColor.officialApplePlaceholderGray
+        label.textColor = Theme.current.placeholderColor
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

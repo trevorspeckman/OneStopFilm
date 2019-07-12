@@ -51,7 +51,7 @@ class CircularProgressBar: UIView {
         let progressPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: progressAngle + startAngle, clockwise: true)
         
         shapeLayer.path = progressPath.cgPath
-        shapeLayer.strokeColor = Theme.Color.yellow.cgColor
+        shapeLayer.strokeColor = Color.yellow.cgColor
         shapeLayer.lineWidth = linewidth
         //shapeLayer.lineCap = CAShapeLayerLineCap.round
         shapeLayer.strokeEnd = 0
@@ -61,7 +61,7 @@ class CircularProgressBar: UIView {
         trackLayer.path = circularPath.cgPath
         trackLayer.strokeColor = UIColor.gray.cgColor
         trackLayer.lineWidth = linewidth
-        trackLayer.fillColor = Theme.Color.background.cgColor
+        trackLayer.fillColor = Color.backgroundLight.cgColor
         
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         basicAnimation.toValue = 1

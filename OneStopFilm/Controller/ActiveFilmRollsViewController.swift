@@ -105,15 +105,17 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     
     
     fileprivate func setupNavBar() {
-        navigationItem.title = "CURRENT ROLLS"
-        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: Theme.Font.titleFont!]
-        self.navigationController?.navigationBar.tintColor = .black
+        navigationItem.title = "ACTIVE ROLLS"
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.current.textColor, NSAttributedString.Key.font: Theme.Font.titleFont!]
+        self.navigationController?.navigationBar.tintColor = Theme.current.textColor
+        self.navigationController?.navigationBar.barTintColor = Theme.current.cellColor
+        self.navigationController?.navigationBar.barStyle = Theme.current.barStyle
         navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
     }
     
     fileprivate func setupCollectionView() {
-        collectionView.backgroundColor = Theme.Color.background
+        collectionView.backgroundColor = Theme.current.backgroundColor
         collectionView.register(ActiveFilmRollCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0,right: 0)

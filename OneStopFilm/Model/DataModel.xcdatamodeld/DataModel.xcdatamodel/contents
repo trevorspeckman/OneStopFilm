@@ -18,6 +18,14 @@
         <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Frame" representedClassName="Frame" syncable="YES" codeGenerationType="class">
+        <attribute name="aperature" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="locationLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="locationLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shutterSpeed" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="Lens" representedClassName=".Lens" syncable="YES" codeGenerationType="class">
         <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="focalLength" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -30,5 +38,6 @@
         <element name="Camera" positionX="384.32421875" positionY="-289.6640625" width="128" height="75"/>
         <element name="Film" positionX="361.51953125" positionY="-18.31640625" width="128" height="75"/>
         <element name="Lens" positionX="357.4921875" positionY="141.0859375" width="128" height="118"/>
+        <element name="Frame" positionX="234" positionY="-135" width="128" height="135"/>
     </elements>
 </model>

@@ -204,17 +204,23 @@ class NewRollTableViewController: UITableViewController, ChildViewControllerDele
     fileprivate func setupNavBar() {
         navigationItem.title = "NEW ROLL"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Theme.Font.titleFont!]
-        self.navigationController?.navigationBar.tintColor = .black
+        
+        self.navigationController?.navigationBar.tintColor = Theme.current.textColor
+        self.navigationController?.navigationBar.barTintColor = Theme.current.cellColor
+        self.navigationController?.navigationBar.barStyle = Theme.current.barStyle
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
+        
         navigationItem.rightBarButtonItem = saveButton
         navigationItem.rightBarButtonItem?.isEnabled = false;
-        navigationItem.rightBarButtonItem?.tintColor = .officialApplePlaceholderGray
+        navigationItem.rightBarButtonItem?.tintColor = Theme.current.placeholderColor
     }
     
     fileprivate func setupTableView() {
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = Theme.current.cellColor
         tableView.alwaysBounceVertical = false
     }
     

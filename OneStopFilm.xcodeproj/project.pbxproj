@@ -30,6 +30,13 @@
 		E50A454B22BACD3D0047ABFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E50A454A22BACD3D0047ABFE /* Assets.xcassets */; };
 		E50A454E22BACD3D0047ABFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50A454C22BACD3D0047ABFE /* LaunchScreen.storyboard */; };
 		E526441722D31F0E008D5FAD /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E526441622D31F0E008D5FAD /* Gradient.swift */; };
+		E526441A22D7FF04008D5FAD /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E526441922D7FF04008D5FAD /* ThemeProtocol.swift */; };
+		E526441C22D8004A008D5FAD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E526441B22D8004A008D5FAD /* Color.swift */; };
+		E526441E22D80214008D5FAD /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E526441D22D80214008D5FAD /* LightTheme.swift */; };
+		E526442022D802CC008D5FAD /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E526441F22D802CC008D5FAD /* DarkTheme.swift */; };
+		E526442222D804EC008D5FAD /* ActiveRollTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E526442122D804EC008D5FAD /* ActiveRollTheme.swift */; };
+		E526442422D80519008D5FAD /* ActiveRollThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E526442322D80519008D5FAD /* ActiveRollThemeProtocol.swift */; };
+		E526442622D80585008D5FAD /* ActiveRollThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E526442522D80585008D5FAD /* ActiveRollThemes.swift */; };
 		E55BDBD822CC24FE005AE251 /* LabelWithImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBD722CC24FE005AE251 /* LabelWithImageTableViewCell.swift */; };
 		E55BDBDA22CC3284005AE251 /* SwiftDisclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBD922CC3284005AE251 /* SwiftDisclosureIndicator.swift */; };
 		E55BDBDC22CC425B005AE251 /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBDB22CC425B005AE251 /* SliderTableViewCell.swift */; };
@@ -79,6 +86,13 @@
 		E50A454D22BACD3D0047ABFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E50A454F22BACD3D0047ABFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E526441622D31F0E008D5FAD /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		E526441922D7FF04008D5FAD /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
+		E526441B22D8004A008D5FAD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E526441D22D80214008D5FAD /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
+		E526441F22D802CC008D5FAD /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
+		E526442122D804EC008D5FAD /* ActiveRollTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRollTheme.swift; sourceTree = "<group>"; };
+		E526442322D80519008D5FAD /* ActiveRollThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRollThemeProtocol.swift; sourceTree = "<group>"; };
+		E526442522D80585008D5FAD /* ActiveRollThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRollThemes.swift; sourceTree = "<group>"; };
 		E55BDBD722CC24FE005AE251 /* LabelWithImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithImageTableViewCell.swift; sourceTree = "<group>"; };
 		E55BDBD922CC3284005AE251 /* SwiftDisclosureIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDisclosureIndicator.swift; sourceTree = "<group>"; };
 		E55BDBDB22CC425B005AE251 /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
@@ -150,11 +164,12 @@
 		E50A454222BACD390047ABFE /* OneStopFilm */ = {
 			isa = PBXGroup;
 			children = (
+				E526441822D7FEC4008D5FAD /* Theme */,
 				E50A454322BACD390047ABFE /* AppDelegate.swift */,
 				E58B60FD22C30CE100DC9294 /* Model */,
 				E50A455522BAE43C0047ABFE /* View */,
 				E50A455722BAE47B0047ABFE /* Controller */,
-				E5841D3722BD754900F99BC3 /* Helpers */,
+				E5841D3722BD754900F99BC3 /* Extensions */,
 				E50A455622BAE4590047ABFE /* Supporting Files */,
 				E50A454722BACD390047ABFE /* Main.storyboard */,
 				E50A454C22BACD3D0047ABFE /* LaunchScreen.storyboard */,
@@ -212,13 +227,27 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		E5841D3722BD754900F99BC3 /* Helpers */ = {
+		E526441822D7FEC4008D5FAD /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E5841D3A22BD758300F99BC3 /* Theme.swift */,
+				E526442122D804EC008D5FAD /* ActiveRollTheme.swift */,
+				E526441922D7FF04008D5FAD /* ThemeProtocol.swift */,
+				E526442322D80519008D5FAD /* ActiveRollThemeProtocol.swift */,
+				E526441B22D8004A008D5FAD /* Color.swift */,
+				E526441D22D80214008D5FAD /* LightTheme.swift */,
+				E526441F22D802CC008D5FAD /* DarkTheme.swift */,
+				E526442522D80585008D5FAD /* ActiveRollThemes.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		E5841D3722BD754900F99BC3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				E5841D3822BD756700F99BC3 /* Extensions.swift */,
-				E5841D3A22BD758300F99BC3 /* Theme.swift */,
 			);
-			path = Helpers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E58B60FD22C30CE100DC9294 /* Model */ = {
@@ -383,17 +412,22 @@
 				E509976E22C589300069DFCB /* NewRollTextField.swift in Sources */,
 				E509978C22CBD7080069DFCB /* DetailFrameViewController.swift in Sources */,
 				E55BDBE022CC8DD6005AE251 /* SelfSizedTableView.swift in Sources */,
+				E526441A22D7FF04008D5FAD /* ThemeProtocol.swift in Sources */,
+				E526441C22D8004A008D5FAD /* Color.swift in Sources */,
 				E5841D3D22BD7AD800F99BC3 /* ActiveFilmRollCell.swift in Sources */,
 				E509977222C58CCC0069DFCB /* ColorCollectionViewController.swift in Sources */,
 				E5841D3B22BD758300F99BC3 /* Theme.swift in Sources */,
 				E509977422CA79D90069DFCB /* CellConfigurator.swift in Sources */,
 				E5841D3F22BD99BC00F99BC3 /* CustomTabBarController.swift in Sources */,
+				E526442022D802CC008D5FAD /* DarkTheme.swift in Sources */,
 				E509978222CAFF5E0069DFCB /* FramesTableViewController.swift in Sources */,
 				E58B60FA22C2DE5300DC9294 /* CircularProgressBar.swift in Sources */,
 				E509978822CB0B200069DFCB /* FramesTableModel.swift in Sources */,
 				E5841D4322BD9F9200F99BC3 /* ArchiveCollectionViewController.swift in Sources */,
 				E5841D4922BDA81800F99BC3 /* BaseCollectionViewCell.swift in Sources */,
 				E570358422D247C5009FE20C /* AddCameraPopUp.swift in Sources */,
+				E526442422D80519008D5FAD /* ActiveRollThemeProtocol.swift in Sources */,
+				E526441E22D80214008D5FAD /* LightTheme.swift in Sources */,
 				E58B610322C31DCD00DC9294 /* NewRollTextFieldTableViewCell.swift in Sources */,
 				E50A454422BACD390047ABFE /* AppDelegate.swift in Sources */,
 				E509978022CACFE10069DFCB /* AddFilmPopUpModel.swift in Sources */,
@@ -403,7 +437,9 @@
 				E55BDBE322CD014C005AE251 /* DataModel.xcdatamodeld in Sources */,
 				E55BDBD822CC24FE005AE251 /* LabelWithImageTableViewCell.swift in Sources */,
 				E5841D3922BD756700F99BC3 /* Extensions.swift in Sources */,
+				E526442622D80585008D5FAD /* ActiveRollThemes.swift in Sources */,
 				E55BDBDC22CC425B005AE251 /* SliderTableViewCell.swift in Sources */,
+				E526442222D804EC008D5FAD /* ActiveRollTheme.swift in Sources */,
 				E509978422CB03FF0069DFCB /* FramesTableViewCell.swift in Sources */,
 				E509977622CA7A7F0069DFCB /* NewRollModel.swift in Sources */,
 				E58B610122C31D1C00DC9294 /* BaseTableViewCell.swift in Sources */,

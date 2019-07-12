@@ -8,43 +8,64 @@
 
 import UIKit
 
-class FramesTableViewCell: BaseTableViewCell, ConfigurableCell {
+class FramesTableViewCell: BaseTableViewCell {
 
-    
-    
- 
-    
-    
     
     
 //MARK: Subview Initialization
     let numberLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = Theme.Color.yellow
+        label.backgroundColor = ActiveRollTheme.current.colorOne
         label.text = "1"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let aperature = LabelWithImageView()
-    let shutterSpeed = LabelWithImageView()
-    let date = LabelWithImageView()
+    let aperatureLabel: LabelWithImageView = {
+        let label = LabelWithImageView()
+
+        label.titleLabel.text = "f/-.-"
+        label.titleLabel.font = Theme.Font.bodyLabelFont!
+        label.titleLabel.textColor = UIColor.white
+        label.viewColor = Theme.current.textColor
+        label.titleIcon.image = UIImage(named: "icon_film")?.withRenderingMode(.alwaysTemplate)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let shutterSpeedLabel: LabelWithImageView = {
+        let label = LabelWithImageView()
+        label.titleLabel.text = "1/----"
+        label.titleLabel.font = Theme.Font.bodyLabelFont!
+        label.titleLabel.textColor = UIColor.white
+        label.viewColor = Theme.current.textColor
+        label.titleIcon.image = UIImage(named: "icon_film")?.withRenderingMode(.alwaysTemplate)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let dateLabel: LabelWithImageView = {
+        let label = LabelWithImageView()
+        label.titleLabel.text = "--/--/----"
+        label.titleLabel.font = Theme.Font.bodyLabelFont!
+        label.titleLabel.textColor = UIColor.white
+        label.viewColor = Theme.current.textColor
+        label.titleIcon.image = UIImage(named: "icon_date")?.withRenderingMode(.alwaysTemplate)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     
     let colorIndicator: SwiftDisclosureIndicator = {
         let indicator = SwiftDisclosureIndicator()
-        indicator.color = Theme.Color.yellow
+        indicator.color = ActiveRollTheme.current.colorOne
         indicator.backgroundColor = .clear
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
     }()
 
-    lazy var allAtributesStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [aperature,shutterSpeed,date])
-        stack.distribution = .fillProportionally
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
+    
     
     
     override func setupViews() {
@@ -52,22 +73,36 @@ class FramesTableViewCell: BaseTableViewCell, ConfigurableCell {
         //self.accessoryType = .disclosureIndicator
         
         addSubview(numberLabel)
-        addSubview(allAtributesStackView)
+        addSubview(aperatureLabel)
+        addSubview(shutterSpeedLabel)
+        addSubview(dateLabel)
         addSubview(colorIndicator)
         
         
 
         numberLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         numberLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        numberLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        numberLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        numberLabel.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        numberLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
-
-
-        allAtributesStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        allAtributesStackView.leadingAnchor.constraint(equalTo: numberLabel.trailingAnchor, constant: 10).isActive = true
-        allAtributesStackView.trailingAnchor.constraint(equalTo: colorIndicator.leadingAnchor, constant: -10).isActive = true
         
+        aperatureLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        aperatureLabel.leadingAnchor.constraint(equalTo: numberLabel.trailingAnchor, constant: 10).isActive = true
+        aperatureLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25).isActive = true
+        aperatureLabel.heightAnchor.constraint(equalTo: numberLabel.heightAnchor).isActive = true
+        
+        
+        shutterSpeedLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        shutterSpeedLabel.leadingAnchor.constraint(equalTo: aperatureLabel.trailingAnchor).isActive = true
+         shutterSpeedLabel.widthAnchor.constraint(equalTo: aperatureLabel.widthAnchor).isActive = true
+        shutterSpeedLabel.heightAnchor.constraint(equalTo: numberLabel.heightAnchor).isActive = true
+        
+        
+        
+        dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: shutterSpeedLabel.trailingAnchor).isActive = true
+        dateLabel.widthAnchor.constraint(equalTo: aperatureLabel.widthAnchor).isActive = true
+        dateLabel.heightAnchor.constraint(equalTo: numberLabel.heightAnchor).isActive = true
         
         
         colorIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
@@ -77,18 +112,7 @@ class FramesTableViewCell: BaseTableViewCell, ConfigurableCell {
         
     }
     
-    //MARK: ConfigurableCell Protocol Methods
-    func configure(data frames: LabelWithImage) {
-        aperature.titleIcon.image = frames.icon
-        aperature.titleLabel.text = frames.labelText
-        
-        shutterSpeed.titleIcon.image = frames.icon
-        shutterSpeed.titleLabel.text = frames.labelText
-        
-        date.titleIcon.image = frames.icon
-        date.titleLabel.text = frames.labelText
-
-    }
+   
     
     
 }

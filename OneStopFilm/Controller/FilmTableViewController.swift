@@ -28,6 +28,7 @@ class FilmTableViewController: UITableViewController {
 
         setupNavBar()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.backgroundColor = Theme.current.cellColor
         loadItems()
 //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
@@ -40,7 +41,6 @@ class FilmTableViewController: UITableViewController {
         
         if let window = UIApplication.shared.keyWindow {
             addFilmPopup.table.reloadData()
-            addFilmPopup.saveButton.setTitleColor(.officialApplePlaceholderGray, for: .normal)
             addFilmPopup.isEmptyArray = [Bool?](repeating: nil, count:addFilmPopup.addFilmPopUpModel.count)
             addFilmPopup.backgroundColor = UIColor(white: 0, alpha: 0.5)
             
@@ -98,6 +98,9 @@ class FilmTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         
+        cell.backgroundColor = Theme.current.cellColor
+        cell.textLabel?.textColor = Theme.current.textColor
+        
         if let brand = filmArray[indexPath.row].brand {
             if let name = filmArray[indexPath.row].name {
                 cell.textLabel?.text = "\(brand) \(name)"
@@ -130,11 +133,14 @@ class FilmTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        
-  
-        
+
         return "Film"
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textColor = Theme.current.textColor
+        }
     }
     
 let searchController = UISearchController(searchResultsController: nil)
@@ -144,6 +150,10 @@ let searchController = UISearchController(searchResultsController: nil)
         navigationItem.title = "FILM"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Theme.Font.titleFont!]
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        
+        self.navigationController?.navigationBar.tintColor = Theme.current.textColor
+        self.navigationController?.navigationBar.barTintColor = Theme.current.cellColor
+        self.navigationController?.navigationBar.barStyle = Theme.current.barStyle
         
 
         // Setup the Search Controller

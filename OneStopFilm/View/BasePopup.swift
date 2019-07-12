@@ -15,7 +15,7 @@ class BasePopup: UIView {
         //button.backgroundColor = .blue
         button.setTitle("Add", for: .normal)
         button.isEnabled = false
-        button.setTitleColor(.officialApplePlaceholderGray, for: .normal)
+        button.setTitleColor(Theme.current.placeholderColor, for: .normal)
         button.layer.masksToBounds = true
         return button
     }()
@@ -23,7 +23,7 @@ class BasePopup: UIView {
     let cancelButton: UIButton = {
         let button = UIButton()
         // button.backgroundColor = .yellow
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(Theme.current.textColor, for: .normal)
         button.setTitle("Cancel", for: .normal)
 
         
@@ -40,7 +40,7 @@ class BasePopup: UIView {
     let container: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = Theme.current.popupColor
         view.layer.cornerRadius = 15
         return view
     }()

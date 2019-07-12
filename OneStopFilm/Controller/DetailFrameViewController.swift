@@ -50,7 +50,7 @@ class DetailFrameViewController: UIViewController {
     fileprivate let addShotButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = Theme.Color.yellow
+        button.backgroundColor = ActiveRollTheme.current.colorOne
         button.setTitle("Add Shot", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.masksToBounds = true
@@ -68,7 +68,7 @@ class DetailFrameViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         
-        view.backgroundColor = Theme.Color.background
+        view.backgroundColor = Theme.current.backgroundColor
         
         setupNavBar()
         setupLayouts()

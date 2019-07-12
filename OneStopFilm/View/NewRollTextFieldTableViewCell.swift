@@ -41,7 +41,6 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
 //MARK: Subview Initialization
     let titleLabel: UILabel = {
         let label = UILabel()
-//        label.backgroundColor = UIColor.red
         label.alpha = 0
         label.font = Theme.Font.newRollTitleLabelFont!
         label.adjustsFontSizeToFitWidth = true
@@ -51,9 +50,11 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
     
     let cellTextField: UITextField = {
         let textField = UITextField()
-//        textField.backgroundColor = UIColor.green
         textField.adjustsFontSizeToFitWidth = true
+        textField.textColor = Theme.current.textColor
         textField.clearButtonMode = .whileEditing
+        
+
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -61,7 +62,7 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
     var textLengthLimit = 0
     
     override func setupViews() {
-        
+    
         cellTextField.delegate = self
         
         cellTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -86,10 +87,23 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
 
     }
     
+
+    
+    
+    private func update(button: UIButton, image: UIImage?, color: UIColor) {
+        let image = (image ?? button.currentImage)?.withRenderingMode(.alwaysTemplate)
+        button.setImage(image, for: .normal)
+        button.setImage(image, for: .highlighted)
+        button.tintColor = color
+    }
+
+    
 //MARK: ConfigurableCell Protocol Methods
     func configure(data newRoll: NewRollTextField) {
         titleLabel.text = newRoll.text
-        cellTextField.placeholder = newRoll.text
+        cellTextField.attributedPlaceholder =
+            NSAttributedString(string: newRoll.text, attributes: [NSAttributedString.Key.foregroundColor: Theme.current.placeholderColor])
+        //cellTextField.placeholder = newRoll.text
         if newRoll.keyboard == 0 {
             cellTextField.keyboardType = .default
         } else if newRoll.keyboard == 1 {
@@ -104,7 +118,7 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
         if cellTextField.text?.isEmpty == false {
 
             titleLabel.fadeIn()
-            titleLabel.textColor = UIColor.orange
+            titleLabel.textColor = Theme.current.tintColor
         }
         else {
             titleLabel.fadeOut()
@@ -116,8 +130,10 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if cellTextField.text?.isEmpty == false {
-            titleLabel.textColor = UIColor.orange
+            titleLabel.textColor = Theme.current.tintColor
         }
+        
+
     }
     
     

@@ -133,7 +133,7 @@ class AddCameraPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, New
             
             if isEmptyArray.allSatisfy({$0 == false}) {
                 saveButton.isEnabled = true
-                saveButton.setTitleColor(.orange, for: .normal)
+                saveButton.setTitleColor(Theme.current.tintColor, for: .normal)
             } else {
                 saveButton.isEnabled = false
                 saveButton.setTitleColor(.officialApplePlaceholderGray, for: .normal)

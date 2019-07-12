@@ -18,7 +18,7 @@ class SliderTableViewCell: BaseTableViewCell, ConfigurableCell  {
         slider.maximumValue = 22
         let newValue = Int(slider.value/15) * 15
         slider.setValue(Float(newValue), animated: false)
-        slider.minimumTrackTintColor = Theme.Color.yellow
+        slider.minimumTrackTintColor = ActiveRollTheme.current.colorOne
         slider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider

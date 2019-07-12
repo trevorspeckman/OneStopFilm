@@ -19,7 +19,10 @@ class BaseTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = Theme.current.cellColor
         setupViews()
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,6 +33,8 @@ class BaseTableViewCell: UITableViewCell {
     func setupViews() {
         
     }
+    
+
     
     
 }
