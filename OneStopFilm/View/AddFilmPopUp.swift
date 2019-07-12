@@ -19,6 +19,8 @@ class AddFilmPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, NewRo
     var addFilmPopUpModel = [NewRollTextField]()
     lazy var typedText = [String?](repeating: nil, count:addFilmPopUpModel.count)
     lazy var isEmptyArray = [Bool?](repeating: nil, count:addFilmPopUpModel.count)
+    
+    
     let table: SelfSizedTableView = {
         let tableView = SelfSizedTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +35,7 @@ class AddFilmPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, NewRo
         let label = UILabel()
         //label.backgroundColor = UIColor.green
         label.text = "ADD FILM"
+        label.textColor = Theme.current.textColor
         label.font = Theme.Font.titleLabelFont!
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +106,7 @@ class AddFilmPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, NewRo
     
 //MARK: Setup addFilmPopUpModel
     func setupModel() {
+
         let cell1 = NewRollTextField(text: "BRAND", textLengthLimit: 20, keyboard: 0)
         let cell2 = NewRollTextField(text: "FILM NAME", textLengthLimit: 20, keyboard: 0)
         addFilmPopUpModel = [cell1,cell2]
@@ -133,7 +137,7 @@ class AddFilmPopup: BasePopup, UITableViewDelegate, UITableViewDataSource, NewRo
             
             if isEmptyArray.allSatisfy({$0 == false}) {
                 saveButton.isEnabled = true
-                saveButton.setTitleColor(.orange, for: .normal)
+                saveButton.setTitleColor(Theme.current.tintColor, for: .normal)
             } else {
                 saveButton.isEnabled = false
                 saveButton.setTitleColor(.officialApplePlaceholderGray, for: .normal)

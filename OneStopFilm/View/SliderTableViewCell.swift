@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SliderTableViewCell: BaseTableViewCell, ConfigurableCell  {
+class SliderTableViewCell: LabelWithImageTableViewCell, ConfigurableCell  {
     
 //MARK: Subview Initialization
     
@@ -24,21 +24,15 @@ class SliderTableViewCell: BaseTableViewCell, ConfigurableCell  {
         return slider
     }()
     
-    let titleLabel: LabelWithImageView = {
-        let view = LabelWithImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    
     
    
 
     
     override func setupViews() {
-        addSubview(titleLabel)
-        addSubview(cellSlider)
+        super.setupViews()
         
-        titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        addSubview(cellSlider)
         
         cellSlider.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         cellSlider.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10).isActive = true

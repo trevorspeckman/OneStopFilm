@@ -16,7 +16,7 @@ class FramesTableViewCell: BaseTableViewCell {
     let numberLabel: UILabel = {
         let label = UILabel()
         label.text = "1"
-        label.textColor = Theme.current.textColor
+        label.textColor = .white
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

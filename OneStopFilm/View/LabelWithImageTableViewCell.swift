@@ -11,33 +11,23 @@ import UIKit
 class LabelWithImageTableViewCell: BaseTableViewCell {
 
 //MARK: Subview Initialization
+    let titleLabel: LabelWithImageView = {
+        let view = LabelWithImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-
     
-
-//    fileprivate let titleLabel: UILabel = {
-//        let label = UILabel()
-//        //label.backgroundColor = UIColor.green
-//        label.text = "ADD FILM"
-//        label.font = Theme.Font.titleLabelFont!
-//        label.textAlignment = .center
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-//    
     
-
     
     override func setupViews() {
-        super.setupViews()
+        addSubview(titleLabel)
 
         
+        titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         
-        
-        
-        
-        
-        
+        selectionStyle = .none
     }
 
 }

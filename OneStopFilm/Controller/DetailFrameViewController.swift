@@ -8,31 +8,34 @@
 
 import UIKit
 import Mapbox
+import MapboxGeocoder
+
 
 class DetailFrameViewController: UIViewController {
 
     let detailFrameModel = DetailFrameModel()
-    
+    let reuseIdentifiers = ["LabelWithImageTableViewCell", "IndicatorTableViewCell", "SliderTableViewCell"]
+    var previousLocation: CLLocation?
+    var labelText: String?
     
 //MARK: Subview definitions
     fileprivate let mapView: MGLMapView = {
         let map = MGLMapView()
         map.translatesAutoresizingMaskIntoConstraints = false
+        map.tintColor = ActiveRollTheme.current.colorOne
         map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         // Set the map’s center coordinate and zoom level.
-        map.setCenter(CLLocationCoordinate2D(latitude: 40.7326808, longitude: -73.9843407), zoomLevel: 12, animated: false)
+        
 
         map.styleURL = MGLStyle.lightStyleURL
         // Set the delegate property of our map view to `self` after instantiating it.
-
+        
 
         // Declare the marker `hello` and set its coordinates, title, and subtitle.
         let hello = MGLPointAnnotation()
         hello.coordinate = CLLocationCoordinate2D(latitude: 40.7326808, longitude: -73.9843407)
-        hello.title = "Hello world!"
-        hello.subtitle = "Welcome to my marker"
-
+        
         // Add marker `hello` to the map.
         map.addAnnotation(hello)
         return map
@@ -64,13 +67,15 @@ class DetailFrameViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.delegate = self
-        
+        mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(.follow, animated: true, completionHandler: nil)
         table.delegate = self
         table.dataSource = self
         
         view.backgroundColor = Theme.current.backgroundColor
         
         setupNavBar()
+        setupTableView()
         setupLayouts()
 
     }
@@ -85,6 +90,12 @@ class DetailFrameViewController: UIViewController {
     fileprivate func setupNavBar() {
         // Do any additional setup after loading the view.
         self.navigationItem.setTitle("TRIP TO YOSEMITE", subtitle: "Frame 1 of 24")
+    }
+    
+    fileprivate func setupTableView() {
+        table.register(LabelWithImageTableViewCell.self, forCellReuseIdentifier: reuseIdentifiers[0])
+        table.register(IndicatorTableViewCell.self, forCellReuseIdentifier: reuseIdentifiers[1])
+        table.register(SliderTableViewCell.self, forCellReuseIdentifier: reuseIdentifiers[2])
     }
     
     private func setupLayouts() {
@@ -120,11 +131,43 @@ extension DetailFrameViewController: MGLMapViewDelegate {
     func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
         return nil
     }
-
-    // Allow callout view to appear when an annotation is tapped.
-    func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
-        return true
+    
+    
+    func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
+        
+        let geocoder = Geocoder.shared
+        
+        if let currentLocation = mapView.userLocation?.location {
+            if previousLocation != nil {
+                guard currentLocation.distance(from: previousLocation!) > 50 else { return }
+            }
+            
+            self.previousLocation = currentLocation
+            let options = ReverseGeocodeOptions(location: currentLocation)
+            geocoder.geocode(options) { (placemarks, attribution, error) in
+                guard let placemark = placemarks?.first else {
+                    return
+                }
+                
+                let addressNumber = placemark.subThoroughfare ?? ""
+                let street = placemark.thoroughfare ?? ""
+                let city = placemark.place?.name ?? ""
+                let state = placemark.administrativeRegion?.name ?? ""
+                let country = placemark.country?.name ?? ""
+                
+                DispatchQueue.main.async {
+                    self.labelText = "\(addressNumber) \(street) \(city) \(state) \(country)"
+                    self.table.reloadData()
+                }
+            }
+        }
+        
+        
+        
     }
+    
+
+
 }
 
 
@@ -144,14 +187,36 @@ extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let item = detailFrameModel.items[indexPath.row]
-        item.register(in: tableView)
-        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId)!
-        item.configure(cell: cell)
-        return cell
-
+        
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[0], for: indexPath) as! LabelWithImageTableViewCell
+            cell.titleLabel.titleLabel.text = labelText
+            return cell
+            
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[0], for: indexPath) as! LabelWithImageTableViewCell
+            return cell
+            
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[1], for: indexPath) as! IndicatorTableViewCell
+            return cell
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[2], for: indexPath) as! SliderTableViewCell
+            return cell
+            
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[2], for: indexPath) as! SliderTableViewCell
+            return cell
+        
+        
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[0], for: indexPath) as! LabelWithImageTableViewCell
+            return cell
     }
+    
+}
 
 
 
@@ -163,3 +228,5 @@ extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
 }
+
+

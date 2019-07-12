@@ -56,6 +56,7 @@
 		E58B60FC22C2FFCA00DC9294 /* NewRollTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B60FB22C2FFCA00DC9294 /* NewRollTableViewController.swift */; };
 		E58B610122C31D1C00DC9294 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B610022C31D1C00DC9294 /* BaseTableViewCell.swift */; };
 		E58B610322C31DCD00DC9294 /* NewRollTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B610222C31DCD00DC9294 /* NewRollTextFieldTableViewCell.swift */; };
+		E59E3C7222D9298900C3841B /* IndicatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59E3C7122D9298900C3841B /* IndicatorTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		E58B60FB22C2FFCA00DC9294 /* NewRollTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollTableViewController.swift; sourceTree = "<group>"; };
 		E58B610022C31D1C00DC9294 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		E58B610222C31DCD00DC9294 /* NewRollTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		E59E3C7122D9298900C3841B /* IndicatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				E55BDBD722CC24FE005AE251 /* LabelWithImageTableViewCell.swift */,
 				E55BDBD922CC3284005AE251 /* SwiftDisclosureIndicator.swift */,
 				E55BDBDB22CC425B005AE251 /* SliderTableViewCell.swift */,
+				E59E3C7122D9298900C3841B /* IndicatorTableViewCell.swift */,
 				E55BDBDF22CC8DD6005AE251 /* SelfSizedTableView.swift */,
 			);
 			path = View;
@@ -433,6 +436,7 @@
 				E509978022CACFE10069DFCB /* AddFilmPopUpModel.swift in Sources */,
 				E509976A22C57CBA0069DFCB /* NewRollLabelTableViewCell.swift in Sources */,
 				E509978622CB0A480069DFCB /* LabelWithImage.swift in Sources */,
+				E59E3C7222D9298900C3841B /* IndicatorTableViewCell.swift in Sources */,
 				E509977022C58C190069DFCB /* CameraTableViewController.swift in Sources */,
 				E55BDBE322CD014C005AE251 /* DataModel.xcdatamodeld in Sources */,
 				E55BDBD822CC24FE005AE251 /* LabelWithImageTableViewCell.swift in Sources */,
