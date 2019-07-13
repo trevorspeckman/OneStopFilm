@@ -10,19 +10,20 @@ import UIKit
 
 class LabelWithImageView: UIView {
     
-    var viewColor: UIColor {
-        didSet{
-            titleLabel.textColor = viewColor
-            titleIcon.tintColor = viewColor
-
-        }
-    }
+//    var viewColor: UIColor {
+//        didSet{
+//            titleLabel.textColor = viewColor
+//            titleIcon.tintColor = viewColor
+//
+//        }
+//    }
     
     let titleLabel: UILabel = {
         let label = UILabel()
 
         
         label.text = "-"
+        label.textColor = Theme.current.textColor
         label.textAlignment = .left
         label.font = Theme.Font.titleLabelFont!
 
@@ -33,6 +34,7 @@ class LabelWithImageView: UIView {
     
     let titleIcon: UIImageView = {
         let imageView = UIImageView()
+        imageView.tintColor = Theme.current.textColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -59,7 +61,7 @@ class LabelWithImageView: UIView {
     }
     
     override init(frame: CGRect) {
-        viewColor = .black
+        //viewColor = .black
         super.init(frame: frame)
         
         setupViews()

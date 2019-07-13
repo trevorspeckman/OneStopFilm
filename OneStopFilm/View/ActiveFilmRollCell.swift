@@ -108,7 +108,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         let label = LabelWithImageView()
         label.titleLabel.font = Theme.Font.bodyLabelFont!
         label.titleLabel.textColor = UIColor.white
-        label.viewColor = .white
+        //label.viewColor = .white
         label.titleIcon.image = UIImage(named: "icon_date")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -118,7 +118,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         let label = LabelWithImageView()
         label.titleLabel.font = Theme.Font.bodyLabelFont!
         label.titleLabel.textColor = UIColor.white
-        label.viewColor = .white
+        //label.viewColor = .white
         label.titleIcon.image = UIImage(named: "icon_film")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -128,7 +128,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         let label = LabelWithImageView()
         label.titleLabel.font = Theme.Font.bodyLabelFont!
         label.titleLabel.textColor = UIColor.white
-        label.viewColor = .white
+        //label.viewColor = .white
         label.titleIcon.image = UIImage(named: "icon_camera")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

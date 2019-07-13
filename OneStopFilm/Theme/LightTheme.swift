@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mapbox
 
 struct LightTheme: ThemeProtocol {
     
@@ -21,6 +22,6 @@ struct LightTheme: ThemeProtocol {
     var cellColor: UIColor = .white
     var backgroundColor: UIColor = Color.backgroundLight
     var barStyle: UIBarStyle = .default
-    
+    var mapStyle: URL = MGLStyle.lightStyleURL
     
 }

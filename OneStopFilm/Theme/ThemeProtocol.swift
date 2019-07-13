@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mapbox
 
 protocol ThemeProtocol {
     
@@ -21,4 +22,5 @@ protocol ThemeProtocol {
     var cellColor: UIColor { get }
     var backgroundColor: UIColor { get }
     var barStyle: UIBarStyle { get }
+    var mapStyle: URL { get }
 }

@@ -29,7 +29,7 @@ class DetailFrameViewController: UIViewController, ChildViewControllerDelegate {
         map.tintColor = ActiveRollTheme.current.colorOne
         map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        map.styleURL = MGLStyle.lightStyleURL
+        map.styleURL = Theme.current.mapStyle
 
         return map
     }()
@@ -186,7 +186,7 @@ extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource 
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[0], for: indexPath) as! LabelWithImageTableViewCell
             cell.titleLabel.titleLabel.text = labelText
-            cell.titleLabel.titleIcon.image = UIImage(named: "icon_location")
+            cell.titleLabel.titleIcon.image = UIImage(named: "icon_location")?.withRenderingMode(.alwaysTemplate)
             return cell
             
         case 1:
@@ -200,17 +200,17 @@ extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource 
             cell.titleLabel.titleLabel.text = dateFormatter.string(from: date)
             
             
-            cell.titleLabel.titleIcon.image = UIImage(named: "icon_date")
+            cell.titleLabel.titleIcon.image = UIImage(named: "icon_date")?.withRenderingMode(.alwaysTemplate)
             return cell
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[1], for: indexPath) as! IndicatorTableViewCell
-            cell.titleLabel.titleIcon.image = UIImage(named: "icon_lens")
+            cell.titleLabel.titleIcon.image = UIImage(named: "icon_lens")?.withRenderingMode(.alwaysTemplate)
             return cell
             
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[2], for: indexPath) as! SliderTableViewCell
-            cell.titleLabel.titleIcon.image = UIImage(named: "icon_aperature")
+            cell.titleLabel.titleIcon.image = UIImage(named: "icon_aperature")?.withRenderingMode(.alwaysTemplate)
             return cell
             
         case 4:

@@ -11,6 +11,8 @@ import UIKit
 struct Color {
     static let backgroundLight = UIColor(hexFromString: "EEEEEE")
     static let backgroundDark = UIColor(hexFromString: "15202a")
+    static let backgroundDarkMap = UIColor(hexFromString: "191A1A")
+    static let cellDarkMap = UIColor(hexFromString: "343332")
     static let cellDark = UIColor(hexFromString: "1b2837")
     static let black = UIColor(hexFromString: "000000")
     static let blackLight = UIColor(hexFromString: "8D8D8D")

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mapbox
 
 struct DarkTheme: ThemeProtocol {
     
@@ -17,8 +18,9 @@ struct DarkTheme: ThemeProtocol {
     var tintColor: UIColor = .orange
      var deleteButtonColor: UIColor = Color.redLight
     var tabTintColor: UIColor = .black
-    var popupColor: UIColor = Color.cellDark
-    var cellColor: UIColor = Color.cellDark
-    var backgroundColor: UIColor = Color.backgroundDark
+    var popupColor: UIColor = Color.cellDarkMap
+    var cellColor: UIColor = Color.backgroundDarkMap
+    var backgroundColor: UIColor = Color.backgroundDarkMap
     var barStyle: UIBarStyle = .black
+    var mapStyle: URL = MGLStyle.darkStyleURL
 }
