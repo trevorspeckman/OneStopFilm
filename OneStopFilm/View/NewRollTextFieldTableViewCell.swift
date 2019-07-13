@@ -28,6 +28,8 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
                 cellTextField.keyboardType = .default
             } else if newRoll.keyboard == 1 {
                 cellTextField.keyboardType = .numberPad
+            } else if newRoll.keyboard == 2 {
+                cellTextField.keyboardType = .decimalPad
             }
             textLengthLimit = newRoll.textLengthLimit
             cellTextField.text = nil
@@ -90,12 +92,12 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
 
     
     
-    private func update(button: UIButton, image: UIImage?, color: UIColor) {
-        let image = (image ?? button.currentImage)?.withRenderingMode(.alwaysTemplate)
-        button.setImage(image, for: .normal)
-        button.setImage(image, for: .highlighted)
-        button.tintColor = color
-    }
+//    private func update(button: UIButton, image: UIImage?, color: UIColor) {
+//        let image = (image ?? button.currentImage)?.withRenderingMode(.alwaysTemplate)
+//        button.setImage(image, for: .normal)
+//        button.setImage(image, for: .highlighted)
+//        button.tintColor = color
+//    }
 
     
 //MARK: ConfigurableCell Protocol Methods
@@ -108,6 +110,8 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
             cellTextField.keyboardType = .default
         } else if newRoll.keyboard == 1 {
             cellTextField.keyboardType = .numberPad
+        } else if newRoll.keyboard == 2 {
+            cellTextField.keyboardType = .decimalPad
         }
         textLengthLimit = newRoll.textLengthLimit
         
@@ -145,10 +149,32 @@ class NewRollTextFieldTableViewCell: BaseTableViewCell, ConfigurableCell, UIText
     }
 
     
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let text = cellTextField.text else { return true }
+//        let newLength = text.count + string.count - range.length
+//        return newLength <= textLengthLimit
+//    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let oldText = textField.text, let r = Range(range, in: oldText) else {
+            return true
+        }
+        
+        let newText = oldText.replacingCharacters(in: r, with: string)
+        //let isNumeric = newText.isEmpty || (Double(newText) != nil)
+        let numberOfDots = newText.components(separatedBy: ".").count - 1
+        
+        let numberOfDecimalDigits: Int
+        if let dotIndex = newText.firstIndex(of: ".") {
+            numberOfDecimalDigits = newText.distance(from: dotIndex, to: newText.endIndex) - 1
+        } else {
+            numberOfDecimalDigits = 0
+        }
+        
         guard let text = cellTextField.text else { return true }
         let newLength = text.count + string.count - range.length
-        return newLength <= textLengthLimit
+        
+        return  numberOfDots <= 1 && numberOfDecimalDigits <= 1 && newLength <= textLengthLimit
     }
     
     

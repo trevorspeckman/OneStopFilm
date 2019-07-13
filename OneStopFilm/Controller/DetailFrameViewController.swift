@@ -11,13 +11,17 @@ import Mapbox
 import MapboxGeocoder
 
 
-class DetailFrameViewController: UIViewController {
+class DetailFrameViewController: UIViewController, ChildViewControllerDelegate {
+    func childViewControllerResponse(response: Any, selectedParentViewCellIndex: Int) {
+        lensResponseText = response as! String
+    }
+    
 
     let detailFrameModel = DetailFrameModel()
     let reuseIdentifiers = ["LabelWithImageTableViewCell", "IndicatorTableViewCell", "SliderTableViewCell"]
     var previousLocation: CLLocation?
     var labelText: String?
-    
+    var lensResponseText = "LENS"
 //MARK: Subview definitions
     fileprivate let mapView: MGLMapView = {
         let map = MGLMapView()
@@ -25,19 +29,8 @@ class DetailFrameViewController: UIViewController {
         map.tintColor = ActiveRollTheme.current.colorOne
         map.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        // Set the map’s center coordinate and zoom level.
-        
-
         map.styleURL = MGLStyle.lightStyleURL
-        // Set the delegate property of our map view to `self` after instantiating it.
-        
 
-        // Declare the marker `hello` and set its coordinates, title, and subtitle.
-        let hello = MGLPointAnnotation()
-        hello.coordinate = CLLocationCoordinate2D(latitude: 40.7326808, longitude: -73.9843407)
-        
-        // Add marker `hello` to the map.
-        map.addAnnotation(hello)
         return map
     }()
     
@@ -139,7 +132,7 @@ extension DetailFrameViewController: MGLMapViewDelegate {
         
         if let currentLocation = mapView.userLocation?.location {
             if previousLocation != nil {
-                guard currentLocation.distance(from: previousLocation!) > 50 else { return }
+                guard currentLocation.distance(from: previousLocation!) > 20 else { return }
             }
             
             self.previousLocation = currentLocation
@@ -153,10 +146,11 @@ extension DetailFrameViewController: MGLMapViewDelegate {
                 let street = placemark.thoroughfare ?? ""
                 let city = placemark.place?.name ?? ""
                 let state = placemark.administrativeRegion?.name ?? ""
-                let country = placemark.country?.name ?? ""
+               
+                
                 
                 DispatchQueue.main.async {
-                    self.labelText = "\(addressNumber) \(street) \(city) \(state) \(country)"
+                    self.labelText = "\(addressNumber) \(street), \(city), \(state)".uppercased()
                     self.table.reloadData()
                 }
             }
@@ -192,18 +186,31 @@ extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource 
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[0], for: indexPath) as! LabelWithImageTableViewCell
             cell.titleLabel.titleLabel.text = labelText
+            cell.titleLabel.titleIcon.image = UIImage(named: "icon_location")
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[0], for: indexPath) as! LabelWithImageTableViewCell
+            
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            dateFormatter.setLocalizedDateFormatFromTemplate("MM/dd/yyyy, jj:mm")
+            cell.titleLabel.titleLabel.text = dateFormatter.string(from: date)
+            
+            
+            cell.titleLabel.titleIcon.image = UIImage(named: "icon_date")
             return cell
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[1], for: indexPath) as! IndicatorTableViewCell
+            cell.titleLabel.titleIcon.image = UIImage(named: "icon_lens")
             return cell
             
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[2], for: indexPath) as! SliderTableViewCell
+            cell.titleLabel.titleIcon.image = UIImage(named: "icon_aperature")
             return cell
             
         case 4:
@@ -218,13 +225,24 @@ extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource 
     
 }
 
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            tableView.deselectRow(at: indexPath, animated: true)
+            let lensTableViewController = LensTableViewController()
+            lensTableViewController.selectedParentViewCellIndex = indexPath.row
+            lensTableViewController.delegate = self
+            navigationController?.pushViewController(lensTableViewController, animated: true)
+        }
+    }
 
 
 
     //MARK: Delegate Methods
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        //44
+        return BaseTableViewCell.cellHeight
     }
     
 }

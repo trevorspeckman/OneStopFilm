@@ -13,6 +13,7 @@ class LabelWithImageTableViewCell: BaseTableViewCell {
 //MARK: Subview Initialization
     let titleLabel: LabelWithImageView = {
         let view = LabelWithImageView()
+        //view.backgroundColor = .yellow
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -23,9 +24,10 @@ class LabelWithImageTableViewCell: BaseTableViewCell {
     override func setupViews() {
         addSubview(titleLabel)
 
-        
         titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor, constant: -10).isActive = true
         
         selectionStyle = .none
     }

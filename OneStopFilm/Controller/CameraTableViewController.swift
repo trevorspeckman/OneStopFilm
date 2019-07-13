@@ -66,9 +66,9 @@ class CameraTableViewController: UITableViewController {
         }
         addCameraPopup.endEditing(true)
         
-        let newFilm = Camera(context: context)
-        newFilm.brand = addCameraPopup.typedText[0]
-        newFilm.name = addCameraPopup.typedText[1]
+        let newCamera = Camera(context: context)
+        newCamera.brand = addCameraPopup.typedText[0]
+        newCamera.name = addCameraPopup.typedText[1]
         
         saveItems()
         loadItems()

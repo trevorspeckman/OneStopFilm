@@ -12,6 +12,7 @@ protocol ThemeProtocol {
     
     var mainFontName: String { get }
     var textColor: UIColor { get }
+    var subtitleTextColor: UIColor { get }
     var placeholderColor: UIColor { get }
     var tintColor: UIColor { get }
     var deleteButtonColor: UIColor { get }

@@ -12,6 +12,7 @@ struct DarkTheme: ThemeProtocol {
     
     var mainFontName: String = "Avenir-Light"
     var textColor: UIColor = .white
+    var subtitleTextColor: UIColor = .gray
     var placeholderColor: UIColor = .gray
     var tintColor: UIColor = .orange
      var deleteButtonColor: UIColor = Color.redLight

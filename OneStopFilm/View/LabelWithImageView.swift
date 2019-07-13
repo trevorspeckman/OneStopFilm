@@ -20,11 +20,12 @@ class LabelWithImageView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-//        label.backgroundColor = UIColor.purple
+
         
         label.text = "-"
         label.textAlignment = .left
         label.font = Theme.Font.titleLabelFont!
+
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -44,8 +45,8 @@ class LabelWithImageView: UIView {
         
         titleIcon.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         titleIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        titleIcon.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8).isActive = true
-        titleIcon.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8).isActive = true
+        titleIcon.widthAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 0.8).isActive = true
+        titleIcon.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 0.8).isActive = true
         
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: titleIcon.centerYAnchor).isActive = true

@@ -34,6 +34,8 @@ class SliderTableViewCell: LabelWithImageTableViewCell, ConfigurableCell  {
         
         addSubview(cellSlider)
         
+
+        
         cellSlider.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         cellSlider.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10).isActive = true
          cellSlider.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true

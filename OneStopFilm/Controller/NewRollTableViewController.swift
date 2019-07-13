@@ -258,7 +258,7 @@ class NewRollTableViewController: UITableViewController, ChildViewControllerDele
             } else {
                 
                 navigationItem.rightBarButtonItem?.isEnabled = false
-                navigationItem.rightBarButtonItem?.tintColor = .officialApplePlaceholderGray
+                navigationItem.rightBarButtonItem?.tintColor = Theme.current.placeholderColor
             }
         }
     }

@@ -31,13 +31,12 @@
         <attribute name="focalLength" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="maxAperature" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="minAperature" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="ActiveFilmRoll" positionX="74.60546875" positionY="-208.50390625" width="128" height="165"/>
         <element name="Camera" positionX="384.32421875" positionY="-289.6640625" width="128" height="75"/>
         <element name="Film" positionX="361.51953125" positionY="-18.31640625" width="128" height="75"/>
-        <element name="Lens" positionX="357.4921875" positionY="141.0859375" width="128" height="118"/>
         <element name="Frame" positionX="234" positionY="-135" width="128" height="135"/>
+        <element name="Lens" positionX="357.4921875" positionY="141.0859375" width="128" height="105"/>
     </elements>
 </model>
