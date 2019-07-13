@@ -33,7 +33,7 @@ class FramesTableViewCell: BaseTableViewCell {
 
         label.titleLabel.text = "f/-.-"
         label.titleLabel.font = Theme.Font.bodyLabelFont!
-        label.titleLabel.textColor = UIColor.white
+        //label.titleLabel.textColor = UIColor.white
         //label.viewColor = Theme.current.textColor
         label.titleIcon.image = UIImage(named: "icon_aperature")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +44,7 @@ class FramesTableViewCell: BaseTableViewCell {
         let label = LabelWithImageView()
         label.titleLabel.text = "1/----"
         label.titleLabel.font = Theme.Font.bodyLabelFont!
-        label.titleLabel.textColor = UIColor.white
+        //label.titleLabel.textColor = UIColor.white
         //label.viewColor = Theme.current.textColor
         label.titleIcon.image = UIImage(named: "icon_shutterSpeed")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ class FramesTableViewCell: BaseTableViewCell {
         let label = LabelWithImageView()
         label.titleLabel.text = "--/--/----"
         label.titleLabel.font = Theme.Font.bodyLabelFont!
-        label.titleLabel.textColor = UIColor.white
+        //label.titleLabel.textColor = UIColor.white
        // label.viewColor = Theme.current.textColor
         label.titleIcon.image = UIImage(named: "icon_date")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false

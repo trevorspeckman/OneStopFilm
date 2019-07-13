@@ -60,6 +60,12 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ActiveFilmRollCell
         
+        if isEditing{
+            cell.isEditing = true
+        }else{
+            cell.isEditing = false
+        }
+        
         cell.layer.shouldRasterize = true;
         cell.layer.rasterizationScale = UIScreen.main.scale
         cell.delegate = self
@@ -84,9 +90,11 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
             }
         }
         
-
-        
     }
+    
+    
+    
+    
     
     //MARK: DelegateFlowLayout Methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

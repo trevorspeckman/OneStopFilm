@@ -47,7 +47,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
             }
             
             // xButtonContainer
-            xButtonContainer.isHidden = true
+            xButtonContainer.isHidden = !isEditing
 
             
         }
