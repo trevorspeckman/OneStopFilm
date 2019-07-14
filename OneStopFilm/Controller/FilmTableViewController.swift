@@ -13,31 +13,55 @@ import CoreData
 
 class FilmTableViewController: UITableViewController {
     
-
-
-    var filmArray = [Film]()
-    
+//MARK - Define Global Variables/Constants
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var selectedParentViewCellIndex = 0
+    //var filmArray = [Film]()
+    
+    var selectedParentViewCellIndex: Int?
+    
     var delegate: ChildViewControllerDelegate?
     
+    let searchController = UISearchController(searchResultsController: nil)
+    let addFilmPopup = AddFilmPopup()
+
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Film> = {
+        // Create Fetch Request
+        let fetchRequest: NSFetchRequest<Film> = Film.fetchRequest()
+        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "brand", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
+        
+        // Create Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
+    
+    
+    fileprivate func updateView() {
+        var hasFilm = false
+        
+        if let films = fetchedResultsController.fetchedObjects {
+            hasFilm = films.count > 0
+        }
+        
+        //tableView.isHidden = !hasFilm
+    }
+    
+//MARK - View Controller Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupNavBar()
-        
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
-        tableView.backgroundColor = Theme.current.cellColor
+        setupTableView()
         loadItems()
-//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
     }
     
     
-    let addFilmPopup = AddFilmPopup()
     
+//MARK: - Navigation Bar Item and popup Methods
     @objc func addTapped() {
         
         if let window = UIApplication.shared.keyWindow {
@@ -74,35 +98,34 @@ class FilmTableViewController: UITableViewController {
         let newFilm = Film(context: context)
         newFilm.brand = addFilmPopup.typedText[0]
         newFilm.name = addFilmPopup.typedText[1]
-        
-        saveItems()
-        loadItems()
-        tableView.reloadData()
-
-        
     }
 
 
-
-    // MARK: - Table view data source
+// MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return filmArray.count
+        
+        guard let films = fetchedResultsController.fetchedObjects else {return 0}
+        
+        return films.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         
-        let film = filmArray[indexPath.row]
+        let film = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = "\(film.brand ?? "") \(film.name ?? "")"
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return "Film"
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -111,26 +134,14 @@ class FilmTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            context.delete(filmArray[indexPath.row])
-            saveItems()
-            
-            filmArray.remove(at: indexPath.row)
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
+           let film = fetchedResultsController.object(at: indexPath)
+            film.managedObjectContext?.delete(film)
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        self.delegate?.childViewControllerResponse(response: cell?.textLabel?.text ?? "", selectedParentViewCellIndex: selectedParentViewCellIndex)
-        
-        navigationController?.popViewController(animated: true)
-    }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//MARK - TableView Delegate Methods
 
-        return "Film"
-    }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
@@ -138,9 +149,15 @@ class FilmTableViewController: UITableViewController {
         }
     }
     
-let searchController = UISearchController(searchResultsController: nil)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        self.delegate?.childViewControllerResponse(response: cell?.textLabel?.text ?? "", selectedParentViewCellIndex: selectedParentViewCellIndex!)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
 
-    //MARK: Setup Methods
+//MARK: - Setup Methods
     fileprivate func setupNavBar() {
         navigationItem.title = "FILM"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Theme.Font.titleFont!]
@@ -150,7 +167,6 @@ let searchController = UISearchController(searchResultsController: nil)
         self.navigationController?.navigationBar.barTintColor = Theme.current.cellColor
         self.navigationController?.navigationBar.barStyle = Theme.current.barStyle
         
-
         // Setup the Search Controller
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "SEARCH FILMS"
@@ -160,51 +176,91 @@ let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    //MARK: Model Manipulation Methods
+    fileprivate func setupTableView() {
+        tableView.register(UITableViewCell.self)
+        tableView.tableFooterView = UIView()
+        tableView.backgroundColor = Theme.current.cellColor
+    }
+    
+    
+//MARK: Model Manipulation Methods
     func saveItems() {
-        
         do{
             try context.save()
         } catch {
             print("Error saving context \(error)")
         }
-        
     }
     
-    func loadItems(with request: NSFetchRequest<Film> = Film.fetchRequest()) {
-
-        request.sortDescriptors = [NSSortDescriptor(key: "brand", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
+    func loadItems() {
         do {
-            filmArray = try context.fetch(request)
+            try self.fetchedResultsController.performFetch()
         } catch {
-            print("Error fetching data from context \(error)")
+            let fetchError = error as NSError
+            print("Unable to Perform Fetch Request")
+            print("\(fetchError), \(fetchError.localizedDescription)")
         }
+        self.updateView()
     }
-    
-    
-    
 }
 
-extension FilmTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
-  
 
-    
+//MARK: - Seach Bar Delegate Methods
+extension FilmTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+
     func updateSearchResults(for searchController: UISearchController) {
-        let request : NSFetchRequest<Film> = Film.fetchRequest()
-        
+
         guard let searchText = searchController.searchBar.text else {return}
         let search = searchText.trimmingCharacters(in: .whitespaces)
         let words = search.components(separatedBy: NSCharacterSet.whitespaces)
         if !search.isEmpty {
-            let predicates = words.map { NSPredicate(format: "brand CONTAINS[cd] %@ OR name CONTAINS[cd] %@", $0,$0) }
-            request.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: predicates)
+            let predicate = words.map { NSPredicate(format: "brand CONTAINS[cd] %@ OR name CONTAINS[cd] %@", $0,$0) }
+            self.fetchedResultsController.fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: predicate)
+        } else {
+
+            fetchedResultsController.fetchRequest.predicate = nil
+
         }
         
         
-      
-        loadItems(with: request)
-         tableView.reloadData()
+
+        loadItems()
+        tableView.reloadData()
     }
 
 }
 
+
+
+extension FilmTableViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            saveItems()
+            break;
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            saveItems()
+            break;
+        default:
+            print("...")
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+        updateView()
+    }
+    
+    
+}

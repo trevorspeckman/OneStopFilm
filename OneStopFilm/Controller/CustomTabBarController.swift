@@ -18,18 +18,14 @@ class CustomTabBarController: UITabBarController {
         let currentRolls = ActiveFilmRollsViewController(collectionViewLayout: layout)
         let logNavController = UINavigationController(rootViewController: currentRolls)
         
-        
         let develop = DevelopTableViewController()
         let developNavController = UINavigationController(rootViewController: develop)
         
         let archive = ArchiveCollectionViewController(collectionViewLayout: layout)
         let archiveNavController = UINavigationController(rootViewController: archive)
         
-        
         let settings = SettingsTableViewController()
         let settingsNavController = UINavigationController(rootViewController: settings)
-        
-        
         
         logNavController.tabBarItem.title = "Log"
         developNavController.tabBarItem.title = "Develop"
