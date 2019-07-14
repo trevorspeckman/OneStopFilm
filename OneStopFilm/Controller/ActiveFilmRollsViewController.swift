@@ -12,13 +12,34 @@ import CoreData
 class ActiveFilmRollsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     
+    enum State {
+        case noData
+        case loaded
+    }
     
+    var state: State = .noData{
+        didSet {
+            switch state {
+            case .noData:
+                noCellsView.isHidden = false
+                collectionView.isHidden = true
+            case .loaded:
+                noCellsView.isHidden = true
+                collectionView.isHidden = false
+            }
+        }
+    }
+    
+    let noCellsView = BaseNoDataView(imageName: "Background_add", Title: "NO ACTIVE ROLLS", Body: "ADD A ROLL BY TAPPING THE + BUTTON")
+
     var activeFilmRolls = [ActiveFilmRoll]() {
         didSet{
             if activeFilmRolls.count == 0 {
+                state = .noData
                 isEditing = false
                 navigationItem.leftBarButtonItem?.isEnabled = false
             } else {
+                state = .loaded
                 navigationItem.leftBarButtonItem?.isEnabled = true
             }
             
@@ -33,6 +54,10 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
         
         setupNavBar()
         setupCollectionView()
+        
+
+        view.addSubview(noCellsView)
+        
 
     }
     
@@ -59,19 +84,10 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ActiveFilmRollCell
-        
-        if isEditing{
-            cell.isEditing = true
-        }else{
-            cell.isEditing = false
-        }
-        
-        cell.layer.shouldRasterize = true;
-        cell.layer.rasterizationScale = UIScreen.main.scale
+
         cell.delegate = self
-        cell.activeFilmRoll = activeFilmRolls[indexPath.row]
-            
-        
+        let activeFilmRoll = activeFilmRolls[indexPath.row]
+        cell.activeFilmRollViewModel = ActiveFilmRollViewModel(activeFilmRoll)
         return cell
     }
     
@@ -103,7 +119,8 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let framesTableViewController = FramesTableViewController()
-        
+        framesTableViewController.navigationItem.title = activeFilmRolls[indexPath.row].title
+        framesTableViewController.maxFrames = activeFilmRolls[indexPath.row].frameCount
         if let colorName = activeFilmRolls[indexPath.row].colorName {
             if let filmColor = Color.gradientDictionary[colorName] {
                 ActiveRollTheme.current = filmColor

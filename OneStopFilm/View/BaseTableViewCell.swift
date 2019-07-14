@@ -8,10 +8,7 @@
 
 import UIKit
 
-protocol ConfigurableCell {
-    associatedtype DataType
-    func configure(data: DataType)
-}
+
 
 class BaseTableViewCell: UITableViewCell {
 
@@ -20,6 +17,7 @@ class BaseTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Theme.current.cellColor
+        textLabel?.textColor = Theme.current.textColor
         setupViews()
         
         

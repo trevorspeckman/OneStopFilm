@@ -18,38 +18,17 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     weak var delegate: ActiveFilmRollCellDelegate?
     
 //MARK: Fill Cell from Model
-    var activeFilmRoll: ActiveFilmRoll? {
+    var activeFilmRollViewModel: ActiveFilmRollViewModel! {
         didSet{
-            // titleLabel
-            titleLabel.text = activeFilmRoll?.title
             
-            // dateLabel
-            if let date = activeFilmRoll?.date {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateStyle = .medium
-                dateFormatter.timeStyle = .none
-                dateFormatter.setLocalizedDateFormatFromTemplate("MM/dd/yyyy")
-                dateLabel.titleLabel.text = dateFormatter.string(from: date)
-            }
-            
-            // filmLabel
-            filmLabel.titleLabel.text = "\(activeFilmRoll?.film ?? "?")"
-            
-            // cameraLabel
-            cameraLabel.titleLabel.text = "\(activeFilmRoll?.camera ?? "")"
-            
-            // circularProggresBar
-            if let currentFrame = activeFilmRoll?.completedFrames {
-                if let frameCount = activeFilmRoll?.frameCount {
-                    circularProgressBar.progressLabel.text = "\(currentFrame)/\(frameCount)"
-                    circularProgressBar.progressAngle = CGFloat(currentFrame) / CGFloat(frameCount) * 2*CGFloat.pi
-                }
-            }
-            
-            // xButtonContainer
-            xButtonContainer.isHidden = !isEditing
+            titleLabel.text = activeFilmRollViewModel.titleLabelText
+            dateLabel.titleLabel.text = activeFilmRollViewModel.dateLabelText
+            filmLabel.titleLabel.text = activeFilmRollViewModel.filmLabelText
+            cameraLabel.titleLabel.text = activeFilmRollViewModel.cameraLabelText
+            circularProgressBar.progressLabel.text = activeFilmRollViewModel.progressBarText
+            circularProgressBar.progressAngle = activeFilmRollViewModel.progressBarStroke
 
-            
+            xButtonContainer.isHidden = !isEditing
         }
 
     }
@@ -108,7 +87,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         let label = LabelWithImageView()
         label.titleLabel.font = Theme.Font.bodyLabelFont!
         label.titleLabel.textColor = UIColor.white
-        //label.viewColor = .white
+        label.titleIcon.tintColor = UIColor.white
         label.titleIcon.image = UIImage(named: "icon_date")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -118,7 +97,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         let label = LabelWithImageView()
         label.titleLabel.font = Theme.Font.bodyLabelFont!
         label.titleLabel.textColor = UIColor.white
-        //label.viewColor = .white
+        label.titleIcon.tintColor = UIColor.white
         label.titleIcon.image = UIImage(named: "icon_film")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -128,7 +107,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         let label = LabelWithImageView()
         label.titleLabel.font = Theme.Font.bodyLabelFont!
         label.titleLabel.textColor = UIColor.white
-        //label.viewColor = .white
+        label.titleIcon.tintColor = UIColor.white
         label.titleIcon.image = UIImage(named: "icon_camera")?.withRenderingMode(.alwaysTemplate)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -172,7 +151,11 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
     }
     
     
-    
+    //MARK: - Setup Cell
+    override func setupCell(){
+        self.layer.shouldRasterize = true;
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
     
     
     // MARK: Setup constraints
@@ -269,7 +252,7 @@ class ActiveFilmRollCell: BaseCollectionViewCell {
         
         topOfRoll.setGradientBackground(colorOne: .black, colorTwo: Color.capGrey, locations: [0.5,1], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 0, y: 1))
         
-        if let colorName = activeFilmRoll?.colorName {
+        if let colorName = activeFilmRollViewModel?.colorName {
             if let dictionaryName = Color.gradientDictionary[colorName] {
                 filmColor.setGradientBackground(colorOne: dictionaryName.colorOne, colorTwo: dictionaryName.colorTwo, locations: [0.0,1.0], startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 1.0))
             }

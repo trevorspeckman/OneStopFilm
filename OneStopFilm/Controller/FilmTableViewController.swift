@@ -9,15 +9,14 @@
 import UIKit
 import CoreData
 
-protocol ChildViewControllerDelegate {
-    func childViewControllerResponse(response: Any, selectedParentViewCellIndex: Int)
-}
+
 
 class FilmTableViewController: UITableViewController {
     
 
 
     var filmArray = [Film]()
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var selectedParentViewCellIndex = 0
@@ -27,7 +26,9 @@ class FilmTableViewController: UITableViewController {
         super.viewDidLoad()
 
         setupNavBar()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
         tableView.backgroundColor = Theme.current.cellColor
         loadItems()
 //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
@@ -96,16 +97,10 @@ class FilmTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
         
-        cell.backgroundColor = Theme.current.cellColor
-        cell.textLabel?.textColor = Theme.current.textColor
-        
-        if let brand = filmArray[indexPath.row].brand {
-            if let name = filmArray[indexPath.row].name {
-                cell.textLabel?.text = "\(brand) \(name)"
-            }
-        }
+        let film = filmArray[indexPath.row]
+        cell.textLabel?.text = "\(film.brand ?? "") \(film.name ?? "")"
         
         return cell
     }
@@ -208,7 +203,7 @@ extension FilmTableViewController: UISearchResultsUpdating, UISearchBarDelegate 
         
       
         loadItems(with: request)
-        tableView.reloadData()
+         tableView.reloadData()
     }
 
 }

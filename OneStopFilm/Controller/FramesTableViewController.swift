@@ -13,14 +13,7 @@ class FramesTableViewController: UITableViewController {
     let framesArray = [Frame]()
     let cellId = "cellId"
     
-//    var navBarColorName = "" {
-//        didSet{
-//            if let pageColorName = Color.gradientDictionary[navBarColorName] {
-//                let pageColor = pageColorName.colorOne
-//                self.navigationController?.navigationBar.barTintColor = pageColor
-//            }
-//        }
-//    }
+    var maxFrames: Int16? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +64,10 @@ class FramesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let detailFrameViewController = DetailFrameViewController()
+        if let frameCount = maxFrames {
+            detailFrameViewController.navigationItem.setTitle(self.navigationItem.title ?? "", subtitle: "Frame \(indexPath.row + 1) of \(frameCount)")
+        }
+        
         navigationController?.pushViewController(detailFrameViewController, animated: true)
     }
     
@@ -78,7 +75,7 @@ class FramesTableViewController: UITableViewController {
     
     //MARK: Setup Methods
     fileprivate func setupNavBar() {
-        navigationItem.title = "TRIP TO YOSEMITE"
+        
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: Theme.Font.titleFont!]
         if let navigationBar = self.navigationController?.navigationBar {
             let gradientColors = ActiveRollTheme.current

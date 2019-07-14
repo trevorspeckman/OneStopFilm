@@ -22,6 +22,7 @@ class DetailFrameViewController: UIViewController, ChildViewControllerDelegate {
     var previousLocation: CLLocation?
     var labelText: String?
     var lensResponseText = "LENS"
+    
 //MARK: Subview definitions
     fileprivate let mapView: MGLMapView = {
         let map = MGLMapView()
@@ -66,8 +67,7 @@ class DetailFrameViewController: UIViewController, ChildViewControllerDelegate {
         table.dataSource = self
         
         view.backgroundColor = Theme.current.backgroundColor
-        
-        setupNavBar()
+
         setupTableView()
         setupLayouts()
 
@@ -79,11 +79,7 @@ class DetailFrameViewController: UIViewController, ChildViewControllerDelegate {
 
     
     
-//MARK: Setup Methods
-    fileprivate func setupNavBar() {
-        // Do any additional setup after loading the view.
-        self.navigationItem.setTitle("TRIP TO YOSEMITE", subtitle: "Frame 1 of 24")
-    }
+
     
     fileprivate func setupTableView() {
         table.register(LabelWithImageTableViewCell.self, forCellReuseIdentifier: reuseIdentifiers[0])
@@ -206,6 +202,8 @@ extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource 
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiers[1], for: indexPath) as! IndicatorTableViewCell
             cell.titleLabel.titleIcon.image = UIImage(named: "icon_lens")?.withRenderingMode(.alwaysTemplate)
+            
+            
             return cell
             
         case 3:

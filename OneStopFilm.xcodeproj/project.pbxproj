@@ -13,7 +13,7 @@
 		E509976E22C589300069DFCB /* NewRollTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976D22C589300069DFCB /* NewRollTextField.swift */; };
 		E509977022C58C190069DFCB /* CameraTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976F22C58C190069DFCB /* CameraTableViewController.swift */; };
 		E509977222C58CCC0069DFCB /* ColorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977122C58CCC0069DFCB /* ColorCollectionViewController.swift */; };
-		E509977422CA79D90069DFCB /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977322CA79D90069DFCB /* CellConfigurator.swift */; };
+		E509977422CA79D90069DFCB /* TableCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977322CA79D90069DFCB /* TableCellConfigurator.swift */; };
 		E509977622CA7A7F0069DFCB /* NewRollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977522CA7A7F0069DFCB /* NewRollModel.swift */; };
 		E509977A22CAB6330069DFCB /* AddFilmPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977922CAB6330069DFCB /* AddFilmPopup.swift */; };
 		E509977E22CAC5050069DFCB /* BasePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977D22CAC5050069DFCB /* BasePopup.swift */; };
@@ -46,6 +46,11 @@
 		E567864E22D970F1001FEB6E /* LensTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567864D22D970F1001FEB6E /* LensTableViewController.swift */; };
 		E567865022D973B3001FEB6E /* AddLensPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567864F22D973B3001FEB6E /* AddLensPopUp.swift */; };
 		E567865222D97483001FEB6E /* AddLensPopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567865122D97483001FEB6E /* AddLensPopUpModel.swift */; };
+		E567865F22DA9B52001FEB6E /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567865E22DA9B52001FEB6E /* ConfigurableCell.swift */; };
+		E567866122DA9B94001FEB6E /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567866022DA9B94001FEB6E /* CellConfigurator.swift */; };
+		E567866422DA9C43001FEB6E /* ChildViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567866322DA9C43001FEB6E /* ChildViewControllerDelegate.swift */; };
+		E567866722DA9F99001FEB6E /* ActiveFilmRollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567866622DA9F99001FEB6E /* ActiveFilmRollViewModel.swift */; };
+		E567866922DAAC47001FEB6E /* BaseNoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567866822DAAC47001FEB6E /* BaseNoDataView.swift */; };
 		E570358422D247C5009FE20C /* AddCameraPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570358322D247C5009FE20C /* AddCameraPopUp.swift */; };
 		E5841D3922BD756700F99BC3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D3822BD756700F99BC3 /* Extensions.swift */; };
 		E5841D3B22BD758300F99BC3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D3A22BD758300F99BC3 /* Theme.swift */; };
@@ -71,7 +76,7 @@
 		E509976D22C589300069DFCB /* NewRollTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollTextField.swift; sourceTree = "<group>"; };
 		E509976F22C58C190069DFCB /* CameraTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTableViewController.swift; sourceTree = "<group>"; };
 		E509977122C58CCC0069DFCB /* ColorCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewController.swift; sourceTree = "<group>"; };
-		E509977322CA79D90069DFCB /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
+		E509977322CA79D90069DFCB /* TableCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellConfigurator.swift; sourceTree = "<group>"; };
 		E509977522CA7A7F0069DFCB /* NewRollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollModel.swift; sourceTree = "<group>"; };
 		E509977922CAB6330069DFCB /* AddFilmPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFilmPopup.swift; sourceTree = "<group>"; };
 		E509977D22CAC5050069DFCB /* BasePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopup.swift; sourceTree = "<group>"; };
@@ -106,6 +111,11 @@
 		E567864D22D970F1001FEB6E /* LensTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensTableViewController.swift; sourceTree = "<group>"; };
 		E567864F22D973B3001FEB6E /* AddLensPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLensPopUp.swift; sourceTree = "<group>"; };
 		E567865122D97483001FEB6E /* AddLensPopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLensPopUpModel.swift; sourceTree = "<group>"; };
+		E567865E22DA9B52001FEB6E /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		E567866022DA9B94001FEB6E /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
+		E567866322DA9C43001FEB6E /* ChildViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewControllerDelegate.swift; sourceTree = "<group>"; };
+		E567866622DA9F99001FEB6E /* ActiveFilmRollViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveFilmRollViewModel.swift; sourceTree = "<group>"; };
+		E567866822DAAC47001FEB6E /* BaseNoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNoDataView.swift; sourceTree = "<group>"; };
 		E570358322D247C5009FE20C /* AddCameraPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCameraPopUp.swift; sourceTree = "<group>"; };
 		E5841D3822BD756700F99BC3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E5841D3A22BD758300F99BC3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -172,10 +182,11 @@
 		E50A454222BACD390047ABFE /* OneStopFilm */ = {
 			isa = PBXGroup;
 			children = (
-				E526441822D7FEC4008D5FAD /* Theme */,
 				E50A454322BACD390047ABFE /* AppDelegate.swift */,
+				E526441822D7FEC4008D5FAD /* Theme */,
 				E58B60FD22C30CE100DC9294 /* Model */,
 				E50A455522BAE43C0047ABFE /* View */,
+				E567866522DA9F6E001FEB6E /* ViewModels */,
 				E50A455722BAE47B0047ABFE /* Controller */,
 				E5841D3722BD754900F99BC3 /* Extensions */,
 				E50A455622BAE4590047ABFE /* Supporting Files */,
@@ -189,9 +200,10 @@
 		E50A455522BAE43C0047ABFE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E567865D22DA9B1C001FEB6E /* Protocols */,
 				E5841D4822BDA81800F99BC3 /* BaseCollectionViewCell.swift */,
 				E58B610022C31D1C00DC9294 /* BaseTableViewCell.swift */,
-				E509977322CA79D90069DFCB /* CellConfigurator.swift */,
+				E509977322CA79D90069DFCB /* TableCellConfigurator.swift */,
 				E5841D3C22BD7AD800F99BC3 /* ActiveFilmRollCell.swift */,
 				E58B610222C31DCD00DC9294 /* NewRollTextFieldTableViewCell.swift */,
 				E509976922C57CBA0069DFCB /* NewRollLabelTableViewCell.swift */,
@@ -207,6 +219,7 @@
 				E55BDBDB22CC425B005AE251 /* SliderTableViewCell.swift */,
 				E59E3C7122D9298900C3841B /* IndicatorTableViewCell.swift */,
 				E55BDBDF22CC8DD6005AE251 /* SelfSizedTableView.swift */,
+				E567866822DAAC47001FEB6E /* BaseNoDataView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,6 +235,7 @@
 		E50A455722BAE47B0047ABFE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E567866222DA9C20001FEB6E /* Protocols */,
 				E50A454522BACD390047ABFE /* ActiveFilmRollsViewController.swift */,
 				E5841D3E22BD99BC00F99BC3 /* CustomTabBarController.swift */,
 				E5841D4022BD9F7B00F99BC3 /* DevelopTableViewController.swift */,
@@ -241,16 +255,49 @@
 		E526441822D7FEC4008D5FAD /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				E567865A22DA997E001FEB6E /* Protocols */,
 				E526441B22D8004A008D5FAD /* Color.swift */,
-				E526442322D80519008D5FAD /* ActiveRollThemeProtocol.swift */,
 				E526442122D804EC008D5FAD /* ActiveRollTheme.swift */,
 				E526442522D80585008D5FAD /* ActiveRollThemes.swift */,
-				E526441922D7FF04008D5FAD /* ThemeProtocol.swift */,
 				E5841D3A22BD758300F99BC3 /* Theme.swift */,
 				E526441D22D80214008D5FAD /* LightTheme.swift */,
 				E526441F22D802CC008D5FAD /* DarkTheme.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		E567865A22DA997E001FEB6E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E526442322D80519008D5FAD /* ActiveRollThemeProtocol.swift */,
+				E526441922D7FF04008D5FAD /* ThemeProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E567865D22DA9B1C001FEB6E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E567865E22DA9B52001FEB6E /* ConfigurableCell.swift */,
+				E567866022DA9B94001FEB6E /* CellConfigurator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E567866222DA9C20001FEB6E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E567866322DA9C43001FEB6E /* ChildViewControllerDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E567866522DA9F6E001FEB6E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E567866622DA9F99001FEB6E /* ActiveFilmRollViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E5841D3722BD754900F99BC3 /* Extensions */ = {
@@ -271,8 +318,8 @@
 				E509978522CB0A480069DFCB /* LabelWithImage.swift */,
 				E509978722CB0B200069DFCB /* FramesTableModel.swift */,
 				E55BDBDD22CC4718005AE251 /* DetailFrameModel.swift */,
-				E55BDBE122CD014C005AE251 /* DataModel.xcdatamodeld */,
 				E526441622D31F0E008D5FAD /* Gradient.swift */,
+				E55BDBE122CD014C005AE251 /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -419,6 +466,7 @@
 				E509977A22CAB6330069DFCB /* AddFilmPopup.swift in Sources */,
 				E526441722D31F0E008D5FAD /* Gradient.swift in Sources */,
 				E58B60FC22C2FFCA00DC9294 /* NewRollTableViewController.swift in Sources */,
+				E567866122DA9B94001FEB6E /* CellConfigurator.swift in Sources */,
 				E55BDBDE22CC4718005AE251 /* DetailFrameModel.swift in Sources */,
 				E50A454622BACD390047ABFE /* ActiveFilmRollsViewController.swift in Sources */,
 				E509976E22C589300069DFCB /* NewRollTextField.swift in Sources */,
@@ -430,13 +478,15 @@
 				E5841D3D22BD7AD800F99BC3 /* ActiveFilmRollCell.swift in Sources */,
 				E509977222C58CCC0069DFCB /* ColorCollectionViewController.swift in Sources */,
 				E5841D3B22BD758300F99BC3 /* Theme.swift in Sources */,
-				E509977422CA79D90069DFCB /* CellConfigurator.swift in Sources */,
+				E509977422CA79D90069DFCB /* TableCellConfigurator.swift in Sources */,
 				E5841D3F22BD99BC00F99BC3 /* CustomTabBarController.swift in Sources */,
 				E526442022D802CC008D5FAD /* DarkTheme.swift in Sources */,
 				E509978222CAFF5E0069DFCB /* FramesTableViewController.swift in Sources */,
 				E58B60FA22C2DE5300DC9294 /* CircularProgressBar.swift in Sources */,
+				E567866722DA9F99001FEB6E /* ActiveFilmRollViewModel.swift in Sources */,
 				E567864E22D970F1001FEB6E /* LensTableViewController.swift in Sources */,
 				E509978822CB0B200069DFCB /* FramesTableModel.swift in Sources */,
+				E567865F22DA9B52001FEB6E /* ConfigurableCell.swift in Sources */,
 				E5841D4322BD9F9200F99BC3 /* ArchiveCollectionViewController.swift in Sources */,
 				E5841D4922BDA81800F99BC3 /* BaseCollectionViewCell.swift in Sources */,
 				E570358422D247C5009FE20C /* AddCameraPopUp.swift in Sources */,
@@ -444,6 +494,7 @@
 				E526441E22D80214008D5FAD /* LightTheme.swift in Sources */,
 				E58B610322C31DCD00DC9294 /* NewRollTextFieldTableViewCell.swift in Sources */,
 				E50A454422BACD390047ABFE /* AppDelegate.swift in Sources */,
+				E567866422DA9C43001FEB6E /* ChildViewControllerDelegate.swift in Sources */,
 				E509978022CACFE10069DFCB /* AddFilmPopUpModel.swift in Sources */,
 				E509976A22C57CBA0069DFCB /* NewRollLabelTableViewCell.swift in Sources */,
 				E509978622CB0A480069DFCB /* LabelWithImage.swift in Sources */,
@@ -452,6 +503,7 @@
 				E567865222D97483001FEB6E /* AddLensPopUpModel.swift in Sources */,
 				E55BDBE322CD014C005AE251 /* DataModel.xcdatamodeld in Sources */,
 				E55BDBD822CC24FE005AE251 /* LabelWithImageTableViewCell.swift in Sources */,
+				E567866922DAAC47001FEB6E /* BaseNoDataView.swift in Sources */,
 				E5841D3922BD756700F99BC3 /* Extensions.swift in Sources */,
 				E526442622D80585008D5FAD /* ActiveRollThemes.swift in Sources */,
 				E55BDBDC22CC425B005AE251 /* SliderTableViewCell.swift in Sources */,

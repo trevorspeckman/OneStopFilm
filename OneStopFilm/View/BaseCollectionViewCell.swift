@@ -11,6 +11,7 @@ import UIKit
 class BaseCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupCell()
         setupViews()
     }
     
@@ -18,6 +19,10 @@ class BaseCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         setupGradients()
         roundCorners()
+    }
+    
+    func setupCell() {
+        
     }
     
     func setupViews() {

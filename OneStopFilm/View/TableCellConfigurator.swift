@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol CellConfigurator {
-    static var reuseId: String { get }
-    func configure(cell: UIView)
-    func register(in tableView: UITableView)
-}
 
 class TableCellConfigurator<CellType: ConfigurableCell, DataType>: CellConfigurator where CellType.DataType == DataType, CellType: UITableViewCell {
     static var reuseId: String { return String(describing: CellType.self) }
