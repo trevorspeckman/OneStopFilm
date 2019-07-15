@@ -7,11 +7,11 @@
 //
 
 import Foundation
+import CoreData
 
-protocol FilmViewModelProtocol {
-    var attributeNames: [String] { get }
-    var isSearching: Bool { get }
-    var isAdding: Bool { get }
+protocol ListViewModelProtocol {
+    associatedtype T: NSFetchRequestResult
+    var fetchedResultsController: NSFetchedResultsController<T> { get }
     func saveItems()
     func loadItems()
     

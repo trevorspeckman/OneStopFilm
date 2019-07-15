@@ -64,7 +64,7 @@ class ActiveFilmRollsViewController: UICollectionViewController, UICollectionVie
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as ActiveFilmRollCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActiveFilmRollCell.reuseIdentifier, for: indexPath) as! ActiveFilmRollCell
         cell.delegate = self
         let activeFilmRoll = activeFilmRolls[indexPath.row]
         cell.activeFilmRollViewModel = ActiveFilmRollViewModel(activeFilmRoll)

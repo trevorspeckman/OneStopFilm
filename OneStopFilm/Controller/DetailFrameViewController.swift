@@ -227,7 +227,7 @@ extension DetailFrameViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let lensTableViewController = LensTableViewController()
+            let lensTableViewController = BaseTableViewController(listModelProtocol: LensListModel())
             lensTableViewController.selectedParentViewCellIndex = indexPath.row
             lensTableViewController.delegate = self
             navigationController?.pushViewController(lensTableViewController, animated: true)

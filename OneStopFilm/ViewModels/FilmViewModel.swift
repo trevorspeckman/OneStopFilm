@@ -1,62 +1,78 @@
-//
+
 //  FilmViewModel.swift
 //  OneStopFilm
 //
 //  Created by Trevor Speckman on 7/14/19.
 //  Copyright © 2019 Trevor Speckman. All rights reserved.
-//
-
-import UIKit
-import CoreData
 
 
-//class FilmViewModel : NSObject, FilmViewModelProtocol {
+//import UIKit
+//import CoreData
 //
 //
+//class FilmViewModel : NSObject {
 //
-//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 //    
-//    var filmArray: [Film]()
-// 
-//    
-//    //MARK: - Protocol
-//    var attributeNames: [String]
-//    
-//    var isSearching: Bool
-//    
-//    var isAdding: Bool
-//    
-//    
-//    func saveItems() {
-//        <#code#>
+//    enum entityName {
+//        case film
+//        case camera
+//        case lens
 //    }
 //    
-//    func loadItems() {
-//        func loadItems(with request: NSFetchRequest<Film> = Film.fetchRequest()) {
-//            request.sortDescriptors = [NSSortDescriptor(key: "brand", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
-//            do {
-//                self.filmArray = try context.fetch(request)
-//            } catch {
-//                print("Error fetching data from context \(error)")
-//            }
-//        }
+//    var entity: entityName = .film
+//    
+//    func selectFetchedREsultsContainer() {
+//    switch entity {
+//    
+//        case .film:
+//        fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Film> = {
+//            let fetchRequest: NSFetchRequest<Film> = Film.fetchRequest()
+//            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "brand", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
+//            let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+//            fetchedResultsController.delegate = self
+//            return fetchedResultsController
+//        }()
+//    
+//        case .camera:
+//        fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Film> = {
+//            let fetchRequest: NSFetchRequest<Film> = Film.fetchRequest()
+//            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "brand", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
+//            let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+//            fetchedResultsController.delegate = self
+//            return fetchedResultsController
+//            }()
+//        case .lens:
+//            fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Film> = {
+//                let fetchRequest: NSFetchRequest<Film> = Film.fetchRequest()
+//                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "brand", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
+//                let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+//                fetchedResultsController.delegate = self
+//                return fetchedResultsController
+//            }()
 //    }
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    init(_ film: Film){
 //        
-//        
-//    }
-//        
-//        
-//    }
 //    
 //}
+//
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//
+//
+//   
+//}
+//
+
+    
+
+
+
+
+
+
+

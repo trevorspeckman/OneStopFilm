@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		612C0288938EA120FDF51C84 /* Pods_OneStopFilm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFF6515186A270670D1BC10 /* Pods_OneStopFilm.framework */; };
 		E509976A22C57CBA0069DFCB /* NewRollLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976922C57CBA0069DFCB /* NewRollLabelTableViewCell.swift */; };
-		E509976C22C5818C0069DFCB /* FilmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976B22C5818C0069DFCB /* FilmTableViewController.swift */; };
+		E509976C22C5818C0069DFCB /* FilmListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976B22C5818C0069DFCB /* FilmListModel.swift */; };
 		E509976E22C589300069DFCB /* NewRollTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976D22C589300069DFCB /* NewRollTextField.swift */; };
-		E509977022C58C190069DFCB /* CameraTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976F22C58C190069DFCB /* CameraTableViewController.swift */; };
+		E509977022C58C190069DFCB /* CameraListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509976F22C58C190069DFCB /* CameraListModel.swift */; };
 		E509977222C58CCC0069DFCB /* ColorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977122C58CCC0069DFCB /* ColorCollectionViewController.swift */; };
 		E509977422CA79D90069DFCB /* TableCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977322CA79D90069DFCB /* TableCellConfigurator.swift */; };
 		E509977622CA7A7F0069DFCB /* NewRollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509977522CA7A7F0069DFCB /* NewRollModel.swift */; };
@@ -43,7 +43,7 @@
 		E55BDBDE22CC4718005AE251 /* DetailFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBDD22CC4718005AE251 /* DetailFrameModel.swift */; };
 		E55BDBE022CC8DD6005AE251 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBDF22CC8DD6005AE251 /* SelfSizedTableView.swift */; };
 		E55BDBE322CD014C005AE251 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E55BDBE122CD014C005AE251 /* DataModel.xcdatamodeld */; };
-		E567864E22D970F1001FEB6E /* LensTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567864D22D970F1001FEB6E /* LensTableViewController.swift */; };
+		E567864E22D970F1001FEB6E /* LensListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567864D22D970F1001FEB6E /* LensListModel.swift */; };
 		E567865022D973B3001FEB6E /* AddLensPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567864F22D973B3001FEB6E /* AddLensPopUp.swift */; };
 		E567865222D97483001FEB6E /* AddLensPopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567865122D97483001FEB6E /* AddLensPopUpModel.swift */; };
 		E567865F22DA9B52001FEB6E /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567865E22DA9B52001FEB6E /* ConfigurableCell.swift */; };
@@ -52,8 +52,11 @@
 		E567866722DA9F99001FEB6E /* ActiveFilmRollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567866622DA9F99001FEB6E /* ActiveFilmRollViewModel.swift */; };
 		E567866922DAAC47001FEB6E /* BaseNoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567866822DAAC47001FEB6E /* BaseNoDataView.swift */; };
 		E567866B22DAC779001FEB6E /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567866A22DAC779001FEB6E /* Reusable.swift */; };
-		E567866F22DB7CF4001FEB6E /* FilmViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567866E22DB7CF4001FEB6E /* FilmViewModelProtocol.swift */; };
+		E567866F22DB7CF4001FEB6E /* ListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567866E22DB7CF4001FEB6E /* ListViewModelProtocol.swift */; };
 		E567867122DB7E8A001FEB6E /* FilmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567867022DB7E8A001FEB6E /* FilmViewModel.swift */; };
+		E567867322DBED85001FEB6E /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567867222DBED85001FEB6E /* BaseTableViewController.swift */; };
+		E567867522DBFAC6001FEB6E /* BasePopupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567867422DBFAC6001FEB6E /* BasePopupTest.swift */; };
+		E567867922DCEAC3001FEB6E /* ListModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567867822DCEAC3001FEB6E /* ListModelProtocol.swift */; };
 		E570358422D247C5009FE20C /* AddCameraPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E570358322D247C5009FE20C /* AddCameraPopUp.swift */; };
 		E5841D3922BD756700F99BC3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D3822BD756700F99BC3 /* Extensions.swift */; };
 		E5841D3B22BD758300F99BC3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5841D3A22BD758300F99BC3 /* Theme.swift */; };
@@ -75,9 +78,9 @@
 		52A082039121657CF1AA7C0E /* Pods-OneStopFilm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneStopFilm.debug.xcconfig"; path = "Target Support Files/Pods-OneStopFilm/Pods-OneStopFilm.debug.xcconfig"; sourceTree = "<group>"; };
 		E33696AFD4590C16C7B6027C /* Pods-OneStopFilm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneStopFilm.release.xcconfig"; path = "Target Support Files/Pods-OneStopFilm/Pods-OneStopFilm.release.xcconfig"; sourceTree = "<group>"; };
 		E509976922C57CBA0069DFCB /* NewRollLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollLabelTableViewCell.swift; sourceTree = "<group>"; };
-		E509976B22C5818C0069DFCB /* FilmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewController.swift; sourceTree = "<group>"; };
+		E509976B22C5818C0069DFCB /* FilmListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListModel.swift; sourceTree = "<group>"; };
 		E509976D22C589300069DFCB /* NewRollTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollTextField.swift; sourceTree = "<group>"; };
-		E509976F22C58C190069DFCB /* CameraTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTableViewController.swift; sourceTree = "<group>"; };
+		E509976F22C58C190069DFCB /* CameraListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListModel.swift; sourceTree = "<group>"; };
 		E509977122C58CCC0069DFCB /* ColorCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewController.swift; sourceTree = "<group>"; };
 		E509977322CA79D90069DFCB /* TableCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellConfigurator.swift; sourceTree = "<group>"; };
 		E509977522CA7A7F0069DFCB /* NewRollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRollModel.swift; sourceTree = "<group>"; };
@@ -111,7 +114,7 @@
 		E55BDBDD22CC4718005AE251 /* DetailFrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFrameModel.swift; sourceTree = "<group>"; };
 		E55BDBDF22CC8DD6005AE251 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		E55BDBE222CD014C005AE251 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		E567864D22D970F1001FEB6E /* LensTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensTableViewController.swift; sourceTree = "<group>"; };
+		E567864D22D970F1001FEB6E /* LensListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensListModel.swift; sourceTree = "<group>"; };
 		E567864F22D973B3001FEB6E /* AddLensPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLensPopUp.swift; sourceTree = "<group>"; };
 		E567865122D97483001FEB6E /* AddLensPopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLensPopUpModel.swift; sourceTree = "<group>"; };
 		E567865E22DA9B52001FEB6E /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -120,8 +123,11 @@
 		E567866622DA9F99001FEB6E /* ActiveFilmRollViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveFilmRollViewModel.swift; sourceTree = "<group>"; };
 		E567866822DAAC47001FEB6E /* BaseNoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNoDataView.swift; sourceTree = "<group>"; };
 		E567866A22DAC779001FEB6E /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
-		E567866E22DB7CF4001FEB6E /* FilmViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmViewModelProtocol.swift; sourceTree = "<group>"; };
+		E567866E22DB7CF4001FEB6E /* ListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelProtocol.swift; sourceTree = "<group>"; };
 		E567867022DB7E8A001FEB6E /* FilmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmViewModel.swift; sourceTree = "<group>"; };
+		E567867222DBED85001FEB6E /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		E567867422DBFAC6001FEB6E /* BasePopupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupTest.swift; sourceTree = "<group>"; };
+		E567867822DCEAC3001FEB6E /* ListModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModelProtocol.swift; sourceTree = "<group>"; };
 		E570358322D247C5009FE20C /* AddCameraPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCameraPopUp.swift; sourceTree = "<group>"; };
 		E5841D3822BD756700F99BC3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E5841D3A22BD758300F99BC3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -248,12 +254,15 @@
 				E5841D4222BD9F9200F99BC3 /* ArchiveCollectionViewController.swift */,
 				E5841D4422BD9FAB00F99BC3 /* SettingsTableViewController.swift */,
 				E58B60FB22C2FFCA00DC9294 /* NewRollTableViewController.swift */,
-				E509976B22C5818C0069DFCB /* FilmTableViewController.swift */,
-				E509976F22C58C190069DFCB /* CameraTableViewController.swift */,
-				E567864D22D970F1001FEB6E /* LensTableViewController.swift */,
+				E509976B22C5818C0069DFCB /* FilmListModel.swift */,
+				E509976F22C58C190069DFCB /* CameraListModel.swift */,
+				E567864D22D970F1001FEB6E /* LensListModel.swift */,
 				E509977122C58CCC0069DFCB /* ColorCollectionViewController.swift */,
 				E509978122CAFF5E0069DFCB /* FramesTableViewController.swift */,
 				E509978B22CBD7080069DFCB /* DetailFrameViewController.swift */,
+				E567867222DBED85001FEB6E /* BaseTableViewController.swift */,
+				E567867422DBFAC6001FEB6E /* BasePopupTest.swift */,
+				E567867822DCEAC3001FEB6E /* ListModelProtocol.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -303,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				E567866622DA9F99001FEB6E /* ActiveFilmRollViewModel.swift */,
-				E567866E22DB7CF4001FEB6E /* FilmViewModelProtocol.swift */,
+				E567866E22DB7CF4001FEB6E /* ListViewModelProtocol.swift */,
 				E567867022DB7E8A001FEB6E /* FilmViewModel.swift */,
 			);
 			path = ViewModels;
@@ -469,14 +478,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E509978A22CB0F940069DFCB /* LabelWithImageView.swift in Sources */,
-				E509976C22C5818C0069DFCB /* FilmTableViewController.swift in Sources */,
+				E509976C22C5818C0069DFCB /* FilmListModel.swift in Sources */,
 				E509977E22CAC5050069DFCB /* BasePopup.swift in Sources */,
 				E5841D4122BD9F7B00F99BC3 /* DevelopTableViewController.swift in Sources */,
 				E509977A22CAB6330069DFCB /* AddFilmPopup.swift in Sources */,
 				E526441722D31F0E008D5FAD /* Gradient.swift in Sources */,
 				E58B60FC22C2FFCA00DC9294 /* NewRollTableViewController.swift in Sources */,
 				E567866122DA9B94001FEB6E /* CellConfigurator.swift in Sources */,
-				E567866F22DB7CF4001FEB6E /* FilmViewModelProtocol.swift in Sources */,
+				E567866F22DB7CF4001FEB6E /* ListViewModelProtocol.swift in Sources */,
 				E55BDBDE22CC4718005AE251 /* DetailFrameModel.swift in Sources */,
 				E50A454622BACD390047ABFE /* ActiveFilmRollsViewController.swift in Sources */,
 				E509976E22C589300069DFCB /* NewRollTextField.swift in Sources */,
@@ -489,13 +498,15 @@
 				E509977222C58CCC0069DFCB /* ColorCollectionViewController.swift in Sources */,
 				E5841D3B22BD758300F99BC3 /* Theme.swift in Sources */,
 				E509977422CA79D90069DFCB /* TableCellConfigurator.swift in Sources */,
+				E567867922DCEAC3001FEB6E /* ListModelProtocol.swift in Sources */,
+				E567867522DBFAC6001FEB6E /* BasePopupTest.swift in Sources */,
 				E567867122DB7E8A001FEB6E /* FilmViewModel.swift in Sources */,
 				E5841D3F22BD99BC00F99BC3 /* CustomTabBarController.swift in Sources */,
 				E526442022D802CC008D5FAD /* DarkTheme.swift in Sources */,
 				E509978222CAFF5E0069DFCB /* FramesTableViewController.swift in Sources */,
 				E58B60FA22C2DE5300DC9294 /* CircularProgressBar.swift in Sources */,
 				E567866722DA9F99001FEB6E /* ActiveFilmRollViewModel.swift in Sources */,
-				E567864E22D970F1001FEB6E /* LensTableViewController.swift in Sources */,
+				E567864E22D970F1001FEB6E /* LensListModel.swift in Sources */,
 				E509978822CB0B200069DFCB /* FramesTableModel.swift in Sources */,
 				E567865F22DA9B52001FEB6E /* ConfigurableCell.swift in Sources */,
 				E5841D4322BD9F9200F99BC3 /* ArchiveCollectionViewController.swift in Sources */,
@@ -511,9 +522,10 @@
 				E509976A22C57CBA0069DFCB /* NewRollLabelTableViewCell.swift in Sources */,
 				E509978622CB0A480069DFCB /* LabelWithImage.swift in Sources */,
 				E59E3C7222D9298900C3841B /* IndicatorTableViewCell.swift in Sources */,
-				E509977022C58C190069DFCB /* CameraTableViewController.swift in Sources */,
+				E509977022C58C190069DFCB /* CameraListModel.swift in Sources */,
 				E567865222D97483001FEB6E /* AddLensPopUpModel.swift in Sources */,
 				E55BDBE322CD014C005AE251 /* DataModel.xcdatamodeld in Sources */,
+				E567867322DBED85001FEB6E /* BaseTableViewController.swift in Sources */,
 				E55BDBD822CC24FE005AE251 /* LabelWithImageTableViewCell.swift in Sources */,
 				E567866922DAAC47001FEB6E /* BaseNoDataView.swift in Sources */,
 				E5841D3922BD756700F99BC3 /* Extensions.swift in Sources */,

@@ -146,14 +146,14 @@ class NewRollTableViewController: UITableViewController, ChildViewControllerDele
         tableView.endEditing(true)
         if indexPath.row == 1 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let filmTableViewController = FilmTableViewController()
+            let filmTableViewController = BaseTableViewController(listModelProtocol: FilmListModel())
             filmTableViewController.selectedParentViewCellIndex = indexPath.row
             filmTableViewController.delegate = self
             navigationController?.pushViewController(filmTableViewController, animated: true)
         }
         else if indexPath.row == 4 {
             tableView.deselectRow(at: indexPath, animated: true)
-            let cameraTableViewController = CameraTableViewController()
+            let cameraTableViewController = BaseTableViewController(listModelProtocol: CameraListModel())
             cameraTableViewController.selectedParentViewCellIndex = indexPath.row
             cameraTableViewController.delegate = self
             navigationController?.pushViewController(cameraTableViewController, animated: true)
